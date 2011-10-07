@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="Inbox2.Framework.Plugins.SharedControls.Profiles.ChannelProfileControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI">
+	
+	<UserControl.CommandBindings>
+		<CommandBinding Command="{x:Static fui:Commands.View}" CanExecute="View_CanExecute" Executed="View_Executed" />
+	</UserControl.CommandBindings>
+
+	<UserControl.Resources>
+		<Storyboard x:Key="RunLoaderStoryboard" RepeatBehavior="Forever">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="LoaderEllipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="360"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	
+	<Grid Background="{Binding BackgroundColor, Converter={StaticResource BrushToGradientBrushConverter}}" Margin="0,-1,0,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition Width="74"/>
+		</Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="0,1,0,0" Margin="0,0,0,0"/>
+        <!-- avatar -->
+		<Grid Grid.Column="1" SnapsToDevicePixels="True" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,10,10" Width="62" Height="62">
+			<Border SnapsToDevicePixels="True" BorderBrush="{StaticResource ShadowColor1}" BorderThickness="1" Width="62" Height="62" >
+				<Image SnapsToDevicePixels="True" Source="{Binding Profile.Avatar}" Width="60" Height="60" />
+			</Border>
+			<Border SnapsToDevicePixels="True" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="1" Width="60" Height="60" />
+		</Grid>
+
+		<!-- meta data -->
+		<StackPanel Orientation="Vertical" Grid.Row="0" VerticalAlignment="Top">
+			<TextBlock Text="{Binding Profile.ScreenName}" TextWrapping="Wrap" Foreground="{StaticResource DefaultForegroundColor}" Margin="10,5,0,0" FontSize="18"/>
+			<TextBlock Margin="10,5,0,0" Visibility="{py:PyBinding BooleanToVisibility(IsValidEmail($[.Profile.Address]))}" Text="{Binding Profile.Address}" />
+			
+			<TextBlock Text="{Binding Profile.Title}" TextWrapping="Wrap" Foreground="{StaticResource DimmedForegroundColor}" Margin="10,0,0,0" Visibility="{py:PyBinding EmptyStringToVisibility($[.Profile.Title])}"/>
+			
+			<Button Margin="5,0,0,0" Command="{x:Static fui:Commands.View}" Style="{StaticResource ActivityActionsButton}" VerticalAlignment="Top" Visibility="{py:PyBinding BooleanToVisibility($[.Channel.Charasteristics.SupportsProfiles])}">
+				<TextBlock Foreground="{StaticResource DefaultForegroundColor}">
+					<TextBlock>View on</TextBlock>
+					<TextBlock Text="{Binding Channel.DisplayName}" />
+				</TextBlock>
+			</Button>
+		</StackPanel>
+
+		<!-- last status update -->
+		<Grid Grid.Row="1" Grid.ColumnSpan="2" Visibility="{py:PyBinding BooleanToVisibility($[.Channel.Charasteristics.SupportsStatusUpdates])}">
+
+			<Grid Visibility="{py:PyBinding NotNullToVisibility($[.LastStatus])}">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+
+                <Border Grid.Row="0" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="0,1,0,0" />
+				<Border Grid.Row="0" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="0,1,0,0" Margin="0,1,0,0"/>
+				<TextBlock Grid.Row="0" Text="Last update:" Margin="10,10,10,5" FontWeight="Bold" Foreground="White"/>
+				<ContentControl Grid.Row="1" Margin="10,0,0,0" Foreground="{StaticResource SlightlyDimmedForegroundColor}" Content="{Binding LastStatus.Status, Converter={StaticResource HtmlStringToTextElementConverter}}" />
+				<StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,2">
+					<TextBlock Margin="0,3,8,0" Text="{Binding LastStatus.SortDate, Converter={StaticResource DateToRelativeTimeConverter}}" Opacity="0.35" Height="20" Style="{StaticResource NormalTextBlock}" />
+					<Button Margin="0,0,8,0" Style="{StaticResource ActivityActionsButton}" Content="Reply" FontWeight="Normal" VerticalAlignment="Top" Click="Reply_Click"/>
+				</StackPanel>
+			</Grid>
+
+            <Grid Name="loader" MinHeight="30" Margin="0,5,0,0">
+                <Border Grid.Row="0" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="0,1,0,0" />
+                <Border Grid.Row="0" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="0,1,0,0" Margin="0,1,0,0"/>
+                <Canvas HorizontalAlignment="Left" Margin="10,10,0,0">
+    				<Ellipse Fill="{x:Null}" StrokeThickness="2.5" Stroke="#D9D9D9" Width="18" Height="18"/>
+    				<Ellipse Width="18" Height="18" Fill="{x:Null}" StrokeThickness="2.5" x:Name="LoaderEllipse" RenderTransformOrigin="0.5,0.5">
+    					<Ellipse.RenderTransform>
+    						<TransformGroup>
+    							<ScaleTransform ScaleX="1" ScaleY="1"/>
+    							<SkewTransform AngleX="0" AngleY="0"/>
+    							<RotateTransform Angle="0"/>
+    							<TranslateTransform X="0" Y="0"/>
+    						</TransformGroup>
+    					</Ellipse.RenderTransform>
+    					<Ellipse.Stroke>
+    						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    							<GradientStop Color="#0077E7FF" Offset="0.674"/>
+    							<GradientStop Color="#B7FFFFFF" Offset="0.991"/>
+    							<GradientStop Color="#4B59E2FF" Offset="0.884"/>
+    						</LinearGradientBrush>
+    					</Ellipse.Stroke>
+    				</Ellipse>
+    				
+    				<TextBlock Margin="25,0,0,0" Text="Loading..." Foreground="{StaticResource DimmedForegroundColor}" />
+                </Canvas>
+            </Grid>
+
+            <Grid Name="empty" Visibility="Collapsed" Margin="0,5,0,0">
+                <Border Grid.Row="0" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="0,1,0,0" />
+                <Border Grid.Row="0" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="0,1,0,0" Margin="0,1,0,0"/>
+                <TextBlock Style="{StaticResource NoItems}" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left">Last status update not available</TextBlock>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,0">
+            <Border Grid.Row="0" BorderBrush="{StaticResource ShadowColor1}" BorderThickness="0,1,0,0" />
+            <Border Grid.Row="0" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="0,1,0,0" Margin="0,1,0,0"/>
+			<Button Style="{StaticResource ViewAllFrom}" Content="{py:PyBinding StringConcat(\'View everything from \'\, $[.Profile.Person.Name])}" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Click="ViewAllButton_Click" />
+        </Grid>
+    </Grid>
+
+</UserControl>

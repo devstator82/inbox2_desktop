@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.Setup.ChannelSetupPageControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:fcontrols="clr-namespace:Inbox2.Framework.UI.Controls;assembly=Inbox2.Framework.UI"
+    xmlns:fluidkit="clr-namespace:FluidKit.Controls;assembly=FluidKit"
+    xmlns:py="clr-namespace:PyBinding;assembly=PyBinding" 
+	MouseMove="UserControl_MouseMove"
+    KeyDown="UserControl_KeyDown"
+	Loaded="UserControl_Loaded"
+	Opacity="0">
+
+    <UserControl.Resources>
+        <fluidkit:GenieTransition x:Key="GenieTransition" EffectType="IntoLamp" />
+
+		<Storyboard x:Key="sb" TargetProperty="Opacity">
+			<DoubleAnimation From="0" To="1" Duration="0:0:1.4" />
+		</Storyboard>
+	</UserControl.Resources>
+
+	<Grid Margin="{Binding IsCompositionEnabled, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource GlassMarginConverter}}">
+
+		<Border Background="{StaticResource ContentBackground}"
+				Visibility="{Binding IsCompositionEnabled, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource NotBooleanToVisibilityConverter}}">
+			<Border Background="{StaticResource HighlightGradient5}" />
+		</Border>
+
+		<fcontrols:CustomBorder
+            InnerStyle="{StaticResource ContentInnerSetupBorder}" 
+            MiddleStyle="{StaticResource ContentInnerBorder}" 
+            OuterStyle="{StaticResource EmptyBorderStyle}" 
+			Visibility="{Binding IsCompositionEnabled, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+		<Canvas MinWidth="810" MinHeight="480" HorizontalAlignment="Center" VerticalAlignment="Center">                
+            <!-- Channel Configurations -->
+            <StackPanel x:Name="ChannelConfigurationAddStackPanel" Canvas.Left="230" Width="350" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource TitleNameExtraLarge}"
+                           TextWrapping="Wrap" 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top" 
+                           Margin="0"
+                           Width="350"
+                           Text="Start by configuring one or more of your accounts:">
+                </TextBlock>
+                <WrapPanel Name="ChannelAddWrapPannel" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Orientation="Horizontal"
+                       Margin="0,20,10,0" 
+                       Width="350" 
+                       Button.Click="ChannelAddWrapPannel_Click">
+                </WrapPanel>
+                <Button Name="ChannelSetupPageNextButton" 
+                        Style="{StaticResource CallToActionButton}"
+                        Click="ChannelSetupPageNextButton_Click"
+                        Visibility="{py:PyBinding BooleanToVisibility($[.HasConfiguredChannels])}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Margin="0,20,0,0"
+                        Content="Next Step" />
+            </StackPanel>
+            
+            <!-- Inbox2 Opened Icon -->
+            <Canvas Name="Inbox2SetupOpenedLogoCanvas" HorizontalAlignment="Center" Canvas.Left="452" Canvas.Top="453" Opacity="0">
+                <Image Name="Inbox2SetupOpenedImage"
+                       Source="/Inbox2.UI.Themes.DarkSide;component/images/inbox2-logo-large.png"
+                       Width="448"
+                       Height="453" 
+                       SnapsToDevicePixels="True" />
+            </Canvas>
+            
+            <!-- Inbox2 Closed Icon -->
+            <Canvas Name="Inbox2SetupClosedLogoCanvas" HorizontalAlignment="Center" Canvas.Left="452" Canvas.Top="453" Opacity="0">
+                <Image Name="Inbox2SetupClosedImage"
+                       Source="/Inbox2.UI.Themes.DarkSide;component/images/inbox2-logo-closed-large.png"
+                       Width="448"
+                       Height="453" 
+                       SnapsToDevicePixels="True" />
+            </Canvas>
+            
+            <!-- Channel Setup Control -->
+            <StackPanel Name="ChannelSetupStackPanel"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom"
+                        Orientation="Vertical" 
+                        Canvas.Left="355"
+                        Width="375">
+                <fluidkit:TransitionPresenter x:Name="transitionContainer" 
+                                              RestDuration="0:0:8"                                               
+                                              FocusVisualStyle="{x:Null}"
+                                              Transition="{StaticResource GenieTransition}"                                                   
+                                              VerticalAlignment="Bottom">
+                </fluidkit:TransitionPresenter>
+            </StackPanel>
+            
+            <!-- Setup Finish -->
+            <Canvas x:Name="ChannelSetupFinishStackPanel" Canvas.Top="135" Canvas.Left="300" Visibility="Hidden">
+                <StackPanel Orientation="Vertical" Width="450">
+                    <Border Background="{StaticResource LoginBackground}" CornerRadius="8">
+                        <Border Background="{StaticResource HighlightGradient6}" Width="Auto" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="1" CornerRadius="8" Padding="10">
+                            <StackPanel Orientation="Vertical">
+                                <!-- Display Name Input Field -->
+                                <TextBlock Text="Full name:" 
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="22"
+                                           Style="{StaticResource NormalTextBlock}" 
+                                           SnapsToDevicePixels="True" />                                    
+                                <TextBox x:Name="DisplayNameTextBox" 
+                                         Grid.Column="1" 
+                                         Text="{Binding FullName}" 
+                                         Width="Auto"
+                                         Margin="0,5,0,0"
+                                         FontSize="22"
+                                         KeyDown="DisplayNameTextBox_KeyDown"
+                                         HorizontalAlignment="Stretch" 
+                                         VerticalAlignment="Center" />
+
+                                <!-- Default E-mail Address Input Field -->
+                                <TextBlock Name="DefaultEmailAddressTextBlock"
+                                           Text="Default account:" 
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="22"
+                                           Margin="0,15,0,0"
+                                           Style="{StaticResource NormalTextBlock}" 
+                                           SnapsToDevicePixels="True" />
+                                <ComboBox  Name="DefaultEmailAddressComboBox" 
+                                           FontSize="22"
+                                           ItemsSource="{Binding ChannelConfiguration}"
+                                           SelectedValuePath="IsDefault"
+                                           SelectedValue="{Binding Path=IsDefault}"
+                                           Width="Auto">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Source="{Binding Converter={StaticResource ChannelIconConverter}, ConverterParameter=13}" Width="13" Height="13" Margin="1,6,4,1" RenderOptions.BitmapScalingMode="NearestNeighbor" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                                <TextBlock Grid.Column="1" Text="{Binding InputChannel.Authentication.Username}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+								
+                                <!-- Finish Button -->
+                                <Button Name="ChannelSetupPageFinishButton" 
+                                        Style="{StaticResource CallToActionButton}"
+                                        Click="ChannelSetupFinishButton_Click"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,20,0,0"
+                                        Content="Get started" />
+
+                            </StackPanel>
+                        </Border>
+                    </Border>                        
+                </StackPanel>                    
+            </Canvas>
+
+        </Canvas>
+
+    </Grid>
+
+</UserControl>
+    

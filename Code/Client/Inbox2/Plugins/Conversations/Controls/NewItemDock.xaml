@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Inbox2.Plugins.Conversations.Controls.NewItemDock"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+     xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI">
+    
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static fui:Commands.Send}" CanExecute="Send_CanExecute" Executed="Send_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.SaveDraft}" CanExecute="SaveDraft_CanExecute" Executed="SaveDraft_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.Cancel}" CanExecute="Cancel_CanExecute" Executed="Cancel_Executed" />
+    </UserControl.CommandBindings>
+
+	<Grid Width="Auto" HorizontalAlignment="Stretch" Background="{StaticResource TabDockGradient}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+      
+		<StackPanel Orientation="Horizontal" Grid.Column="0">
+            <Grid Margin="0,0,10,0">
+                <Border BorderBrush="{StaticResource ShadowColor4}" Background="{StaticResource ShadowColor9}" BorderThickness="0,1,0,0" VerticalAlignment="Center" Height="28" CornerRadius="5" Margin="10,0,0,0" />
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                    <Button Style="{StaticResource LightButton}" Command="{x:Static fui:Commands.Send}" VerticalAlignment="Center" Height="32" Margin="10,2,6,2" Tag="SendButton" fui:Responder.IsFirstResponder="True">Send</Button>
+                    <CheckBox Content="Await reply" Margin="5,0,10,0" VerticalAlignment="Center" Foreground="{StaticResource TabAndLightButtonText}" Checked="WaitingForCheckBox_Checked" Unchecked="WaitingForCheckBox_Unchecked" />
+                </StackPanel>
+            </Grid>
+            <Button Style="{StaticResource LightButton}" Command="{x:Static fui:Commands.SaveDraft}" VerticalAlignment="Center" Height="28"  Margin="0,0,6,0">Save as draft</Button>
+            <Button Style="{StaticResource LightButton}" Command="{x:Static fui:Commands.Cancel}" VerticalAlignment="Center" Height="28" Margin="0,0,6,0">Cancel</Button>
+        </StackPanel>
+
+		<StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+		</StackPanel>
+
+	</Grid>
+
+</UserControl>

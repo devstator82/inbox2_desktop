@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.NotifyBalloon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+             Width="417"
+             MaxHeight="383"
+             Margin="5,5,0,0">
+
+    <Grid x:Name="notifyBalloonGrid" MouseEnter="notifyBalloonGrid_MouseEnter" MouseDown="notifyBalloonGrid_MouseDown">
+        <Border BorderThickness="2" CornerRadius="7" Opacity="0.85" Padding="12" BorderBrush="#99FFFFFF">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF353535" Offset="1"/>
+                    <GradientStop Color="#FF6E6E6E"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect Direction="270" BlurRadius="15" ShadowDepth="2" Opacity="0.75"/>
+            </Border.Effect>
+            <Grid>
+                <StackPanel Orientation="Vertical" Margin="0">
+                    
+                    <!-- Messages -->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Visibility="{py:PyBinding BooleanToVisibility($[.NewMessages.Count] > 0)}">
+                        <TextBlock Text="Messages" FontWeight="Bold" Foreground="#9DA2D4" />                        
+                        <Border Style="{StaticResource NotifyNumberBorder}" Margin="5,0,5,0" Padding="3,0" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding NewMessages.Count}" Style="{StaticResource NotifyNumbersTextBlock}" />
+                        </Border>
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{Binding VisibleMessages}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <Image VerticalAlignment="Center" SnapsToDevicePixels="True" Source="{Binding Person.BestProfile.Avatar}" Margin="0,1,5,0" Width="15" Height="15" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding From.DisplayName}" Foreground="White" FontWeight="Bold" Width="100"  TextTrimming="CharacterEllipsis" />
+                                    <Image VerticalAlignment="Center" Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}}" ToolTip="{Binding SourceChannel.InputChannel.Authentication.Username}" Width="10" Height="10" Stretch="Uniform" Margin="5,2,5,0" Visibility="{py:PyBinding BooleanToVisibility($[.SourceChannelId] > 0)}" />
+                                    <TextBlock VerticalAlignment="Center" Opacity="0.6" Text="{Binding BodyPreview}" TextAlignment="Left"  Visibility="{py:PyBinding EmptyStringToVisibility($[.BodyPreview])}" Foreground="White" FontStyle="Italic" Margin="8,0,0,0" TextTrimming="CharacterEllipsis" />
+                                    <TextBlock VerticalAlignment="Center" Opacity="0.6" Text="This message has no body" TextAlignment="Left" Visibility="{py:PyBinding NotEmptyStringToVisibility($[.BodyPreview])}" Foreground="White" FontStyle="Italic" Margin="8,0,0,0" TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="..." Foreground="White" FontWeight="Bold" Width="100" Margin="20,0,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.NewMessages.Count] > 3)}" />
+                    
+                    <!-- Status Updates -->
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,10" Visibility="{py:PyBinding BooleanToVisibility($[.NewStatusUpdates.Count] > 0)}">
+                        <TextBlock Text="Status updates" FontWeight="Bold" Foreground="#C8A2D4" />                        
+                        <Border Style="{StaticResource NotifyNumberBorder}" Margin="5,0,5,0" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding NewStatusUpdates.Count}" Style="{StaticResource NotifyNumbersTextBlock}" />
+                        </Border>
+                    </StackPanel>
+					<ItemsControl ItemsSource="{Binding VisibleStatusUpdates}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <Image VerticalAlignment="Center" SnapsToDevicePixels="True" Source="{Binding Avatar}" Margin="0,1,5,0" Width="15" Height="15" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding From.DisplayName}" Foreground="White" FontWeight="Bold" Width="100"  TextTrimming="CharacterEllipsis" />
+                                    <Image VerticalAlignment="Center" Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}}" ToolTip="{Binding SourceChannel.InputChannel.Authentication.Username}" Width="10" Height="10" Stretch="Uniform" Margin="5,2,5,0" Visibility="{py:PyBinding BooleanToVisibility($[.SourceChannelId] > 0)}" />
+									<TextBlock Text="{Binding Status}" VerticalAlignment="Center" Opacity="0.6" Foreground="{StaticResource SlightlyDimmedForegroundColor}" FontStyle="Italic" Margin="8,0,0,0" TextAlignment="Left" TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="..." Foreground="White" FontWeight="Bold" Width="100" Margin="20,0,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.NewStatusUpdates.Count] > 3)}" />
+
+					<!-- Social Searches-->
+					<StackPanel Orientation="Horizontal" Margin="0,10,0,10" Visibility="{py:PyBinding BooleanToVisibility($[.NewSocialSearches.Count] > 0)}">
+                        <TextBlock Text="Twitter Search updates" FontWeight="Bold" Foreground="#C8A2A8" />                        
+                        <Border Style="{StaticResource NotifyNumberBorder}" Margin="5,0,5,0" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding NewSocialSearches.Count}" Style="{StaticResource NotifyNumbersTextBlock}" />
+                        </Border>
+                    </StackPanel>
+					<ItemsControl ItemsSource="{Binding VisibleSocialSearches}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+									<Image VerticalAlignment="Center" SnapsToDevicePixels="True" Source="{Binding Avatar}" Margin="0,1,5,0" Width="15" Height="15" />
+									<TextBlock VerticalAlignment="Center" Text="{Binding From.DisplayName}" Foreground="White" FontWeight="Bold" Width="100"  TextTrimming="CharacterEllipsis" />
+									<Image VerticalAlignment="Center" Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}}" ToolTip="{Binding SourceChannel.InputChannel.Authentication.Username}" Width="10" Height="10" Stretch="Uniform" Margin="5,2,5,0" Visibility="{py:PyBinding BooleanToVisibility($[.SourceChannelId] > 0)}" />
+									<TextBlock Text="{Binding Status}" VerticalAlignment="Center" Opacity="0.6" Foreground="{StaticResource SlightlyDimmedForegroundColor}" FontStyle="Italic" Margin="8,0,0,0" TextAlignment="Left" TextTrimming="CharacterEllipsis"/>
+								</StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="..." Foreground="White" FontWeight="Bold" Width="100" Margin="20,0,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.NewSocialSearches.Count] > 3)}" />
+                </StackPanel>
+                <Grid Width="19" Height="19" VerticalAlignment="Top" HorizontalAlignment="Right" SnapsToDevicePixels="True">
+                    <Border x:Name="border1" CornerRadius="3" BorderThickness="1" BorderBrush="Transparent" Background="Transparent">
+                        <Border x:Name="innerBorder1" CornerRadius="3" BorderThickness="1" />
+                    </Border>                    
+                    <Button Content="Close" Style="{StaticResource GlobalCloseButton}" Click="CloseButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+                    
+</UserControl>

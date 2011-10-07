@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="Inbox2.Framework.Plugins.SharedControls.StatusUpdateControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+	xmlns:channels="clr-namespace:Inbox2.Platform.Channels;assembly=Inbox2.Platform.Channels" 
+	xmlns:local="clr-namespace:Inbox2.Framework.Plugins.SharedControls"
+	xmlns:py="clr-namespace:PyBinding;assembly=PyBinding" 
+    Loaded="StatusUpdateControl_OnLoaded">
+
+    <UserControl.Resources>        
+        
+        <DataTemplate DataType="{x:Type channels:ChannelInstance}" x:Key="FullToggleButton">
+            <ToggleButton 
+				DataContext="{Binding Converter={StaticResource ObjectToObjectHolderConverter}}"
+				Style="{StaticResource FullChannelToggleButtonStyle}"
+				Command="{x:Static local:StatusUpdateControl.ToggleChannel}" 
+				CommandParameter="{Binding Value}"
+				IsChecked="{Binding Value, Converter={StaticResource IsCheckedConverter}, Mode=OneWay}" />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type channels:ChannelInstance}" x:Key="SmallToggleButton">
+            <ToggleButton 
+				DataContext="{Binding Converter={StaticResource ObjectToObjectHolderConverter}}"
+				Style="{StaticResource SimpleChannelToggleButtonStyle}"
+				Command="{x:Static local:StatusUpdateControl.ToggleChannel}" 
+				CommandParameter="{Binding Value}"
+				IsChecked="{Binding Value, Converter={StaticResource IsCheckedConverter}, Mode=OneWay}">
+                <ToggleButton.ToolTip>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Value.Configuration.DisplayName}" />
+                        <TextBlock Text="{Binding Value.Configuration.InputChannel.Authentication.Username}" />
+                    </StackPanel>
+                </ToggleButton.ToolTip>
+            </ToggleButton>
+        </DataTemplate>
+
+        <local:ToggleButtonTemplateSelector x:Key="ToggleButtonTemplateSelector" 
+            FullTemplate="{StaticResource FullToggleButton}"
+            SimpleTemplate="{StaticResource SmallToggleButton}" />
+        
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static local:StatusUpdateControl.ToggleChannel}" CanExecute="ToggleChannel_CanExecute" Executed="ToggleChannel_Execute" />
+        <CommandBinding Command="{x:Static local:StatusUpdateControl.UpdateStatus}" CanExecute="UpdateStatus_CanExecute" Executed="UpdateStatus_Execute" />
+        <CommandBinding Command="{x:Static fui:Commands.ShortenUrls}" CanExecute="ShortenUrls_CanExecute" Executed="ShortenUrls_Executed" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel1}" Executed="ToggleChannel1_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel2}" Executed="ToggleChannel2_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel3}" Executed="ToggleChannel3_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel4}" Executed="ToggleChannel4_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel5}" Executed="ToggleChannel5_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel6}" Executed="ToggleChannel6_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel7}" Executed="ToggleChannel7_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel8}" Executed="ToggleChannel8_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.ToggleChannel9}" Executed="ToggleChannel9_Executed" CanExecute="CanAlwaysExecute" />
+    </UserControl.CommandBindings>
+
+    <Grid Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <ContentControl Grid.Row="0" Grid.ColumnSpan="2" Content="{Binding ReplyTo, Converter={StaticResource UserStatusReplyConverter}}" Visibility="{py:PyBinding NotNullToVisibility($[.ReplyTo])}" />
+        
+        <!-- textbox -->
+        <TextBox Name="StatusTextBox" Grid.Row="1" Grid.Column="0" FontSize="14" Width="Auto" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="26" Padding="0,0,45,0" KeyUp="StatusTextBox_OnKeyUp" fui:Responder.IsFirstResponder="True" />
+
+        <!-- bitly button-->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,3,3,0" Opacity="0.8" >
+            <Button Content="bit.ly" Command="{x:Static fui:Commands.ShortenUrls}" Style="{StaticResource BitlyButtonSplitButtonLeft}" VerticalAlignment="Center" Height="19" />
+            <Menu Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="19">
+                <MenuItem Header="New" Style="{StaticResource LightButtonSplitMenuRight}" Tag="BitlyButtonSplitMenuRight">
+                    <MenuItem Header="bit.ly" />
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <!-- channels -->
+        <Border Grid.Column="0" Grid.Row="2" BorderBrush="{StaticResource ShadowColor5}" Margin="0,5,0,0" SnapsToDevicePixels="True" BorderThickness="1" Background="{StaticResource HighlightGradient4}" CornerRadius="5" VerticalAlignment="Top" Height="28" HorizontalAlignment="Left">
+            <fui:ClippingBorder CornerRadius="5" ClipToBounds="True" BorderBrush="{StaticResource HighlightColor3}" BorderThickness="1">
+                <ItemsControl ItemsSource="{Binding Channels}" Style="{StaticResource HorizontalItemsControl}" ItemTemplateSelector="{StaticResource ToggleButtonTemplateSelector}" />
+            </fui:ClippingBorder>
+        </Border>
+
+        <!-- counter for twitter-->
+        <TextBlock Text="{Binding Text.Length, ElementName=StatusTextBox}" HorizontalAlignment="Right" 
+            VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="0,1,8,8" FontSize="14"
+			Visibility="{py:PyBinding BooleanToVisibility($[.HasTwitter] and $[StatusTextBox.Text.Length] > 0)}" 
+			Opacity="{py:PyBinding BooleanToOpacity($[StatusTextBox.Text.Length] &lt; 130 \, 0.5)}"
+        	Foreground="{py:PyBinding BooleanToColorSelection($[StatusTextBox.Text.Length] > 140\, Brushes.Red\, Brushes.White)}"
+			FontWeight="{py:PyBinding BooleanToBold($[StatusTextBox.Text.Length] > 140)}"
+		/>
+
+        <!-- share button-->
+        <Button Grid.Column="2" 
+                Grid.Row="1"
+                FontSize="14" FontWeight="Bold" MinHeight="26" Margin="10,0,20,0" Width="70" 
+                Command="{x:Static local:StatusUpdateControl.UpdateStatus}"
+                Content="Update" 
+                IsDefault="True"
+                Style="{StaticResource LightButton}"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Top"
+                Visibility="{py:PyBinding BooleanToVisibility($[.IsExpanded])}" />
+
+    </Grid>
+</UserControl>

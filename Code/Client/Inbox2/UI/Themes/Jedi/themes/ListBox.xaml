@@ -1,0 +1,101 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="SharedDictionary.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Default ListBox Style -->
+    <Style x:Key="{x:Type ListBox}" TargetType="ListBox">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="95"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Border 
+                        Name="Border" 
+                        Background="{StaticResource WindowBackgroundBrush}"
+                        BorderBrush="{StaticResource SolidBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="4">
+                        <ScrollViewer 
+                              Margin="0"
+                              Focusable="false">
+                            <StackPanel Margin="2" IsItemsHost="True" />
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default ListBoxItem Style -->
+    <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border 
+            Name="Border"
+            Padding="2"
+            SnapsToDevicePixels="true">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Border" Property="Background"
+                      Value="{StaticResource SelectedBackgroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground"
+                      Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+	<!-- Fake style for when we need a list of radio-buttons, see http://social.msdn.microsoft.com/Forums/en-US/wpf/thread/8eb8280a-19c4-4502-8260-f74633a9e2f2/ -->
+	<Style x:Key="RadioButtonListStyle" TargetType="ListBox">
+        <Style.Resources>
+			<Style TargetType="ListBoxItem">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="ListBoxItem">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition />
+								</Grid.ColumnDefinitions>
+								<RadioButton VerticalAlignment="Center" IsChecked="{Binding IsSelected, 
+										RelativeSource={RelativeSource TemplatedParent}, 
+										Mode=TwoWay}" />
+								<ContentPresenter VerticalAlignment="Center" Grid.Column="1" Margin="2,0,0,0" />
+							</Grid>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</Style.Resources>
+		<Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Transparent" />
+	</Style>
+
+</ResourceDictionary>

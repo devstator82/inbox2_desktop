@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.MultiViewFrameControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="clr-namespace:Inbox2.UI.Controls"
+    xmlns:controlsv="clr-namespace:Inbox2.UI.Controls.Views"
+	xmlns:fcontrols="clr-namespace:Inbox2.Framework.UI.Controls;assembly=Inbox2.Framework.UI" 
+    xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI" 
+    KeyDown="MultiViewFrameControl_OnKeyDown">
+    
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static fui:InputCommands.Escape}" Executed="Escape_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.Compose}" Executed="Compose_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.Search}" Executed="Search_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.Refresh}" Executed="Refresh_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.UploadDocment}" Executed="UploadDocment_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.UpdateStatus}" Executed="UpdateStatus_Executed" CanExecute="CanAlwaysExecute" />
+        
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoInbox}" Executed="GotoInbox_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoArchive}" Executed="GotoArchive_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoSentItems}" Executed="GotoSentItems_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoDrafts}" Executed="GotoDrafts_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoStarred}" Executed="GotoStarred_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoLabel}" Executed="GotoLabel_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoContacts}" Executed="GotoContacts_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoDocuments}" Executed="GotoDocuments_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.GotoImages}" Executed="GotoImages_Executed" CanExecute="CanAlwaysExecute" />
+
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate1}" Executed="StatusUpdate1_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate2}" Executed="StatusUpdate2_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate3}" Executed="StatusUpdate3_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate4}" Executed="StatusUpdate4_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate5}" Executed="StatusUpdate5_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate6}" Executed="StatusUpdate6_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate7}" Executed="StatusUpdate7_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate8}" Executed="StatusUpdate8_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.StatusUpdate9}" Executed="StatusUpdate9_Executed" CanExecute="CanAlwaysExecute" />
+    </UserControl.CommandBindings>
+
+	<DockPanel LastChildFill="True" Background="{x:Null}" Margin="{Binding WindowState, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Converter={StaticResource WindowStateToMarginConverter}}" >
+
+        <controls:Toolbar DockPanel.Dock="Bottom" />
+        
+        <fcontrols:TabControl Name="TabHost" AllowAddNew="False" 
+                              TabItemMinWidth="75" TabItemMaxWidth="200" 
+                              TabItemMinHeight="31" TabItemMaxHeight="31" 
+                              TabItemSelected="TabHost_TabItemSelected"
+							  TabItemClosing="TabHost_TabItemClosing">
+
+			<fcontrols:TabItem AllowDelete="False" Icon="/Inbox2.UI.Resources;component/icons/home-icon2.png" Header="Home" ShowHeader="True" Tag="HomeTabItem" WellKnownView="Overview">
+				<controlsv:ActivityStreamControl Width="Auto" Height="Auto" />
+			</fcontrols:TabItem>
+           
+        </fcontrols:TabControl>
+
+    </DockPanel>
+
+</UserControl>

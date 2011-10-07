@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="Inbox2.Plugins.StatusUpdates.Controls.RealtimeStream"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:py="clr-namespace:PyBinding;assembly=PyBinding" 
+    xmlns:local="clr-namespace:Inbox2.Plugins.StatusUpdates.Controls" 
+    xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI" >
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static fui:Commands.Send}" CanExecute="CanAlwaysExecute" Executed="Send_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.ShortenUrls}" CanExecute="CanAlwaysExecute" Executed="ShortenUrls_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.Reply}" CanExecute="CanAlwaysExecute" Executed="Reply_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.Forward}" CanExecute="CanAlwaysExecute" Executed="Forward_Executed" />
+        <CommandBinding Command="{x:Static local:RealtimeStream.ViewAttachmentCommand}" CanExecute="CanAlwaysExecute" Executed="ViewAttachment_Executed" />
+    </UserControl.CommandBindings>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>            
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid>
+        <TabControl Name="ViewTabControl" Style="{StaticResource StatusTabControl}" Visibility="{py:PyBinding BooleanToVisibility($[.SupportsMentions])}" SelectedIndex="1">
+            <TabItem Style="{StaticResource StatusTabItem}" Visibility="{py:PyBinding BooleanToVisibility($[.SupportsMentions])}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Mentions" />
+                        <Border Style="{StaticResource NotifyNumberBorder}" Margin="5,2,0,0" VerticalAlignment="Top" Visibility="{Binding MentionsCount, Converter={StaticResource CountToVisibilityConverter}}">
+                            <TextBlock Text="{Binding MentionsCount}" Style="{StaticResource NotifyNumbersTextBlock}" />
+                        </Border>
+                    </StackPanel>
+                </TabItem.Header>
+                <ListView 
+                    Name="Stream1ListView"
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch"
+					ScrollViewer.CanContentScroll="True"
+					ScrollViewer.IsDeferredScrollingEnabled="True"
+					VirtualizingStackPanel.VirtualizationMode="Recycling"
+					VirtualizingStackPanel.IsVirtualizing="True"     
+                    ItemsSource="{Binding MentionsStatusUpdatesSource.View}"
+                    SelectionChanged="ListView_SelectionChanged" />
+            </TabItem>
+            
+            <TabItem Header="Stream" Style="{StaticResource StatusTabItem}">
+                <ListView
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch"
+                    ItemsSource="{Binding StreamStatusUpdatesSource.View}"
+					ScrollViewer.CanContentScroll="True"
+					ScrollViewer.IsDeferredScrollingEnabled="True"
+					VirtualizingStackPanel.VirtualizationMode="Recycling"
+					VirtualizingStackPanel.IsVirtualizing="True"     
+                    SelectionChanged="ListView_SelectionChanged"/>
+            </TabItem>            
+        </TabControl>
+
+        <Border Visibility="{py:PyBinding NotBooleanToVisibility($[.SupportsMentions])}" BorderBrush="{StaticResource ShadowColor5}" BorderThickness="0,1,0,0" Margin="23,-1,0,0">
+            <ListView               
+                Name="Stream2ListView"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+				ScrollViewer.CanContentScroll="True"
+				ScrollViewer.IsDeferredScrollingEnabled="True"
+				VirtualizingStackPanel.VirtualizationMode="Recycling"
+				VirtualizingStackPanel.IsVirtualizing="True"     
+                ItemsSource="{Binding StreamStatusUpdatesSource.View}" 
+                BorderBrush="{StaticResource HighlightColor1}"
+                BorderThickness="0,1,0,0" 
+                Background="{StaticResource HighlightGradient6}"
+                SelectionChanged="ListView_SelectionChanged" />
+        </Border>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+
+			<Button ToolTip="Unpin this search" 
+				Click="UnpinButton_Click" 
+				Content="Remove search"
+				Margin="0,0,2,0"
+				Style="{StaticResource GlobalPinButton}" 
+				Visibility="{py:PyBinding BooleanToVisibility($[.IsInSearchMode])}" />
+			
+			<Button ToolTip="Mark everything read" 
+                Click="MarkRead_Click"
+                Content="Mark read"
+                Margin="2,0,0,2" 
+                Style="{StaticResource GlobalDockButton}"                  
+                Tag="MarkAllRead" />
+			
+		</StackPanel>        
+
+    </Grid>
+</UserControl>

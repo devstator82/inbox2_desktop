@@ -1,0 +1,258 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.Toolbar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:framework="clr-namespace:Inbox2.Framework;assembly=Inbox2.Framework"
+    xmlns:progress="clr-namespace:Inbox2.Framework.Threading.Progress;assembly=Inbox2.Framework.Threading"
+    xmlns:controls="clr-namespace:Inbox2.Framework.UI.Controls;assembly=Inbox2.Framework.UI"
+    xmlns:py="clr-namespace:PyBinding;assembly=PyBinding" 
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI" 
+    xmlns:helpers="clr-namespace:Inbox2.UI.Helpers"> 
+    
+    <UserControl.Resources>
+
+        <!-- Template for Channel ProgressGroup -->
+        <DataTemplate x:Key="ChannelProgressGroup" DataType="{x:Type progress:ProgressGroup}">
+            <Grid Margin="2,2,2,4" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}, ConverterParameter=64}" Width="32" Height="32" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,10,0" />
+
+                <StackPanel Grid.Column="2">
+
+                    <TextBlock Text="{Binding SourceChannelId, Converter={StaticResource ChannelSourceAddressConverter}, Mode=OneWay}" />
+
+                    <ProgressBar 
+                            HorizontalAlignment="Left" 
+							Height="15"  
+							Width="90"
+							IsIndeterminate="{Binding IsIndeterminate}"
+							Maximum="{Binding Maximum}" 
+							Value="{Binding Progress, Mode=OneWay}" />
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Status}" TextTrimming="CharacterEllipsis" Margin="0,0,5,0" />
+
+                </StackPanel>
+
+            </Grid>
+        </DataTemplate>
+
+        <!-- Template for Channel ProgressGroup -->
+        <DataTemplate x:Key="SyncProgressGroup" DataType="{x:Type progress:ProgressGroup}">
+            <Grid Margin="2,2,2,4" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Inbox2.UI.Resources;component/icons/inbox2_logo_small.png" Width="32" Height="32" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,10,0" />
+
+                <StackPanel Grid.Column="2">
+
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Status}" TextTrimming="CharacterEllipsis" Margin="0,0,5,3" />
+
+                    <ProgressBar 
+                            HorizontalAlignment="Left" 
+							Height="15"  
+							Width="90"
+							IsIndeterminate="{Binding IsIndeterminate}"
+							Maximum="{Binding Maximum}" 
+							Value="{Binding Progress, Mode=OneWay}" />                                       
+
+                </StackPanel>
+
+            </Grid>
+        </DataTemplate>
+
+        <!-- Template for AppMessage -->
+        <DataTemplate DataType="{x:Type framework:AppMessage}">
+            <Grid Margin="2,2,2,4" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}, ConverterParameter=64}" Width="32" Height="32" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,10,0" Visibility="{py:PyBinding BooleanToVisibility($[.SourceChannelId] > 0)}" />
+
+                <StackPanel Grid.Column="2">
+
+                    <TextBlock Text="{Binding SourceChannelId, Converter={StaticResource ChannelSourceAddressConverter}, Mode=OneWay}" Visibility="{py:PyBinding BooleanToVisibility($[.SourceChannelId] > 0)}" />
+
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Message}" TextWrapping="Wrap" Margin="0,0,5,0" />
+
+                </StackPanel>
+
+            </Grid>
+        </DataTemplate>
+        
+        <!-- Template for Toolbar notification item -->
+        <ControlTemplate x:Key="ToolbarTemplate" TargetType="{x:Type ContentControl}">
+            <Grid SnapsToDevicePixels="True" Width="Auto" Height="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Rectangle Fill="Black" RadiusX="7" RadiusY="7" Opacity="0.9" Margin="0,0,0,7" Grid.RowSpan="2" />
+
+                <ContentPresenter />
+
+                <Button Name="PART_CloseButton" Style="{StaticResource GlobalCloseButton}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,1,5,0" />
+
+                <Path Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,20,0" Opacity="0.9" Width="12" Height="7" Fill="Black" Stretch="Fill" Stroke="{x:Null}" Data="M200,280 L159.5,319.5 239.5,319.5 z">
+                    <Path.LayoutTransform>
+                        <RotateTransform Angle="180"/>
+                    </Path.LayoutTransform>
+                </Path>
+
+            </Grid>
+        </ControlTemplate>
+
+        <helpers:ProgressGroupTemplateSelector x:Key="ProgressGroupTemplateSelector" 
+                                               ChannelTemplate="{StaticResource ChannelProgressGroup}" 
+                                               SyncTemplate="{StaticResource SyncProgressGroup}" />
+        
+    </UserControl.Resources>
+            
+    <Border Margin="0,-1,0,0">
+        <Grid HorizontalAlignment="Stretch" Height="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" /><!-- container for social search-->
+                <ColumnDefinition Width="*" /> <!-- container for social buttons-->
+                <ColumnDefinition Width="Auto" /> <!-- container for sync messages-->
+                <ColumnDefinition Width="42" /> <!-- container for system notificatons-->
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="#797a7c" BorderThickness="0,1,0,0" Grid.ColumnSpan="3" />
+            <Border Background="Transparent" BorderBrush="{StaticResource ShadowColor2}" Grid.ColumnSpan="3" Margin="1" CornerRadius="0,0,6,6"/>
+            
+            <!-- social search -->
+            <StackPanel Name="ToolbarPluginsLeftHost" Orientation="Horizontal" Grid.Column="0" />
+            
+            <!-- social buttons -->
+            <StackPanel Name="ToolbarPluginsRightHost" Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" />
+
+            <!-- sync status -->
+            <TextBlock Grid.Column="2" Text="{Binding SyncState.CurrentState}" Foreground="{StaticResource TabAndLightButtonText}" Margin="3,6,3,0">
+                <TextBlock.Effect>
+					<DropShadowEffect Color="White" ShadowDepth="0" BlurRadius="10"/>
+				</TextBlock.Effect>
+            </TextBlock>
+            
+            <!-- system notifications-->
+            <Border Name="NotificationsBorder" Grid.Column="3" CornerRadius="6,6,6,0" Margin="0,1,1,1">
+                <Grid>
+
+                    <!-- Succes -->
+                    <Border CornerRadius="0,0,6,0"  Visibility="{py:PyBinding NotBooleanToVisibility($[.ProgressManager.HasRunning])}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Transparent">
+                            <Canvas Name="CheckCanvas" Width="15" Height="14" >
+                                <Path RenderTransformOrigin="0,0" Width="15" Height="14" Fill="{StaticResource FullGreenGradient}" Stretch="Fill" Data="M47.508516,29.136849 L47.508516,36.969898 29.25,55.336666 20.488553,46.579369 20.488553,38.74632 29.25,47.468461 z" StrokeThickness="0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            <SkewTransform AngleX="0" AngleY="0"/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform X="0" Y="0"/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Canvas>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Error -->
+                    <Border Background="{StaticResource FullRedGradient}" CornerRadius="0,0,6,0" Visibility="{py:PyBinding BooleanToVisible($[.Messages.Errors.Count] > 0 and not $[.ProgressManager.HasRunning])}">
+                        <controls:DropDownButton Name="ErrorsButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" FocusVisualStyle="{x:Null}">
+
+                            <controls:DropDownButton.DropDown>
+                                <ContextMenu Width="300" ItemsSource="{Binding Messages.Errors}" />
+                            </controls:DropDownButton.DropDown>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Inbox2.UI.Resources;component/icons/icon_error.png" Stretch="Uniform" Width="16" Height="16" >
+                                    <Image.Effect>
+                                        <DropShadowEffect BlurRadius="2" Color="Black" Direction="0" ShadowDepth="0" />
+                                    </Image.Effect>
+                                </Image>
+                                <Path Data="M0,0L3,3 6,0z" Margin="4,0,0,0" Stroke="White" Fill="White" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </controls:DropDownButton>
+                    </Border>
+
+                    <!-- Progress -->
+                    <ContentControl Background="Transparent" Visibility="{py:PyBinding BooleanToVisibility($[.ProgressManager.HasRunning])}">
+
+                        <Border Background="Transparent" CornerRadius="0,0,6,0">
+                            <Border.Effect>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="8" Color="White"/>
+                            </Border.Effect>
+                            <controls:DropDownButton Name="ProgressButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" FocusVisualStyle="{x:Null}">
+                                <controls:DropDownButton.DropDown>
+                                    <ContextMenu Width="300" ItemsSource="{Binding ProgressManager.ProgressGroups}" ItemTemplateSelector="{StaticResource ProgressGroupTemplateSelector}" />
+                                </controls:DropDownButton.DropDown>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Control Width="20" Height="20" Template="{StaticResource AnimationTemplate}" Visibility="{py:PyBinding BooleanToVisibility($[.ProgressManager.HasRunning])}" />
+
+                                    <Path Name="DropdownArrow" Data="M0,0L3,3 6,0z" Margin="4,0,0,0" Fill="{StaticResource TabAndLightButtonText}" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </controls:DropDownButton>
+                        </Border>
+
+                    </ContentControl>                    
+                    
+                    <!-- No connection -->
+                    <Border Background="{StaticResource ContentBackground}" CornerRadius="0,0,6,0" Visibility="{py:PyBinding BooleanToVisible(not $[.HasNetworkConnection])}">
+                        <Border Background="{StaticResource HighlightGradient9}" CornerRadius="0,0,6,0" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image Source="/Inbox2.UI.Resources;component/icons/offline.png" Stretch="Uniform" Width="23" Height="23" />
+                            </StackPanel>
+                        </Border>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- success notification balloon -->
+            <controls:BalloonPopup Grid.Column="2"
+                Name="SuccessInfoPopup" PopupAnimation="Fade" 
+                Placement="Top" HorizontalOffset="-200" AllowsTransparency="True" 
+                PlacementTarget="{Binding ElementName=NotificationsBorder}" 
+                StaysOpen="True"
+                fui:PopupManager.FadeOutIn="6000">
+
+                <ContentControl Template="{StaticResource ToolbarTemplate}">
+                    <Grid>
+                        <!-- Show on succes -->
+                        <Border BorderBrush="{StaticResource FullGreenGradient}" BorderThickness="1" CornerRadius="6" Margin="1,1,1,1" Grid.RowSpan="2" />
+
+                        <StackPanel Orientation="Horizontal" Margin="10,8,28,8">
+
+                            <!-- Show on succes -->
+                            <Canvas Name="CheckCanvasInPopup" Width="13" Height="11" Margin="0,0,6,0" VerticalAlignment="Center">
+                                <Path RenderTransformOrigin="0,0" Width="13" Height="11" Fill="{StaticResource FullGreenGradient}" Stretch="Fill" Data="M47.508516,29.136849 L47.508516,36.969898 29.25,55.336666 20.488553,46.579369 20.488553,38.74632 29.25,47.468461 z" StrokeThickness="0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            <SkewTransform AngleX="0" AngleY="0"/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform X="0" Y="0"/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Canvas>
+
+                            <TextBlock Style="{StaticResource NormalTextBlock}" VerticalAlignment="Center" Text="{Binding Messages.Success.Message}" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Grid>
+                </ContentControl>                
+            </controls:BalloonPopup>         
+
+        </Grid>
+    </Border>
+    
+</UserControl>

@@ -1,0 +1,266 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:fcontrols="clr-namespace:Inbox2.Framework.UI.Controls;assembly=Inbox2.Framework.UI">
+
+    <Style TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{x:Null}" />
+    </Style>
+    
+    <Style TargetType="{x:Type Border}" x:Key="SeperaterBorderStyle">
+        <Setter Property="BorderBrush" Value="White" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Opacity" Value="0.1" />
+    </Style>
+    
+    <Style TargetType="{x:Type Border}" x:Key="FoldersSeperatorBorder">
+        <Setter Property="BorderBrush" Value="White" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Opacity" Value="0.19" />
+        <Setter Property="Padding" Value="0,5,0,0" />
+        <Setter Property="Margin" Value="0,0,0,5" />
+    </Style>
+    
+    <Style TargetType="{x:Type Border}" x:Key="LightPixellineBorderStyle">
+        <Setter Property="BorderBrush" Value="White" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Opacity" Value="0.35" />
+    </Style>
+    <Style TargetType="{x:Type Border}" x:Key="DarkPixellineBorderStyle">
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Opacity" Value="0.4" />
+    </Style>
+    
+    <Style TargetType="{x:Type Border}" x:Key="FolderBackgroundBorderStyle">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style TargetType="{x:Type GridSplitter}" x:Key="OverviewsplitterBorderStyle">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GridSplitter}">
+                    <Border Background="{x:Null}" BorderBrush="White" Opacity="0.25" BorderThickness="0,0,1,0">
+                        <Border Background="{x:Null}" BorderBrush="White" Opacity="0" BorderThickness="0,0,10,0" Margin="0,0,-5,0" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type GridSplitter}" x:Key="SplitViewSplitter">
+        <Setter Property="Background" Value="Red" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+    </Style>
+
+    <!-- Ib2ElementBorder -->
+    <Style TargetType="{x:Type Border}" x:Key="Ib2ElementBorder">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Opacity" Value="1.0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="{StaticResource GlobalSoftLightGradientOver}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- SetupBorderStyle -->
+    <Style TargetType="{x:Type Border}" x:Key="SetupBorderStyle">
+        <Setter Property="Width" Value="273" />
+        <Setter Property="Height" Value="41" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Background" Value="{StaticResource SetupButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource SetupButtonStrokeBrush}" />
+    </Style>
+
+    <!-- LoginBorderStyle -->
+    <Style TargetType="{x:Type Border}" x:Key="LoginBorderStyle">
+        <Setter Property="Width" Value="273" />
+        <Setter Property="Height" Value="41" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Background" Value="{StaticResource LoginBorderBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource LoginBorderStrokeBrush}" />
+    </Style>
+
+    <!-- PluginSetupBorderStyle -->
+    <Style TargetType="{x:Type Border}" x:Key="PluginSetupBorderStyle">
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Height" Value="71" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Background" Value="{StaticResource SetupButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource SetupButtonStrokeBrush}" />
+    </Style>
+
+    <!-- Calendar borders -->
+    <Style TargetType="{x:Type Border}" x:Key="CalendarColumnBorderStyle">
+        <Setter Property="BorderThickness" Value="0.3" />
+        <Setter Property="BorderBrush" Value="#33FFFFFF" />
+        <Setter Property="Opacity" Value="1.0" />
+        <Setter Property="Margin" Value="-0.5" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+    <Style TargetType="{x:Type Border}" x:Key="CalendarDaySeperaterBorderStyle" BasedOn="{StaticResource SeperaterBorderStyle}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <!--
+        <Setter Property="Rectangle">
+            <Setter.Value>
+                <Rectangle Stroke="White" StrokeDashArray="3,5"/>
+                <Grid Margin="0,0,0,0">
+                    <Border Style="CalendarDaySeperaterBorderStyle" />
+                </Grid>
+            </Setter.Value>
+        </Setter>
+        -->
+    </Style>
+    
+    <Style TargetType="{x:Type Border}" x:Key="SelectedEventBorder">
+        <Setter Property="BorderBrush" Value="#aacfff" />
+        <Setter Property="BorderThickness" Value="1,1,1,1" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+    
+    <!-- New styles per 17 januari 2010 -->
+
+    <Style TargetType="{x:Type Border}" x:Key="MainWindowOuter">
+        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor1}" />
+        <Setter Property="BorderThickness" Value="1,1,1,1" />
+        <Setter Property="Background" Value="{StaticResource HighlightGradient1}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="8" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="MainWindowMiddle">
+        <Setter Property="Background" Value="{StaticResource MainWindowDimBackground}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="8" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="MainWindowInner">
+        <Setter Property="BorderBrush" Value="{StaticResource HighlightColor1}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="8" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="TitlebarOuterBorder">
+        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor1}" />
+        <Setter Property="Background" Value="{StaticResource HighlightGradient8}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="5,5,0,0" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="TitlebarMiddleBorder">
+        <Setter Property="Background" Value="{StaticResource WindowAppHeader}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="8,8,0,0" />
+        <Setter Property="Margin" Value="-1,-1,-1,-1" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="TitlebarInnerBorder">
+        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor2}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="8,8,0,0" />
+    </Style>
+    
+    <Style TargetType="{x:Type Border}" x:Key="ContentInnerBorder">
+        <Setter Property="BorderBrush" Value="{StaticResource HighlightColor1}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{StaticResource ContentBackground}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Margin" Value="8" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="ContentInnerSetupBorder">
+        <Setter Property="Background" Value="{StaticResource HighlightGradient8}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="8" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="EmptyBorderStyle">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{x:Null}" />
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="SelectedStyle">
+        <Setter Property="Background" Value="{StaticResource BlueSelectionBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ShadowColor7}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style x:Key="HorizontalBevelGrip" TargetType="{x:Type fcontrols:DockPanelSplitter}">
+        <Setter Property="Thickness" Value="6"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type fcontrols:DockPanelSplitter}">
+                    <Grid ToolTip="Resize" SnapsToDevicePixels="True" Background="{StaticResource HorizontalSplitterBackground}">
+                        <Border Background="{StaticResource ContentBackground}" Opacity="0.5"/>
+                        <!-- Grip -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Rectangle Width="2" Height="2" Fill="{StaticResource ShadowColor6}"/>
+                            <Rectangle Width="2" Height="2" Margin="2 0 2 0" Fill="{StaticResource ShadowColor6}"/>
+                            <Rectangle Width="2" Height="2" Fill="{StaticResource ShadowColor6}"/>
+                        </StackPanel>
+                        <!-- Bevels -->
+                        <Border BorderBrush="{StaticResource HighlightColor8}" BorderThickness="0,1,0,0"/>
+                        <Border BorderBrush="#5A000000" BorderThickness="0,0,0,1"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="VerticalBevelGrip" TargetType="{x:Type fcontrols:DockPanelSplitter}">
+        <Setter Property="Thickness" Value="6"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type fcontrols:DockPanelSplitter}">
+                    <Grid ToolTip="Resize" SnapsToDevicePixels="True" Background="{StaticResource VerticalSplitterBackground}">
+                        <Border Background="{StaticResource ContentBackground}" Opacity="0.5"/>
+                        <!-- Grip -->
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <Rectangle Width="2" Height="2" Fill="{StaticResource ShadowColor6}"/>
+                            <Rectangle Width="2" Height="2" Margin="0 2 0 2" Fill="{StaticResource ShadowColor6}"/>
+                            <Rectangle Width="2" Height="2" Fill="{StaticResource ShadowColor6}"/>
+                            <!-- (could also use an image or a drawing) -->
+                        </StackPanel>
+                        <!-- Bevels -->
+                        <Border BorderBrush="{StaticResource HighlightColor8}" BorderThickness="1,0,0,0"/>
+                        <Border BorderBrush="#5A000000" BorderThickness="0,0,1,0"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Notify Channel Icon Border -->
+    <Style x:Key="NotifyChannelIconBorder" BasedOn="{x:Null}" TargetType="{x:Type Border}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD2D2D2" Offset="1"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="0.8"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.ColumnCollapseView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Name="ColumnCollapseStackPanel" Orientation="Horizontal" Width="Auto">
+        
+    </StackPanel>
+
+</UserControl>

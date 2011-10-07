@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DD31328D-39C7-4501-BB8C-531DC2C7F9FF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inbox2ClientWorker</RootNamespace>
+    <AssemblyName>Inbox2-cw</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Inbox2ClientWorker.AppManager</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>inbox2_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HttpServer">
+      <HintPath>..\..\..\ThirdParty\HttpServer\HttpServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Channels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Stable Assemblies\Inbox2.Platform.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Stable Assemblies\Inbox2.Platform.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Stable Assemblies\Inbox2.Platform.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Stable Assemblies\Inbox2.Platform.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AppManager.cs" />
+    <Compile Include="Core\Threading\Handlers\DocumentsHandler.cs" />
+    <Compile Include="Core\Threading\Handlers\Matchers\ContactMatcher.cs" />
+    <Compile Include="Core\Threading\Handlers\Matchers\MessageMatcher.cs" />
+    <Compile Include="Core\Threading\Handlers\Matchers\ProfileMatcher.cs" />
+    <Compile Include="Core\Threading\Tasks\Receive\EnumerateLabelsFolderTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Receive\EnumerateMessagesFolderTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Receive\ProcessLabelsTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Receive\ReceiveFoldersTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Receive\ReceiveMessageDetailsTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Receive\ReceiveMessagesTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Receive\ReceiveTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Receive\UpdateMessageStateTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Sync\SyncContactsTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Sync\SyncSearchStreamTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Sync\SyncStatusUpdatesTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Sync\SyncTask.cs" />
+    <Compile Include="Core\Threading\Tasks\Sync\UserStatusParser.cs" />
+    <Compile Include="Core\Threading\Tasks\Tasks.cs" />
+    <Compile Include="HttpListener\IRestEndpoint.cs" />
+    <Compile Include="HttpListener\ReceiveRestEndpoint.cs" />
+    <Compile Include="HttpListener\RestModule.cs" />
+    <Compile Include="HttpListener\StopRestEndpoint.cs" />
+    <Compile Include="HttpListener\SyncRestEndpoint.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerStartup.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Inbox2\Core\Configuration\Inbox2.Core.Configuration.csproj">
+      <Project>{2E870F3B-1BBB-44B0-B534-4A1D1CCB17C8}</Project>
+      <Name>Inbox2.Core.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Core\Inbox2.Core.csproj">
+      <Project>{25681AD3-5D29-4BFB-A897-690A8042B4C1}</Project>
+      <Name>Inbox2.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Core\Threading\Inbox2.Core.Threading.csproj">
+      <Project>{61EF019B-7EFF-4383-ABFF-17C053A7DB50}</Project>
+      <Name>Inbox2.Core.Threading</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Framework\Inbox2.Framework.csproj">
+      <Project>{B6402BD1-3B14-4ED8-A0A2-11665AEC6D3F}</Project>
+      <Name>Inbox2.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Framework\Interfaces\Inbox2.Framework.Interfaces.csproj">
+      <Project>{8E52D082-3EF7-4A0A-961C-E63C8D4B1947}</Project>
+      <Name>Inbox2.Framework.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Framework\Localization\Inbox2.Framework.Localization.csproj">
+      <Project>{4E91D564-1B6E-4FF0-A177-3ED4632EA5D2}</Project>
+      <Name>Inbox2.Framework.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Framework\Persistance\Inbox2.Framework.Persistance.csproj">
+      <Project>{C20E7E84-728A-4891-B99B-D6DD4029FFF4}</Project>
+      <Name>Inbox2.Framework.Persistance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Framework\Plugins\Inbox2.Framework.Plugins.csproj">
+      <Project>{EF22C92A-3F62-4420-BF6B-B6F6D8CFCF40}</Project>
+      <Name>Inbox2.Framework.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Framework\Threading\Inbox2.Framework.Threading.csproj">
+      <Project>{428793DE-2946-4FB0-B8B8-E372084A58E7}</Project>
+      <Name>Inbox2.Framework.Threading</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2\Framework\VirtualMailBox\Inbox2.Framework.VirtualMailBox.csproj">
+      <Project>{9B222C61-ECAD-46C0-A3DD-66E0590F9B50}</Project>
+      <Name>Inbox2.Framework.VirtualMailBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="inbox2_icon.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)..\..\Stable Assemblies\*" $(TargetDir)
+xcopy /Y $(TargetDir)*.*  "$(ProjectDir)..\Inbox2\$(OutDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

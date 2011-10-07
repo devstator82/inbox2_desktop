@@ -1,0 +1,16 @@
+﻿<Window x:Class="Inbox2.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="clr-namespace:Inbox2.UI.Controls;assembly=Inbox2.UI" 
+    xmlns:config="clr-namespace:Inbox2.Core.Configuration;assembly=Inbox2.Core.Configuration" 
+    Title="Inbox2" 	
+	Width="1200"
+	Height="700"
+	BorderThickness="1"	
+    config:WindowSettings.Save="True"
+    Initialized="Window_Initialized"
+	StateChanged="MainWindow_OnStateChanged"
+    Closing="Window_Closing">
+	
+	<controls:ApplicationHostControl Name="ApplicationHostControl" />
+</Window>

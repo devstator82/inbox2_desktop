@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="Inbox2.Plugins.Conversations.Controls.DetailsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 	
+    xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+	xmlns:controls="clr-namespace:Inbox2.Plugins.Conversations.Controls"
+	xmlns:profiles="clr-namespace:Inbox2.Framework.Plugins.SharedControls.Profiles;assembly=Inbox2.Framework.Plugins"
+    xmlns:py="clr-namespace:PyBinding;assembly=PyBinding">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static fui:Commands.Reply}" Executed="Reply_Executed" CanExecute="Reply_CanExecute" />
+        <CommandBinding Command="{x:Static fui:Commands.ReplyAll}" Executed="ReplyAll_Executed" CanExecute="ReplyAll_CanExecute" />
+        <CommandBinding Command="{x:Static fui:Commands.Forward}" Executed="Forward_Executed" CanExecute="Forward_CanExecute" />
+        <CommandBinding Command="{x:Static fui:Commands.Delete}" Executed="Delete_Executed" CanExecute="Delete_CanExecute" />
+        <CommandBinding Command="{x:Static fui:Commands.MarkRead}" Executed="MarkRead_Executed" CanExecute="MarkRead_CanExecute" />
+        <CommandBinding Command="{x:Static fui:Commands.MarkUnread}" Executed="MarkUnread_Executed" CanExecute="MarkUnread_CanExecute" />
+		
+		<CommandBinding Command="{x:Static fui:InputCommands.Todo}" Executed="Todo_Executed" CanExecute="Todo_CanExecute" />
+		<CommandBinding Command="{x:Static fui:InputCommands.WaitingFor}" Executed="WaitingFor_Executed" CanExecute="WaitingFor_CanExecute" />
+		<CommandBinding Command="{x:Static fui:InputCommands.Someday}" Executed="Someday_Executed" CanExecute="Someday_CanExecute" />
+
+        <CommandBinding Command="{x:Static fui:Commands.OpenDocument}" Executed="OpenDocument_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:Commands.SaveDocument}" Executed="SaveDocument_Executed" CanExecute="CanAlwaysExecute" />
+
+        <!-- These command bindings are for the keybindings below -->
+        <CommandBinding Command="{x:Static fui:InputCommands.NewerConversation}" Executed="NewerConversation_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.OlderConversation}" Executed="OlderConversation_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.NextMessage}" Executed="NewerMessage_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.PreviousMessage}" Executed="OlderMessage_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.Archive}" Executed="Archive_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.Star}" Executed="Star_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.InlineReply}" Executed="InlineReply_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.Reply}" Executed="ReplyAll_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.InlineForward}" Executed="ForwardInline_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.Forward}" Executed="Forward_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.AddLabel}" Executed="AddLabel_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.MarkRead}" Executed="MarkRead_Executed" CanExecute="CanAlwaysExecute" />
+        <CommandBinding Command="{x:Static fui:InputCommands.MarkUnread}" Executed="MarkUnread_Executed" CanExecute="CanAlwaysExecute" />        
+    </UserControl.CommandBindings>   
+    
+	<Grid Name="ConversationsDetailsViewGrid" fui:GridColumnSizeHelper.SaveGridColumnsSize="true">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" /> <!-- container for Left Column -->
+			<ColumnDefinition Width="*" MinWidth="500" /> <!-- container for Middle Column -->
+            <ColumnDefinition Width="300" /> <!-- container for Profile Column -->
+		</Grid.ColumnDefinitions>
+        
+        <!-- Left Column -->
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="32" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="32" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<!-- Message actions box -->
+			<Button Grid.Row="0" Content="Actions" Height="32" Style="{StaticResource HeaderButton}" />
+			<controls:MessageActionsBox Grid.Row="1" x:Name="MessageActionsBox" fui:Responder.IsFirstResponder="True" />
+
+			<!-- Conversations list -->
+			<Button Grid.Row="2" Content="Conversation" Height="32" Style="{StaticResource HeaderButton}" />
+			<ContentPresenter Grid.Row="3" Name="cp" Content="{Binding}">
+				<ContentPresenter.ContentTemplate>
+					<DataTemplate>
+						<Grid>
+							<ListView
+                                Name="list"
+                                TabIndex="4" 
+                                SelectionMode="Single"
+                                Loaded="List_OnLoaded"
+								VirtualizingStackPanel.VirtualizationMode="Recycling"
+								VirtualizingStackPanel.IsVirtualizing="True"
+                                ItemsSource="{Binding MessagesViewSource.View}" 
+                                ItemTemplate="{StaticResource OneLineMessageShortTemplate}"
+                                SelectedItem="{Binding SelectedMessage, Mode=OneWay}"
+								SelectionChanged="MessagesListView_SelectionChanged"
+                                PreviewKeyDown="MessagesListView_PreviewKeyDown"
+                                PreviewMouseDown="MessagesListView_PreviewMouseDown" />
+
+							<TextBlock Name="empty" Margin="10,0,0,0" Style="{StaticResource NoItems}" Visibility="Collapsed">This conversation has only one message</TextBlock>
+						</Grid>
+						<DataTemplate.Triggers>
+							<DataTrigger Binding="{Binding SelectedMessage.Conversation.Messages.Count}" Value="1">
+								<Setter TargetName="list" Property="Visibility" Value="Collapsed"/>
+								<Setter TargetName="empty" Property="Visibility" Value="Visible"/>
+							</DataTrigger>
+						</DataTemplate.Triggers>
+					</DataTemplate>
+				</ContentPresenter.ContentTemplate>
+			</ContentPresenter>
+		</Grid>
+
+		<!-- Fake control used for obtaining keyboard focus -->
+        <Control Name="TabSink" Grid.Column="1" TabIndex="1" fui:Responder.IsFirstResponder="True" />
+        
+        <!-- Middle Column -->
+        <controls:MessageDetailView x:Name="ThreadView" Grid.Column="1" KeyboardNavigation.IsTabStop="False" />
+        
+        <!-- Navigator and Profile Column -->
+        <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                
+                <!-- Profile -->
+                <Button Content="Sender" Height="32" Style="{StaticResource HeaderButton}" />
+                <profiles:UserProfileControl Name="UserProfileControl" TabIndex="3" />
+
+            </StackPanel>
+        </ScrollViewer>
+        
+        <GridSplitter Grid.Column="0" Style="{StaticResource OverviewsplitterBorderStyle}" />
+		<GridSplitter Grid.Column="1" Style="{StaticResource OverviewsplitterBorderStyle}" />
+	</Grid>
+
+</UserControl>

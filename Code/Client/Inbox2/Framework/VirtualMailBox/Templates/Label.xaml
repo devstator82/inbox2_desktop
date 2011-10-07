@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:entities="clr-namespace:Inbox2.Framework.VirtualMailBox.Entities">
+    
+    <!--________________________________________________
+        DataTemplate containing visual for labels
+        ________________________________________________-->
+    <DataTemplate DataType="{x:Type entities:Label}">
+        <Border Background="{Binding Converter={StaticResource LabelBrushConverter}}" CornerRadius="4" VerticalAlignment="Bottom" Height="14" Margin="0,0,3,4" SnapsToDevicePixels="True" Width="Auto">
+            <Border Background="{StaticResource HighlightGradient8}" CornerRadius="4" >
+                <Grid>
+                    <Border BorderBrush="{StaticResource HighlightColor2}" CornerRadius="4" BorderThickness="0,1,0,0" />
+                    <TextBlock Style="{StaticResource DraftIconTextBlock}" Text="{Binding Labelname}" Margin="4,0" />
+                </Grid>
+            </Border>
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,26 @@
+﻿<ControlTemplate 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    TargetType="{x:Type Window}">
+  <!-- Template to use when the Window's chrome is gone.
+         This is generally similar to the standard Window template, 
+         but it allows drawing everywhere on the client. -->
+
+  <!-- Create the Canvas with dimensions that span the full size of the Window. -->
+  <Canvas x:Name="PART_RootCanvas"
+          Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=ActualWidth}"
+          Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=ActualHeight}">
+    <Border x:Name="PART_BackgroundBorder"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}, Path=Height}"
+            Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}, Path=Width}"/>
+    <AdornerDecorator x:Name="PART_Adorner"
+            Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}, Path=Height}"
+            Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}, Path=Width}">
+      <ContentPresenter/>
+    </AdornerDecorator>
+    <ResizeGrip HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="Collapsed" IsTabStop="False"/>
+  </Canvas>
+</ControlTemplate>

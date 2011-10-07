@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:entities="clr-namespace:Inbox2.Framework.VirtualMailBox.Entities">
+
+    <!--________________________________________________
+        DataTemplate containing visual for profile
+        ________________________________________________-->
+    <DataTemplate DataType="{x:Type entities:Profile}">
+        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}, ConverterParameter=10}" Margin="6,10,0,2" Width="10" Height="10" Stretch="Uniform" />
+    </DataTemplate>
+
+</ResourceDictionary>

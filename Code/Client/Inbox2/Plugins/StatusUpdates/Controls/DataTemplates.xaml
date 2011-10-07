@@ -1,0 +1,126 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+	xmlns:local="clr-namespace:Inbox2.Plugins.StatusUpdates.Controls"
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+	xmlns:entities="clr-namespace:Inbox2.Framework.VirtualMailBox.Entities;assembly=Inbox2.Framework.VirtualMailBox">
+
+    <!--________________________________________________
+    DataTemplate containing visual for image attachment
+    ________________________________________________-->
+    <DataTemplate x:Key="ImageTemplate" DataType="{x:Type entities:UserStatusAttachment}">
+        <Border Padding="5" HorizontalAlignment="Left">
+            <Button Style="{StaticResource LooklessButton}" Command="{x:Static local:RealtimeStream.ViewAttachmentCommand}" CommandParameter="{Binding}">
+
+                <Grid Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border BorderBrush="{StaticResource ShadowColor1}" BorderThickness="1" SnapsToDevicePixels="True">
+                        <Image Source="{Binding Preview}" Width="Auto" Height="Auto" MaxHeight="150" MaxWidth="150" Stretch="Uniform" />
+                    </Border>
+                    <Border BorderBrush="{StaticResource HighlightColor10}" BorderThickness="1" SnapsToDevicePixels="True" Margin="1" />
+                </Grid>
+
+            </Button>
+        </Border>
+    </DataTemplate>
+
+    <!--________________________________________________
+    DataTemplate containing visual for document attachment
+    ________________________________________________-->
+    <DataTemplate x:Key="DocumentTemplate" DataType="{x:Type entities:UserStatusAttachment}">
+        <StackPanel Name="sp" Orientation="Horizontal">
+            <Image Margin="5,3,5,4" Source="{Binding PreviewAltText, Converter={StaticResource FilenameToIconConverter}}" Width="16" Height="16" />
+            <TextBlock Name="tb" Margin="2,3,0,4" Style="{StaticResource TextBlockContentForegroundStyle}" TextTrimming="CharacterEllipsis">
+                <Hyperlink Command="{x:Static local:RealtimeStream.ViewAttachmentCommand}" CommandParameter="{Binding}">
+                    <fui:BindableRun BoundText="{Binding PreviewAltText}" DataContext="{Binding DataContext, ElementName=tb}" />
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </DataTemplate>
+
+    <!--________________________________________________
+    DataTemplate containing visual for url attachment
+    ________________________________________________-->
+    <DataTemplate x:Key="LinkTemplate" DataType="{x:Type entities:UserStatusAttachment}">
+        <TextBlock Name="tb" Margin="2,3,0,4" Style="{StaticResource TextBlockContentForegroundStyle}" TextTrimming="CharacterEllipsis">
+            <Hyperlink Command="{x:Static local:RealtimeStream.ViewAttachmentCommand}" CommandParameter="{Binding}">
+                <fui:BindableRun BoundText="{Binding TargetUrl}" DataContext="{Binding DataContext, ElementName=tb}" />
+            </Hyperlink>
+        </TextBlock>
+    </DataTemplate>
+
+    <!--________________________________________________
+    DataTemplate containing visual for user status
+    ________________________________________________-->
+    <DataTemplate DataType="{x:Type entities:UserStatus}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Name="root" HorizontalAlignment="Stretch" Background="Transparent" Margin="{py:PyBinding BooleanToLeftMargin($[.IsReply]\, 40)}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" MinHeight="5" />
+                    <RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="58" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Path x:Name="Arrow" Fill="{StaticResource GroupingInContent}" Margin="20,1,-1,-1"  Visibility="{py:PyBinding BooleanToVisibility($[.IsFirstReply] or $[.IsSingleReply])}" SnapsToDevicePixels="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="13" Height="8" Stretch="Fill" Data="M320,80 L351.5,80 335.5,103.5 z">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                            <SkewTransform AngleX="0" AngleY="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform X="0" Y="0"/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+
+                <Border Grid.RowSpan="3" Grid.ColumnSpan="2" Background="{StaticResource GroupingInContent}" Margin="0,1,5,0" CornerRadius="6" Visibility="{py:PyBinding BooleanToVisibility($[.IsSingleReply])}"/>
+                <Border Grid.RowSpan="3" Grid.ColumnSpan="2" Background="{StaticResource GroupingInContent}" Margin="0,1,5,0" CornerRadius="6,6,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsFirstReply] and not $[.IsSingleReply])}"/>
+                <Border Grid.RowSpan="3" Grid.ColumnSpan="2" Background="{StaticResource GroupingInContent}" Margin="0,1,5,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsMiddleReply])}"/>
+                <Border Grid.RowSpan="3" Grid.ColumnSpan="2" Background="{StaticResource GroupingInContent}" Margin="0,1,5,0" CornerRadius="0,0,6,6" Visibility="{py:PyBinding BooleanToVisibility($[.IsLastReply] and not $[.IsSingleReply])}"/>
+
+                <!-- avatar -->
+                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="8,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="Auto" Height="Auto" SnapsToDevicePixels="True" >
+                    <Border SnapsToDevicePixels="True" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" Width="42" Height="42" >
+                        <Image Source="{Binding Avatar}" SnapsToDevicePixels="True" Width="40" Height="40" />
+                    </Border>
+                    <Border SnapsToDevicePixels="True" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="1" Width="40" Height="40" />
+
+                    <!-- Action buttons -->
+                    <Border Margin="3,3,0,0" Width="40" Height="40" Background="{StaticResource ShadowColor7}" Visibility="{py:PyBinding BooleanToVisibility($[root.IsMouseOver])}" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <StackPanel>
+                            <Button Command="{x:Static fui:Commands.Reply}" CommandParameter="{Binding}" Style="{StaticResource UserStatusActionButton}" ToolTip="Reply" ToolTipService.InitialShowDelay="3000" Tag="Reply"/>
+							<Button Command="{x:Static fui:Commands.Forward}" CommandParameter="{Binding}" Style="{StaticResource UserStatusActionButton}" ToolTip="Share" ToolTipService.InitialShowDelay="3000" Tag="Share"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Image Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}, ConverterParameter=10}" SnapsToDevicePixels="True" Width="10" Height="10" HorizontalAlignment="Right" Margin="36,36,0,0" />
+                </Grid>
+
+                <!-- body -->
+                <ContentControl Content="{Binding Converter={StaticResource UserStatusBodyConverter}}" Grid.Row="0" Grid.Column="1" Margin="0,6,0,0" HorizontalAlignment="Stretch"/>
+
+                <!-- attachments -->
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,0,8,8" Visibility="{py:PyBinding BooleanToVisibility($[.Attachments.Count] > 0)}">
+					<ListView ItemsSource="{Binding Images}" ItemTemplate="{StaticResource ImageTemplate}" Visibility="{Binding Images, Converter={StaticResource CountToVisibilityConverter}}" />
+					<ListView ItemsSource="{Binding Documents}" ItemTemplate="{StaticResource DocumentTemplate}" Visibility="{Binding Documents, Converter={StaticResource CountToVisibilityConverter}}" />
+					<ListView ItemsSource="{Binding Links}" ItemTemplate="{StaticResource LinkTemplate}" Visibility="{Binding Links, Converter={StaticResource CountToVisibilityConverter}}" />
+                </StackPanel>
+
+                <!-- border -->
+                <Border Grid.Row="3" Grid.ColumnSpan="3" Height="5" Visibility="{py:PyBinding BooleanToVisibility($[.IsFirst] or $[.IsLastReply] or $[.IsSingleReply])}" />
+			</Grid>
+
+            <Border Grid.RowSpan="2" Grid.ColumnSpan="2" BorderBrush="{StaticResource HighlightColor10}" BorderThickness="0,0,0,1" Visibility="{py:PyBinding BooleanToVisibility($[.IsLastReply] or $[.IsSingleRoot])}" >
+                <Border BorderBrush="{StaticResource ShadowColor5}" BorderThickness="0,0,0,0" />
+            </Border>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

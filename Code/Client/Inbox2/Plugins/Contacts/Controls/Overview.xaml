@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Inbox2.Plugins.Contacts.Controls.Overview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Inbox2.Plugins.Contacts.Controls"
+	xmlns:profiles="clr-namespace:Inbox2.Framework.Plugins.SharedControls.Profiles;assembly=Inbox2.Framework.Plugins"			 
+    xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+    xmlns:conv="clr-namespace:Inbox2.Plugins.Conversations.Controls;assembly=Inbox2.Plugins.Conversations"
+    xmlns:doc="clr-namespace:Inbox2.Plugins.Documents.Controls;assembly=Inbox2.Plugins.Documents"
+    xmlns:status="clr-namespace:Inbox2.Plugins.StatusUpdates.Controls;assembly=Inbox2.Plugins.StatusUpdates">
+
+    <Grid Name="ContactsOverviewGrid" fui:GridColumnSizeHelper.SaveGridColumnsSize="true">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/> <!-- Contacts column -->
+            <ColumnDefinition Width="1.5*"/> <!-- Messages -->
+            <ColumnDefinition Width="1*"/> <!-- Documents -->
+            <ColumnDefinition Width="1*"/> <!-- Status updates -->
+            <ColumnDefinition Width="1*"/> <!-- Profile -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Contacts column -->
+        <controls:Column x:Name="PersonsColumn" Grid.Column="0" fui:Responder.IsFirstResponder="true" />
+
+        <!-- Conversations -->
+        <conv:Column Name="MessagesColumn" Grid.Column="1" />
+        
+        <!-- Documents -->
+        <doc:Column Name="DocumentsColumn" Grid.Column="2" />
+
+        <!-- Status updates -->
+        <status:Column Name="StatusUpdatesColumn" Grid.Column="3" />
+
+        <!-- Profile -->
+        <Grid Grid.Column="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="250" />
+            </Grid.RowDefinitions>
+            <Button Content="Profile" Style="{StaticResource HeaderButton}" />
+
+            <profiles:UserProfileControl x:Name="UserProfileControl" Grid.Row="1" Visibility="Hidden" />
+
+            <controls:SearchProfilesControl x:Name="SearchProfilesControl" Grid.Row="2" Visibility="Hidden" 
+											PersonRedirected="SearchProfilesControl_OnPersonRedirected" 
+											ProfileMerged="SearchProfilesControl_OnProfileMerged"/>
+        </Grid>
+
+        <GridSplitter Grid.Column="0" Style="{StaticResource OverviewsplitterBorderStyle}" />
+        <GridSplitter Grid.Column="1" Style="{StaticResource OverviewsplitterBorderStyle}" />
+        <GridSplitter Grid.Column="2" Style="{StaticResource OverviewsplitterBorderStyle}" />
+        <GridSplitter Grid.Column="3" Style="{StaticResource OverviewsplitterBorderStyle}" />
+
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.ApplicationLoadingControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Width="Auto"
+	Height="Auto"
+	Background="Transparent">
+
+	<Grid>
+		<Image Source="/Inbox2.UI.Resources;component/icons/splashbg2.png" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" Height="418" Width="756"/>
+		<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-25,0,0">
+			<TextBlock FontWeight="Bold" FontSize="30" TextWrapping="Wrap" Width="Auto" SnapsToDevicePixels="True" Foreground="{StaticResource MetallicWhiteGradient}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock.Effect>
+                    <DropShadowEffect Direction="270" Opacity="0.2" BlurRadius="0" ShadowDepth="1"/>
+                </TextBlock.Effect>
+                <TextBlock Text="Welcome back" />
+                <TextBlock Text="{Binding Fullname}" />
+            </TextBlock>
+		</Grid>
+		<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,125,0,0">
+			<StackPanel Orientation="Horizontal">
+				<Path Name="path1" Visibility="Visible" Fill="#9eea86" Margin="3,-2,2,0" SnapsToDevicePixels="True" HorizontalAlignment="Center" VerticalAlignment="Center" Width="8" Height="5" Stretch="Fill" Data="M320,80 L351.5,80 335.5,103.5 z">
+					<Path.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="1" ScaleY="-1"/>
+							<SkewTransform AngleX="0" AngleY="0"/>
+							<RotateTransform Angle="90"/>
+							<TranslateTransform X="0" Y="0"/>
+						</TransformGroup>
+					</Path.RenderTransform>
+				</Path>
+				<TextBlock FontWeight="Bold"  Opacity="0.5">Loading your messages...</TextBlock>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+
+</UserControl>

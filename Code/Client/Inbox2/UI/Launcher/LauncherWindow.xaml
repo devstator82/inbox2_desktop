@@ -1,0 +1,60 @@
+﻿<Window x:Class="Inbox2.UI.Launcher.LauncherWindow"
+	x:Name="Launcher"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sharedControls="clr-namespace:Inbox2.Framework.Plugins.SharedControls;assembly=Inbox2.Framework.Plugins"
+    xmlns:f="clr-namespace:Inbox2.Framework;assembly=Inbox2.Framework"
+    Title="LauncherWindow" 
+	Height="300" 
+	Width="300"
+	WindowStartupLocation="CenterScreen"
+	Loaded="LauncherWindow_OnLoaded"
+	Closing="Launcher_Closing"
+	SourceInitialized="Window_SourceInitialized"
+	LocationChanged="Launcher_LocationChanged"
+	PreviewKeyDown="AnimationWindow_PreviewKeyDown"
+    ResizeMode="NoResize"
+	Style="{StaticResource DialogStyle}">
+
+	<Window.Resources>
+
+		<DataTemplate x:Key="LauncherCommandTemplate" DataType="{x:Type f:LauncherCommand}">
+			<TextBlock Text="{Binding Description}" />
+		</DataTemplate>
+
+		<Storyboard x:Key="ResizeLauncherWindow">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Launcher" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeySpline="0,0,0.335,0.924" KeyTime="00:00:00.2000000"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+
+	</Window.Resources>
+
+	<StackPanel Name="LauncherStackPanel">
+
+		<sharedControls:RecipientsEditorControl			
+			x:Name="SearchTextBox" 			
+			InnerFontSize="19"
+            ValidationEnabled="False"
+			HorizontalAlignment="Stretch"
+			ToolTip="Enter launcher query" 
+            Width="Auto"            
+			Height="30" 			
+			Margin="15,0,15,0"
+            TabIndex="1" 
+			FocusManager.IsFocusScope="True"/>
+
+		<ListView 
+			Name="CommandsListView"
+			Focusable="False"
+			ItemsSource="{Binding LauncherCommands}"
+			ItemTemplate="{StaticResource LauncherCommandTemplate}"
+			ItemContainerStyle="{StaticResource LauncherSelectedItemStyle}"
+			MouseDoubleClick="CommandsListView_OnMouseDoubleClick"
+            LayoutUpdated="CommandsListView_LayoutUpdated"
+			Margin="14,10,14,10"
+            TabIndex="2" />
+
+	</StackPanel>
+
+</Window>

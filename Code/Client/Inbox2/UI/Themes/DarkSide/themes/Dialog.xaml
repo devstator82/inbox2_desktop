@@ -1,0 +1,102 @@
+﻿<ResourceDictionary 
+	x:Class="Inbox2.UI.Themes.DarkSide.Dialog"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Inbox2.UI.Themes.DarkSide">
+    
+    <ControlTemplate x:Key="DialogTemplate" TargetType="{x:Type Window}">
+
+		<Grid Name="PART_WindowContent" Background="{StaticResource ContentBackground}" Margin="0,0,8,8">
+			<Grid.Effect>
+				<DropShadowEffect ShadowDepth="4" BlurRadius="15" />
+			</Grid.Effect>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<!--________________________________________________
+				Application background gradient
+				________________________________________________-->
+                <Border Background="{StaticResource HighlightGradient3}" Grid.RowSpan="2" />
+
+                <Border Grid.RowSpan="2" >
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#7FFFFFFF" Offset="0"/>
+                            <GradientStop Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Path Opacity="0.12" Fill="#FFFFFFFF" Height="25" VerticalAlignment="Top" StrokeThickness="0" Data="M8,4.0927262E-12 L768,4.0927262E-12 C772.41827,-4.5299489E-06 776,3.5817175 776,8.0000002 L776,23.99999 C776,19.581718 772.41827,15.999995 768,16.000001 L8,16.000001 C3.581722,15.999995 0,19.581718 0,23.99999 L0,8.0000002 C0,3.5817175 3.581722,-4.5299489E-06 8,4.0927262E-12 z"/>
+				<!--________________________________________________
+				Application title bar content
+				________________________________________________-->
+				<Grid Name="PART_TitleBar" Height="Auto" Margin="5,2,5,0" TextBlock.TextAlignment="Left" Background="Transparent" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+                    <Image Name="Image" Grid.Column="0" Source="..\..\..\inbox2_icon.png" HorizontalAlignment="Left" MouseLeftButtonDown="Image_MouseLeftButtonDown" Width="46" Height="36" Margin="2,8,0,0" VerticalAlignment="Top" />
+					
+                    <TextBlock Name="TextBlock" Grid.Column="1" Text="{TemplateBinding Title}"  Foreground="{StaticResource TabAndLightButtonText}" FontSize="13" FontWeight="Bold" VerticalAlignment="Center" Margin="5,3,5,5" >
+                        <TextBlock.Effect>
+            				<DropShadowEffect BlurRadius="0" Direction="270" Color="White" ShadowDepth="1" Opacity="0.4"/>
+            			</TextBlock.Effect>
+                    </TextBlock>
+                    <!--________________________________________________
+    				Minimize, maximize and close buttons
+    				________________________________________________-->
+					<StackPanel Orientation="Horizontal" Grid.Column="2" Height="22" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,2,5,0">
+						<Button Name="PART_CloseButton" Click="PART_CloseButton_OnClick"  Width="18" Height="18" MinHeight="18" MinWidth="18" Margin="0">
+							<Button.Template>
+								<ControlTemplate TargetType="Button">
+									<Grid Height="18" Width="18" Background="#00FFFFFF">
+										<Path Name="CloseBtn" HorizontalAlignment="Left" Margin="3,7,0,0" VerticalAlignment="Top" Width="9" Height="9" SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5" Fill="White" Data="M1.9228516,2.0923567 L2.9863281,2.0923567 L5.5322266,4.6382551 L8.1103516,2.0923567 L9.1416016,2.0923567 L9.1416016,3.1558332 L6.5957031,5.7017317 L9.1416016,8.2476301 L9.1416016,9.3111067 L8.1103516,9.3111067 L5.5322266,6.7652082 L2.9863281,9.3111067 L1.9228516,9.3111067 L1.9228516,8.2798567 L4.46875,5.7017317 L1.9228516,3.1558332 z">
+											<Path.RenderTransform>
+												<TransformGroup>
+													<ScaleTransform ScaleX="1" ScaleY="1"/>
+													<SkewTransform AngleX="0" AngleY="0"/>
+													<RotateTransform Angle="0"/>
+													<TranslateTransform X="0" Y="0"/>
+												</TransformGroup>
+											</Path.RenderTransform>
+										</Path>
+									</Grid>
+									<ControlTemplate.Triggers>
+										<Trigger Property="UIElement.IsMouseOver" Value="true">
+											<Setter Property="Path.Fill"  TargetName="CloseBtn" Value="{StaticResource MainWindowButtonOverBrush}" />
+											<Setter Property="Path.BitmapEffect">
+												<Setter.Value>
+													<OuterGlowBitmapEffect GlowColor="White" GlowSize="2" Opacity="0.50" />
+												</Setter.Value>
+											</Setter>
+										</Trigger>
+									</ControlTemplate.Triggers>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+					</StackPanel>
+				</Grid>
+				<!--________________________________________________
+				Window content
+				________________________________________________-->
+				<Border Margin="0" Grid.Row="1">
+					<AdornerDecorator ClipToBounds="true">
+						<ContentPresenter Name="ContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Width="Auto" Height="Auto" />
+					</AdornerDecorator>
+				</Border>
+			</Grid>
+		</Grid>
+    </ControlTemplate>
+
+    <Style x:Key="DialogStyle" TargetType="{x:Type Window}">
+		<Setter Property="WindowStyle" Value="None" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="Icon" Value="..\..\..\inbox2_icon.png" />
+		<Setter Property="Template" Value="{StaticResource DialogTemplate}" />
+		<Setter Property="local:WindowExtender.HasRoundedCorners" Value="true" />
+	</Style>
+
+</ResourceDictionary>

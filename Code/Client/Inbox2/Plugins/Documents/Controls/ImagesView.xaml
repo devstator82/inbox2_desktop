@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="Inbox2.Plugins.Documents.Controls.ImagesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:resources="clr-namespace:Inbox2.Plugins.Documents.Resources"
+    xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+    xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+    xmlns:entities="clr-namespace:Inbox2.Framework.VirtualMailBox.Entities;assembly=Inbox2.Framework.VirtualMailBox"
+    xmlns:fluidkit="clr-namespace:FluidKit.Controls;assembly=FluidKit"
+    xmlns:controls="clr-namespace:Inbox2.Plugins.Documents.Controls"
+	Loaded="UserControl_Loaded">
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static fui:Commands.OpenDocument}" Executed="OpenDocument_Executed" CanExecute="OpenDocument_CanExecute" />
+        <CommandBinding Command="{x:Static fui:Commands.SaveDocument}" Executed="SaveDocument_Executed" CanExecute="SaveDocument_CanExecute" />
+		<CommandBinding Command="{x:Static fui:Commands.DeleteDocument}" Executed="DeleteDocument_Executed" CanExecute="DeleteDocument_CanExecute" />
+    </UserControl.CommandBindings>
+
+    <UserControl.Resources>
+
+        <!--________________________________________________
+        DataTemplate containing default visual for document content
+        ________________________________________________-->
+        <DataTemplate DataType="{x:Type entities:Document}" x:Key="DefaultDataTemplate">
+
+            <Border Padding="5">
+                <Image Source="{Binding Filename, Converter={StaticResource FilenameToIconConverter}, ConverterParameter='large'}" Width="32" Height="32" Stretch="Fill" />
+
+                <Border.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Open" Command="{x:Static fui:Commands.OpenDocument}" CommandParameter="{Binding}"  />
+                        <MenuItem Header="Save as..." Command="{x:Static fui:Commands.SaveDocument}" CommandParameter="{Binding}" />
+						<MenuItem Header="Delete" Command="{x:Static fui:Commands.DeleteDocument}" CommandParameter="{Binding}" />
+                    </ContextMenu>
+                </Border.ContextMenu>
+            </Border>
+
+        </DataTemplate>
+
+        <!--________________________________________________
+        DataTemplate containing visual for image content
+        ________________________________________________-->
+        <DataTemplate DataType="{x:Type entities:Document}" x:Key="PreviewDataTemplate">
+
+            <Border Padding="5">
+                <Image DataContext="{Binding Converter={StaticResource ObjectToObjectHolderConverter}}" 
+                   Source="{Binding Value.PreviewImageSource}" Width="Auto" Height="Auto" Stretch="Uniform" />
+            </Border>
+
+        </DataTemplate>
+
+        <resources:DocumentViewTemplateSelector 
+            x:Key="DocumentViewTemplateSelector" 
+            DefaultTemplate="{StaticResource DefaultDataTemplate}" 
+            PreviewTemplate="{StaticResource PreviewDataTemplate}" />
+
+    </UserControl.Resources>
+
+    <Grid Name="DocumentsDetailsViewGrid" fui:GridColumnSizeHelper.SaveGridColumnsSize="true">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1.5*"/>
+			<ColumnDefinition Width="4*"/>
+		</Grid.ColumnDefinitions>
+
+        <controls:Column Grid.Column="0" DetailsViewType="Images" fui:Responder.IsFirstResponder="true" />
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--________________________________________________
+            Top title bar of images view
+            ________________________________________________-->
+            <Button Grid.Row="0" Content="" Style="{StaticResource HeaderButton}" />
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
+                <TextBlock Text="Images" FontWeight="Bold" Foreground="{StaticResource DefaultForegroundColor}" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Visibility="{py:PyBinding NullToVisibility($[.State.SelectedDocument])}">
+                    <Path x:Name="Arrow" Fill="{StaticResource DimmedForegroundColor}" Margin="6,0,5,0" SnapsToDevicePixels="True" HorizontalAlignment="Center" VerticalAlignment="Center" Width="8" Height="5" Stretch="Fill" Data="M320,80 L351.5,80 335.5,103.5 z">
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                                <SkewTransform AngleX="0" AngleY="0"/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform X="0" Y="0"/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
+                    <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding State.SelectedDocument.Filename}" Foreground="{StaticResource DefaultForegroundColor}" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding State.SelectedDocument, Converter={StaticResource DocumentDescriptionConverter}}" Foreground="{StaticResource DimmedForegroundColor}" VerticalAlignment="Center"  Margin="6,0,0,0" Opacity="0.5"/>
+                    <Button Style="{StaticResource ActivityActionsButton}" Command="{x:Static fui:Commands.OpenDocument}" CommandParameter="{Binding State.SelectedDocument}" VerticalAlignment="Center" Margin="6,0,0,0" >Open</Button>
+                    <Button Style="{StaticResource ActivityActionsButton}" Command="{x:Static fui:Commands.SaveDocument}" CommandParameter="{Binding State.SelectedDocument}" VerticalAlignment="Center" >Save as...</Button>
+                </StackPanel>
+            </StackPanel>
+
+            <!--________________________________________________
+            Carousel view
+            ________________________________________________-->
+            <ListBox Name="DocumentsListBox" 
+                Grid.Row="1"
+                AllowDrop="True" 
+                PreviewDragOver="FileDragOver" 
+                PreviewDrop="FileDrop" 
+                IsSynchronizedWithCurrentItem="True"
+                ItemsSource="{Binding State.ImagesViewSource.View}" 
+                ItemTemplateSelector="{StaticResource DocumentViewTemplateSelector}"
+                SelectionChanged="DocumentsListBox_SelectionChanged">
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <fluidkit:ElementFlow x:Name="ef"
+										  Focusable="True"
+										  TiltAngle="62.5"
+										  ItemGap="1.5"
+										  FrontItemGap="0"
+										  PopoutDistance="3"
+										  HasReflection="true"
+                                          Background="Transparent"   
+										  SelectedIndexChanged="ElementFlowSelectedIndexChanged">
+                            <fluidkit:ElementFlow.Camera>
+                                <PerspectiveCamera FieldOfView="60"
+											   Position="0,0,6"
+											   LookDirection="0,0,-3"
+											   UpDirection="0,1,0" />
+                            </fluidkit:ElementFlow.Camera>
+                        </fluidkit:ElementFlow>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.Template>
+                    <ControlTemplate TargetType="ListBox">
+                        <ItemsPresenter/>
+                    </ControlTemplate>
+                </ListBox.Template>
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="SnapsToDevicePixels" Value="true"/>
+                        <Setter Property="OverridesDefaultStyle" Value="true"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+
+
+        <GridSplitter Grid.Column="0" Style="{StaticResource OverviewsplitterBorderStyle}" />
+		<GridSplitter Grid.Column="1" Style="{StaticResource OverviewsplitterBorderStyle}" />
+    </Grid>
+	
+</UserControl>

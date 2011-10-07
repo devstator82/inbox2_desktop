@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Inbox2.Plugins.Conversations.Controls.MessageActionsBox"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI">
+
+	<StackPanel>
+		<Grid Margin="10" Visibility="{py:PyBinding BooleanToVisibility(not ($[.SelectedMessage.IsTodo] or $[.SelectedMessage.IsWaitingFor] or $[.SelectedMessage.IsSomeday]))}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<Button Grid.Row="0" Command="{x:Static fui:InputCommands.Todo}" CommandParameter="{Binding SelectedMessage}" Style="{StaticResource DetailActionsButton}" Tag="TodoButton" HorizontalAlignment="Left" VerticalAlignment="Center">Make todo</Button>
+
+			<Button Grid.Row="1" Command="{x:Static fui:InputCommands.WaitingFor}" CommandParameter="{Binding SelectedMessage}" Style="{StaticResource DetailActionsButton}" Tag="WaitButton" HorizontalAlignment="Left" VerticalAlignment="Center">Wait for answer</Button>
+
+			<Button Grid.Row="2" Command="{x:Static fui:InputCommands.Someday}" CommandParameter="{Binding SelectedMessage}" Style="{StaticResource DetailActionsButton}" Tag="SomedayButton" HorizontalAlignment="Left" VerticalAlignment="Center">Read someday</Button>
+		</Grid>
+
+		<Border Background="{StaticResource LabelBackgroundBrush1}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.SelectedMessage.IsTodo])}">
+			<Border Background="{StaticResource ShadowColor5}">
+				<Border Background="{StaticResource HighlightGradient8}">
+					<StackPanel Margin="10">
+						<TextBlock TextWrapping="Wrap" Foreground="{StaticResource DefaultForegroundColor}">This message is on your todo list</TextBlock>
+						<Button Click="RemoveTodo_Click" Style="{StaticResource ActivityActionsButton}" Margin="0,5,0,0">Mark as done</Button>
+
+						<Button Style="{StaticResource ActivityActionsButton}" Margin="0,5,0,0" Click="ViewTodoList_Click">View your todo list</Button>
+					</StackPanel>
+				</Border>
+			</Border>
+		</Border>
+
+		<Border Background="{StaticResource LabelBackgroundBrush2}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.SelectedMessage.IsWaitingFor])}">
+			<Border Background="{StaticResource ShadowColor5}">
+				<Border Background="{StaticResource HighlightGradient8}">
+					<StackPanel Margin="10">
+						<TextBlock TextWrapping="Wrap" Foreground="{StaticResource DefaultForegroundColor}">This message is on your waiting for answer list</TextBlock>
+						<Button Click="RemoveWaitingFor_Click" Style="{StaticResource ActivityActionsButton}" Margin="0,5,0,0">Remove from list</Button>
+
+						<Button Style="{StaticResource ActivityActionsButton}" Margin="0,5,0,0" Click="ViewWaitingForList_Click">View your waiting for list</Button>
+					</StackPanel>
+				</Border>
+			</Border>
+		</Border>
+
+		<Border Background="{StaticResource LabelBackgroundBrush3}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.SelectedMessage.IsSomeday])}">
+			<Border Background="{StaticResource ShadowColor5}">
+				<Border Background="{StaticResource HighlightGradient8}">
+					<StackPanel Margin="10">
+						<TextBlock TextWrapping="Wrap" Foreground="{StaticResource DefaultForegroundColor}">This message is on your read someday list</TextBlock>
+						<Button Click="RemoveSomeday_Click" Style="{StaticResource ActivityActionsButton}" Margin="0,5,0,0">Remove from list</Button>
+
+						<Button Style="{StaticResource ActivityActionsButton}" Margin="0,5,0,0" Click="ViewReadSomedayList_Click">View your read someday list</Button>
+					</StackPanel>
+				</Border>
+			</Border>
+		</Border>
+
+	</StackPanel>
+
+</UserControl>

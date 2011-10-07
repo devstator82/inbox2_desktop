@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1369054D-65DD-4B12-8AC2-BF3A73EFC01D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inbox2.Channels.Other</RootNamespace>
+    <AssemblyName>Inbox2.Channels.Other</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Stable Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OtherConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Platform\Channels\Inbox2.Platform.Channels.csproj">
+      <Project>{43B96CD2-D7DA-4286-A209-EE9585EF6927}</Project>
+      <Name>Inbox2.Platform.Channels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Platform\Framework\Inbox2.Platform.Framework.csproj">
+      <Project>{FB90E43A-0E32-41D5-A7AB-83EA0D936E5E}</Project>
+      <Name>Inbox2.Platform.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Platform\Interfaces\Inbox2.Platform.Interfaces.csproj">
+      <Project>{B9CE1540-1D68-43B2-83DB-47EC21D158A6}</Project>
+      <Name>Inbox2.Platform.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Platform\Logging\Inbox2.Platform.Logging.csproj">
+      <Project>{6AE2A2AF-9B61-45B0-A375-666C5225A5B4}</Project>
+      <Name>Inbox2.Platform.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Imap2\Inbox2.Channels.Imap2.csproj">
+      <Project>{528A7823-5CED-4E31-ABDF-E1F6F821FCFD}</Project>
+      <Name>Inbox2.Channels.Imap2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pop3\Inbox2.Channels.Pop3.csproj">
+      <Project>{60AE3B61-131B-4CC9-B49C-0892E701ACF0}</Project>
+      <Name>Inbox2.Channels.Pop3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smtp\Inbox2.Channels.Smtp.csproj">
+      <Project>{D977B2FC-E1BE-410E-8544-8B7263AB44C6}</Project>
+      <Name>Inbox2.Channels.Smtp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\icon-10.png" />
+    <EmbeddedResource Include="Resources\icon-13.png" />
+    <EmbeddedResource Include="Resources\icon-64.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

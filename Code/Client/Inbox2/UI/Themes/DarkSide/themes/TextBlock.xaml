@@ -1,0 +1,328 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="SharedDictionary.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Default TextBlock Style -->
+    <Style x:Key="{x:Type TextBlock}" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+    <!-- Default TextBlock Style -->
+    <Style x:Key="NormalFontSetting" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{x:Static SystemFonts.CaptionFontSize}"/>
+        <Setter Property="FontFamily" Value="{x:Static SystemFonts.CaptionFontFamily}"/>
+    </Style>
+
+    <!-- TitleTextBlock Style -->
+    <Style x:Key="TitleTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="Background" Value="{StaticResource TitleBackgroundBrush}" />
+        <Setter Property="Padding" Value="20,7,0,7" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+
+    <!-- TitleTextBlock Style -->
+    <Style x:Key="DraftIconTextBlock" TargetType="TextBlock">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Foreground" Value="#464545" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="10" />
+    </Style>
+
+    <!-- NormalTextBlock Style -->
+    <Style x:Key="NormalTextBlock" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <!-- NormalTextBlock Style -->
+    <Style x:Key="TOCCBCCTextBlock" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource TabAndLightButtonText}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <!-- LauncherTextBlock Style -->
+    <Style x:Key="LauncherFileInfoTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="6,0,0,0"/>
+        <Setter Property="Foreground" Value="#FFFFFF" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <!-- SubTitleTextBlock Style -->
+    <Style x:Key="SubTitleTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Foreground" Value="Silver" />
+        <Setter Property="Padding" Value="20,2,0,0" />
+    </Style>
+
+    <!-- TextBlockInThreadedView Style -->
+    <Style x:Key="TextBlockInThreadedView" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <!-- PopUpTitleTextBlock Style -->
+    <Style x:Key="PopUpTitleTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Foreground" Value="#FF3B4145" />
+        <Setter Property="Padding" Value="5,7" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Margin" Value="0,5,0,5" />
+    </Style>
+
+    <!-- Channel Add Header Style -->
+    <Style x:Key="ChannelAddHeaderTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#FFF7F7F7" />
+    </Style>
+
+    <!-- Message Header Style -->
+    <Style x:Key="MessageHeaderTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Foreground" Value="#FFB7D7FF" />
+        <Setter Property="Background" Value="#19FFFFFF" />
+        <Setter Property="Padding" Value="5,3" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!-- Message Header Style -->
+    <Style x:Key="xMessageHeaderTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Foreground" Value="#965800" />
+        <Setter Property="Margin" Value="10,0,0,0" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!-- Message Header Style -->
+    <Style x:Key="yMessageHeaderTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Foreground" Value="#965800" />
+        <Setter Property="Margin" Value="2,2,0,0" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <!-- New Message Header Style -->
+    <Style x:Key="NewMessageHeaderTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Foreground" Value="#abdc73" />
+        <Setter Property="Background" Value="#19FFFFFF" />
+        <Setter Property="Padding" Value="5,3" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!-- Inverted Default Bold TextBlock Style -->
+    <Style x:Key="BlackBoldTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <!-- Inverted Default TextBlock Style -->
+    <Style x:Key="BlackTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <!-- Miscellaneous Styles -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ShadowedTextBlock">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockContentForegroundStyle">
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockContentForegroundOpaqueStyle">
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="Opacity" Value="0.6" />
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="LightHeaderTextBlockStyle">
+        <Setter Property="Foreground" Value="#FFB7D7FF" />
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="NewHeaderTextBlockStyle">
+        <Setter Property="Foreground" Value="#abdc73" />
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource LightHeaderTextBlockStyle}" x:Key="HeavyHeaderTextBlockStyle">
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style TargetType="{x:Type Hyperlink}">
+        <Setter Property="Foreground" Value="#aacfff" />
+        <Setter Property="TextDecorations" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#aacfff" />
+                <Setter Property="TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+	<Style TargetType="{x:Type fui:WebHyperlink}">
+		<Setter Property="Foreground" Value="#aacfff" />
+		<Setter Property="TextDecorations" Value="{x:Null}" />
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Foreground" Value="#aacfff" />
+				<Setter Property="TextDecorations" Value="Underline" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
+	<Style x:Key="UnderlinedHyperlink" TargetType="{x:Type Hyperlink}">
+        <Setter Property="Foreground" Value="#aacfff" />
+        <Setter Property="TextDecorations" Value="Underline" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#aacfff" />
+                <Setter Property="TextDecorations" Value="{x:Null}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HyperlinkOnLight" TargetType="{x:Type Hyperlink}">
+        <Setter Property="Foreground" Value="#FF0071BD" />
+        <Setter Property="TextDecorations" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#FF0071BD" />
+                <Setter Property="TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- New styles per 17 januari 2010 -->
+    
+    <Style x:Key="TitleName" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource DefaultTitleColor}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsRead}" Value="True">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Normal" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TitleNameHyperlink" TargetType="Hyperlink">
+        <Setter Property="Foreground" Value="{StaticResource DefaultTitleColor}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="TextDecorations" Value="{x:Null}" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsRead}" Value="True">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Normal" />
+            </DataTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="MessageDetailViewHyperLink" TargetType="{x:Type Hyperlink}">
+        <Setter Property="Foreground" Value="#009ae2" />
+        <Setter Property="TextDecorations" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#009ae2" />
+                <Setter Property="TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MessageDate" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource DefaultForegroundColor}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="11" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsRead}" Value="True">
+                <Setter Property="FontWeight" Value="Normal" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="TitleNameSmall" TargetType="TextBlock" BasedOn="{StaticResource TitleName}">
+        <Setter Property="FontSize" Value="13" />
+    </Style>
+
+    <Style x:Key="TitleNameLarge" TargetType="TextBlock" BasedOn="{StaticResource TitleName}">
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+    
+    <Style x:Key="TitleNameExtraLarge" TargetType="TextBlock" BasedOn="{StaticResource TitleName}">
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="LineHeight" Value="22" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultForegroundColor}" />
+    </Style>
+
+    <Style x:Key="TitleNameInOneLine" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource DefaultTitleColor}" />
+        <Setter Property="FontWeight" Value="Bold" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsRead}" Value="True">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontWeight" Value="Normal" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="NoItems" BasedOn="{StaticResource NormalTextBlock}" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+    
+</ResourceDictionary>

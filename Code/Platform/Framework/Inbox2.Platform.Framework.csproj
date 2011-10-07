@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FB90E43A-0E32-41D5-A7AB-83EA0D936E5E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inbox2.Platform.Framework</RootNamespace>
+    <AssemblyName>Inbox2.Platform.Framework</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Stable Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\..\ThirdParty\protobuf-net\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=2008.11.24.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\MEF\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CloudApi\ChannelHeader.cs" />
+    <Compile Include="CloudApi\ChannelProgress.cs" />
+    <Compile Include="CloudApi\ChannelSearch.cs" />
+    <Compile Include="CloudApi\Content.cs" />
+    <Compile Include="CloudApi\ConversationHeader.cs" />
+    <Compile Include="CloudApi\DocumentHeader.cs" />
+    <Compile Include="CloudApi\Education.cs" />
+    <Compile Include="CloudApi\Enumerations\ChannelName.cs" />
+    <Compile Include="CloudApi\Enumerations\ContentMode.cs" />
+    <Compile Include="CloudApi\Enumerations\DeviceType.cs" />
+    <Compile Include="CloudApi\Enumerations\Entities.cs" />
+    <Compile Include="CloudApi\Enumerations\Entity.cs" />
+    <Compile Include="CloudApi\Enumerations\ExternalServiceType.cs" />
+    <Compile Include="CloudApi\Enumerations\ModifyAction.cs" />
+    <Compile Include="CloudApi\GetAccountResponse.cs" />
+    <Compile Include="CloudApi\GetChannelSetupResponse.cs" />
+    <Compile Include="CloudApi\GetProfileResponse.cs" />
+    <Compile Include="CloudApi\GetSyncStateResponse.cs" />
+    <Compile Include="CloudApi\Inbox2.cs" />
+    <Compile Include="CloudApi\LastStatus.cs" />
+    <Compile Include="CloudApi\Logging\ClientInfo.cs" />
+    <Compile Include="CloudApi\Logging\LogInfo.cs" />
+    <Compile Include="CloudApi\Logging\System.cs" />
+    <Compile Include="CloudApi\Logging\TraceInfo.cs" />
+    <Compile Include="CloudApi\MessageHeader.cs" />
+    <Compile Include="CloudApi\Occupation.cs" />
+    <Compile Include="CloudApi\PersonHeader.cs" />
+    <Compile Include="CloudApi\ProfileHeader.cs" />
+    <Compile Include="CloudApi\Sender.cs" />
+    <Compile Include="CloudApi\Service.cs" />
+    <Compile Include="CloudApi\Size.cs" />
+    <Compile Include="CloudApi\UserStatusAttachmentHeader.cs" />
+    <Compile Include="CloudApi\UserStatusHeader.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="ServiceModel\DataContracts\Settings.cs" />
+    <Compile Include="CodeTimer.cs" />
+    <Compile Include="Collections\AdvancedObservableCollection.cs" />
+    <Compile Include="Collections\Comparers.cs" />
+    <Compile Include="Collections\SpilledObservableCollection.cs" />
+    <Compile Include="ComponentModel\SourceAddressCollectionConverter.cs" />
+    <Compile Include="ComponentModel\SourceAddressConverter.cs" />
+    <Compile Include="Composition\ObjectComposer.cs" />
+    <Compile Include="Configuration\AdditionalChannelProperties.cs" />
+    <Compile Include="Configuration\XmlSerializerSectionHandler.cs" />
+    <Compile Include="Exceptions\UserFriendlyException.cs" />
+    <Compile Include="Extensions\DataReaderExtensions.cs" />
+    <Compile Include="Extensions\GuidExtensions.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\ObjectDumper.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StreamExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Interop\MimeHelper.cs" />
+    <Compile Include="Interop\NativeInterop.cs" />
+    <Compile Include="Interop\ThumbnailGenerator.cs" />
+    <Compile Include="Locking\ReaderLock.cs" />
+    <Compile Include="Locking\WriterLock.cs" />
+    <Compile Include="MappingIgnoreAttribute.cs" />
+    <Compile Include="Network\Client\ClientException.cs" />
+    <Compile Include="Network\IPayloadSerializer.cs" />
+    <Compile Include="Network\Server\NetworkMessageHost.cs" />
+    <Compile Include="Network\Utils\BufferManager.cs" />
+    <Compile Include="Network\Utils\BufferUtils.cs" />
+    <Compile Include="Network\Client\ClientMessageDispatcher.cs" />
+    <Compile Include="Network\IMessageSelector.cs" />
+    <Compile Include="Network\SocketConnection.cs" />
+    <Compile Include="Network\WireFormat.cs" />
+    <Compile Include="OAuth\OAuthBase.cs" />
+    <Compile Include="OAuth\OAuthUriBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SafeSession.cs" />
+    <Compile Include="SelectIgnoreAttribute.cs" />
+    <Compile Include="ServiceModel\DataContracts\NullResponse.cs" />
+    <Compile Include="ServiceModel\DataContracts\RequestBase.cs" />
+    <Compile Include="ServiceModel\DataContracts\ResponseBase.cs" />
+    <Compile Include="ServiceModel\DataContracts\Result.cs" />
+    <Compile Include="ServiceModel\Extensions\CloudEndpointBehavior.cs" />
+    <Compile Include="ServiceModel\Extensions\CloudMessageInspector.cs" />
+    <Compile Include="ServiceModel\Activation\CloudServiceHostFactory.cs" />
+    <Compile Include="ServiceModel\Activation\CloudServiceHost.cs" />
+    <Compile Include="ServiceModel\Extensions\XmlManglingWriter.cs" />
+    <Compile Include="ServiceModel\HandlerBase.cs" />
+    <Compile Include="ServiceModel\Inbox2ServiceException.cs" />
+    <Compile Include="ServiceModel\WebServiceTracer.cs" />
+    <Compile Include="Setting.cs" />
+    <Compile Include="Text\CommandLine\Attributes.cs" />
+    <Compile Include="Text\CommandLine\Parser.cs" />
+    <Compile Include="Text\iFilter\ComHelper.cs" />
+    <Compile Include="Text\iFilter\FilterLoader.cs" />
+    <Compile Include="Text\iFilter\FilterReader.cs" />
+    <Compile Include="Text\iFilter\IFilter.cs" />
+    <Compile Include="Text\StringWriterWithEncoding.cs" />
+    <Compile Include="Web\HttpServiceClient.cs" />
+    <Compile Include="Web\HttpStatusClient.cs" />
+    <Compile Include="Web\Upload\HttpUploadHelper.cs" />
+    <Compile Include="Web\Upload\MimePart.cs" />
+    <Compile Include="Web\Upload\StreamMimePart.cs" />
+    <Compile Include="Web\Upload\StringMimePart.cs" />
+    <Compile Include="Web\Upload\UploadFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Channels\Inbox2.Platform.Channels.csproj">
+      <Project>{43B96CD2-D7DA-4286-A209-EE9585EF6927}</Project>
+      <Name>Inbox2.Platform.Channels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Inbox2.Platform.Interfaces.csproj">
+      <Project>{B9CE1540-1D68-43B2-83DB-47EC21D158A6}</Project>
+      <Name>Inbox2.Platform.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logging\Inbox2.Platform.Logging.csproj">
+      <Project>{6AE2A2AF-9B61-45B0-A375-666C5225A5B4}</Project>
+      <Name>Inbox2.Platform.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Text\CommandLine\ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8374E4D7-2A91-48F1-9360-09B09CF27C3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProtoBuf</RootNamespace>
+    <AssemblyName>protobuf-net</AssemblyName>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <SignAssembly>false</SignAssembly>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' != 'Profile'">
+    <AssemblyOriginatorKeyFile>../ProtoBuf.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET_3_0 REMOTING</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Debug\protobuf-net.xml</DocumentationFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET_3_0 REMOTING</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <DocumentationFile>bin\Release\protobuf-net.xml</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Net20|AnyCPU' ">
+    <OutputPath>bin\Net20\</OutputPath>
+    <DefineConstants>TRACE;REMOTING</DefineConstants>
+    <DocumentationFile>bin\Net20\protobuf-net.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Silverlight2|AnyCPU' ">
+    <OutputPath>bin\Silverlight2\</OutputPath>
+    <DefineConstants>TRACE;NET_3_0 SILVER</DefineConstants>
+    <DocumentationFile>bin\Silverlight2\protobuf-net.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Profile|AnyCPU' ">
+    <OutputPath>bin\Profile\</OutputPath>
+    <DefineConstants>TRACE;NET_3_0 REMOTING</DefineConstants>
+    <DocumentationFile>bin\Release\protobuf-net.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)' != 'Net20' ">
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttributeUtils.cs" />
+    <Compile Include="Extensible.cs">
+      <DependentUpon>IExtensible.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Serializer.cs" />
+    <Compile Include="SerializerT.cs">
+      <DependentUpon>Serializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerializationContext.cs" />
+    <Compile Include="ServiceModel\ProtoBehaviorAttribute.cs" />
+    <Compile Include="ServiceModel\ProtoOperationBehavior.cs" />
+    <Compile Include="ServiceModel\XmlProtoSerializer.cs" />
+    <Compile Include="WireType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataFormat.cs" />
+    <Compile Include="IExtensible.cs" />
+    <Compile Include="ProtoIncludeAttribute.cs" />
+    <Compile Include="ProtoContractAttribute.cs" />
+    <Compile Include="ProtoEnumAttribute.cs" />
+    <Compile Include="ProtoFormat.cs" />
+    <Compile Include="ProtoMemberAttribute.cs" />
+    <Compile Include="SubStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CloneStream.cs" />
+    <Compile Include="ExtensibleUtil.cs">
+      <DependentUpon>IExtensible.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProtoException.cs" />
+    <Compile Include="UnknownType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AsyncUtility.cs" />
+    <Compile Include="BufferExtension.cs">
+      <DependentUpon>IExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CallbackAttributes.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="Formatter.cs" />
+    <Compile Include="GlobalOptions.cs">
+      <DependentUpon>Serializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IExtension.cs" />
+    <Compile Include="ImplicitFields.cs" />
+    <Compile Include="NonGeneric.cs" />
+    <Compile Include="ObjectFactory.cs" />
+    <Compile Include="PrefixStyle.cs" />
+    <Compile Include="Property\PropertyUInt16Variant.cs" />
+    <Compile Include="Property\PropertyPackedArray.cs" />
+    <Compile Include="Property\PropertyPackedEnumerable.cs" />
+    <Compile Include="Property\PropertyPackedList.cs" />
+    <Compile Include="Property\PropertyPairString.cs" />
+    <Compile Include="Property\PropertySpecified.cs" />
+    <Compile Include="Property\PropertyTimeSpanFixed.cs" />
+    <Compile Include="Property\PropertyDateTimeFixed.cs" />
+    <Compile Include="Property\PropertyInclude.cs" />
+    <Compile Include="Property\PropertyEnumerable.cs" />
+    <Compile Include="Property\PropertyParseable.cs" />
+    <Compile Include="Property\PropertyUInt64Fixed.cs" />
+    <Compile Include="Property\PropertyUInt64Variant.cs" />
+    <Compile Include="Property\PropertyInt64Fixed.cs" />
+    <Compile Include="Property\PropertyInt64Variant.cs" />
+    <Compile Include="Property\PropertyInt64ZigZag.cs" />
+    <Compile Include="Property\PropertySByte.cs" />
+    <Compile Include="Property\PropertyUri.cs" />
+    <Compile Include="Property\PropertyUInt32Fixed.cs" />
+    <Compile Include="Property\PropertyUInt32Variant.cs" />
+    <Compile Include="Property\PropertyInt32Fixed.cs" />
+    <Compile Include="Property\PropertyInt16ZigZag.cs" />
+    <Compile Include="Property\PropertyInt32ZigZag.cs" />
+    <Compile Include="Property\PropertyChar.cs" />
+    <Compile Include="Property\PropertyBlob.cs" />
+    <Compile Include="Property\PropertyByte.cs" />
+    <Compile Include="Property\PropertyGuidGroup.cs" />
+    <Compile Include="Property\PropertyDouble.cs" />
+    <Compile Include="Property\PropertyGuidString.cs" />
+    <Compile Include="Property\PropertySingle.cs" />
+    <Compile Include="Property\PropertyInt16Variant.cs" />
+    <Compile Include="Property\PropertyDecimalGroup.cs" />
+    <Compile Include="Property\PropertyDecimalString.cs" />
+    <Compile Include="Property\PropertyBoolean.cs" />
+    <Compile Include="Property\PropertyDateTimeString.cs" />
+    <Compile Include="Property\PropertyDateTimeGroup.cs" />
+    <Compile Include="Property\PropertyEnum.cs" />
+    <Compile Include="Property\PropertyFactory.cs" />
+    <Compile Include="Property\PropertyTimeSpanString.cs" />
+    <Compile Include="Property\PropertyTimeSpanGroup.cs" />
+    <Compile Include="Property\PropertyArray.cs" />
+    <Compile Include="Property\PropertyList.cs" />
+    <Compile Include="Property\PropertyMessageString.cs" />
+    <Compile Include="Property\Property.cs" />
+    <Compile Include="Property\PropertyInt32Variant.cs" />
+    <Compile Include="Property\PropertyMessageGroup.cs" />
+    <Compile Include="Property\PropertyNullable.cs" />
+    <Compile Include="Property\PropertyString.cs" />
+    <Compile Include="Property\PropertyUtil.cs" />
+    <Compile Include="ProtoBcl\ProtoDecimal.cs" />
+    <Compile Include="ProtoBcl\ProtoGuid.cs" />
+    <Compile Include="ProtoBcl\ProtoTimeSpan.cs" />
+    <Compile Include="Base128Variant.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProtoIgnoreAttribute.cs" />
+    <Compile Include="SerializationContext.Read.cs">
+      <DependentUpon>SerializationContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerializationContext.Write.cs">
+      <DependentUpon>SerializationContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerializerProxy.cs" />
+    <Compile Include="ServiceModel\ExceptionEventArgs.cs" />
+    <Compile Include="ServiceModel\Client\HttpBasicTransport.cs" />
+    <Compile Include="ServiceModel\ProtoBehaviorExtensionElement.cs" />
+    <Compile Include="ServiceModel\ProtoEndpointBehavior.cs" />
+    <Compile Include="ServiceModel\RpcUtils.cs" />
+    <Compile Include="ServiceModel\Server\HttpServer.cs" />
+    <Compile Include="ServiceModel\Client\IClientTransport.cs" />
+    <Compile Include="ServiceModel\Client\ProtoClient.cs" />
+    <Compile Include="ServiceModel\Client\ServiceRequest.cs" />
+    <Compile Include="ServiceModel\Server\ServerBase.cs" />
+    <Compile Include="UnexpectedDataException.cs" />
+    <None Include="Web\TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Net\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <!--  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <PostBuildEvent>@%25SystemRoot%25\Microsoft.NET\Framework\v2.0.50727\MSBuild "$(ProjectPath)" /t:Rebuild /p:Configuration=Net20 /v:n</PostBuildEvent>
+  </PropertyGroup>-->
+</Project>

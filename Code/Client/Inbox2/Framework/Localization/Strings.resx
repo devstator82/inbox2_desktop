@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File {0} was not found</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="MessageHasNoBody" xml:space="preserve">
+    <value>This message has no body</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="MessageSentSuccessfully" xml:space="preserve">
+    <value>Message was sent successfully</value>
+  </data>
+  <data name="NoSubject" xml:space="preserve">
+    <value>No subject</value>
+  </data>
+  <data name="SearchFor" xml:space="preserve">
+    <value>Search for</value>
+  </data>
+  <data name="StatusUpdatedSuccessfully" xml:space="preserve">
+    <value>Your status was updated successfully</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="AccountAlreadyAdded" xml:space="preserve">
+    <value>This account has already been configured</value>
+  </data>
+  <data name="Someday" xml:space="preserve">
+    <value>Read someday</value>
+  </data>
+  <data name="Todo" xml:space="preserve">
+    <value>Todo</value>
+  </data>
+  <data name="WaitingFor" xml:space="preserve">
+    <value>Waiting for answer</value>
+  </data>
+  <data name="DraftSavedSuccessfully" xml:space="preserve">
+    <value>Draft was saved successfully</value>
+  </data>
+  <data name="SendingMessage" xml:space="preserve">
+    <value>Sending message...</value>
+  </data>
+  <data name="UpdatingStatus" xml:space="preserve">
+    <value>Updating status...</value>
+  </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archive</value>
+  </data>
+  <data name="Drafts" xml:space="preserve">
+    <value>Drafts</value>
+  </data>
+  <data name="Inbox" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
+  <data name="SentItems" xml:space="preserve">
+    <value>Sent items</value>
+  </data>
+  <data name="Spam" xml:space="preserve">
+    <value>Spam</value>
+  </data>
+  <data name="Trash" xml:space="preserve">
+    <value>Trash</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="CheckingForUpdate" xml:space="preserve">
+    <value>Checking if there is an update available</value>
+  </data>
+  <data name="DownloadingUpdate" xml:space="preserve">
+    <value>Downloading update (download will continue if you close this window)</value>
+  </data>
+  <data name="NoUpdateAvailable" xml:space="preserve">
+    <value>You are already running the latest version of the Inbox2 desktop client</value>
+  </data>
+  <data name="UpdateDownloadError" xml:space="preserve">
+    <value>An error has occured while trying to download the update, please try again later</value>
+  </data>
+  <data name="UpdateDownloadFinished" xml:space="preserve">
+    <value>Downloaded update successfully, please restart Inbox2 to apply the update</value>
+  </data>
+  <data name="Inbox2DetectedAnUpgrade" xml:space="preserve">
+    <value>An upgrade is available for Inbox2, would you like to upgrade now? This process will take less then 30 seconds and is highly recommended.</value>
+  </data>
+  <data name="NonAdminAccount" xml:space="preserve">
+    <value>Because you are not running under an admin account, you will be asked to give permissions to the upgrade process after you click yes.</value>
+  </data>
+  <data name="MessageWillBeSentLater" xml:space="preserve">
+    <value>Since you are running in offline mode, your message will be sent when you are online again</value>
+  </data>
+  <data name="StatusWillBeUpdatedLater" xml:space="preserve">
+    <value>Since you are running in offline mode, your status will be updated when you are online again</value>
+  </data>
+  <data name="SearchDocuments" xml:space="preserve">
+    <value>Search documents</value>
+  </data>
+  <data name="SearchImages" xml:space="preserve">
+    <value>Search images</value>
+  </data>
+  <data name="SearchInYourDocuments" xml:space="preserve">
+    <value>Search in your documents</value>
+  </data>
+  <data name="SearchInYourImages" xml:space="preserve">
+    <value>Search in your images</value>
+  </data>
+  <data name="PleaseFillInAllFields" xml:space="preserve">
+    <value>Please fill in all fields to continue</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="NoHelpLinkAvailable" xml:space="preserve">
+    <value>Sorry, but no help link is available for this {0}</value>
+  </data>
+  <data name="NeedHelpConfiguring" xml:space="preserve">
+    <value>Need help with adding {0}?</value>
+  </data>
+  <data name="SureYouWantToEmptyTrash" xml:space="preserve">
+    <value>Are you sure you want to empty your trash folder? This action can not be undone!</value>
+  </data>
+  <data name="ThisWillResetLayout" xml:space="preserve">
+    <value>This will reset all your saved layout preferences, are you sure you want to do this?</value>
+  </data>
+  <data name="PleaseFillConfigurationCorrectly" xml:space="preserve">
+    <value>Please fill in the configuration correctly</value>
+  </data>
+  <data name="AllDockedAccounts" xml:space="preserve">
+    <value>All docked accounts</value>
+  </data>
+  <data name="Me" xml:space="preserve">
+    <value>Me</value>
+  </data>
+  <data name="ChannelDoesNotSupportReply" xml:space="preserve">
+    <value>Unfortunatly {0} does not allow replies from Inbox2 yet.</value>
+  </data>
+  <data name="ClickOkToReplyOn" xml:space="preserve">
+    <value>Click ok to go to your {0} inbox.</value>
+  </data>
+  <data name="AlsoDeleteConversations" xml:space="preserve">
+    <value>Do you also want to delete the associated conversation?
+
+Click conversation if you want to delete the selected message(s) and everything in the same conversation, click message if you just want to delete the selected message(s).</value>
+  </data>
+  <data name="DoNotAskAgain" xml:space="preserve">
+    <value>Do not ask again (current action will be used as default)</value>
+  </data>
+  <data name="ThisWillResetDialogs" xml:space="preserve">
+    <value>This will reset all your saved question dialog preferences, are you sure you want to do this?</value>
+  </data>
+  <data name="AlreadyDefaultMailClient" xml:space="preserve">
+    <value>Inbox2 is already set as your default email client.</value>
+  </data>
+  <data name="AlwaysPerformThisCheckDuringStartup" xml:space="preserve">
+    <value>Always perform this check when starting Inbox2</value>
+  </data>
+  <data name="NotYourDefaultMailClient" xml:space="preserve">
+    <value>Inbox2 is currently not your default email client. Click yes if you want set Inbox2 as your default email client.</value>
+  </data>
+  <data name="AreYouSureYouWantToExit" xml:space="preserve">
+    <value>Are you sure you want to exit? Doing so will cause you to lose any unsaved messages.</value>
+  </data>
+  <data name="NoImportantMessages" xml:space="preserve">
+    <value>There are currently no important messages in your mailbox</value>
+  </data>
+  <data name="AreYouSureYouWantToCloseColumn" xml:space="preserve">
+    <value>Are you sure you want to close this column? You can show this column again from options &gt;view.</value>
+  </data>
+  <data name="ViewAllAccounts" xml:space="preserve">
+    <value>View all accounts</value>
+  </data>
+  <data name="NewMessage" xml:space="preserve">
+    <value>New message</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="ThisCouldTakeALongTime" xml:space="preserve">
+    <value>This could take a very long time depending on the size of your mailbox, are you sure you want to continue?</value>
+  </data>
+  <data name="UpgradingDatabase" xml:space="preserve">
+    <value>Upgrading database, please wait... (this could take a minute)</value>
+  </data>
+  <data name="DueToAChannelError" xml:space="preserve">
+    <value>due to a channel error</value>
+  </data>
+  <data name="DueToAnApplicationError" xml:space="preserve">
+    <value>due to an application error</value>
+  </data>
+  <data name="ServerSaid" xml:space="preserve">
+    <value>server said: {0}</value>
+  </data>
+  <data name="UnableToConnect" xml:space="preserve">
+    <value>Unable to connect</value>
+  </data>
+  <data name="UnableToSendMessage" xml:space="preserve">
+    <value>Unable to send message</value>
+  </data>
+  <data name="CreateAnAccount" xml:space="preserve">
+    <value>Create an account</value>
+  </data>
+  <data name="CreatingAccount" xml:space="preserve">
+    <value>Hold on while we create your account...</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="OrCreateAnAccount" xml:space="preserve">
+    <value>Or create an account</value>
+  </data>
+  <data name="OrLogin" xml:space="preserve">
+    <value>Or login</value>
+  </data>
+  <data name="PleaseLogin" xml:space="preserve">
+    <value>Please login</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="VerifyingCredentials" xml:space="preserve">
+    <value>Hold on while we verify your credentials...</value>
+  </data>
+  <data name="PleaseFillInAValidEmailAddress" xml:space="preserve">
+    <value>Please fill in a valid email address</value>
+  </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Login failed, please verify your credentials and try again. Server said: '{0}'</value>
+  </data>
+  <data name="ANetworkErrorHasOccured" xml:space="preserve">
+    <value>An error has occured, please try again</value>
+  </data>
+  <data name="CreateAccountFailed" xml:space="preserve">
+    <value>Creating an account failed, server said: '{0}'</value>
+  </data>
+  <data name="LoadingProfile" xml:space="preserve">
+    <value>Loading accounts and settings...</value>
+  </data>
+  <data name="SyncAuthError" xml:space="preserve">
+    <value>Unable to authenticate to cloud</value>
+  </data>
+  <data name="SyncCompleted" xml:space="preserve">
+    <value>Connected to cloud</value>
+  </data>
+  <data name="SyncConnecting" xml:space="preserve">
+    <value>Connecting to cloud...</value>
+  </data>
+  <data name="SyncNetError" xml:space="preserve">
+    <value>Unable to connect to cloud</value>
+  </data>
+  <data name="SyncNotConnected" xml:space="preserve">
+    <value>Not connected to cloud</value>
+  </data>
+  <data name="SyncSyncing" xml:space="preserve">
+    <value>Syncing with cloud - {0}%</value>
+  </data>
+  <data name="AddingAccountFailed" xml:space="preserve">
+    <value>Adding your {0} account has failed, please try again</value>
+  </data>
+  <data name="ChannelTypeNotSupportedInCloud" xml:space="preserve">
+    <value>{0} accounts are not supported by the Inbox2 cloud infrastructure</value>
+  </data>
+  <data name="ErrorOccuredDuringStatusUpdate" xml:space="preserve">
+    <value>An error has occured while sending your statis update to {0}, </value>
+  </data>
+  <data name="AccountWillAlsoBeRemovedFromCloud" xml:space="preserve">
+    <value>If you choose yes, then this account will also be removed from the Inbox2 cloud and any connected Inbox2 mobile applications.</value>
+  </data>
+  <data name="AreYouSureYouWantToRemoveThisAccount" xml:space="preserve">
+    <value>Are you sure you want to remove this account? </value>
+  </data>
+  <data name="RemovingAccount" xml:space="preserve">
+    <value>Removing account '{0}', please wait...</value>
+  </data>
+  <data name="AnErrorHasOccuredWhileDeletingAccount" xml:space="preserve">
+    <value>An error has occured while deleting account '{0}', please try again.</value>
+  </data>
+  <data name="OperationCouldNotBeCompletedDueToConnection" xml:space="preserve">
+    <value>This operation can not be completed because there is no internet connection available</value>
+  </data>
+</root>

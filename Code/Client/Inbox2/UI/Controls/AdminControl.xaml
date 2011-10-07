@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.AdminControl"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+     xmlns:Threading="clr-namespace:Inbox2.Core.Threading;assembly=Inbox2.Core.Threading" 
+     xmlns:Threading1="clr-namespace:Inbox2.Framework.Threading;assembly=Inbox2.Framework.Threading" 
+     xmlns:Progress="clr-namespace:Inbox2.Framework.Threading.Progress;assembly=Inbox2.Framework.Threading">
+    
+    <UserControl.Resources>
+        
+        <DataTemplate DataType="{x:Type Progress:ProgressGroup}">
+            <Grid>
+
+                <ProgressBar 
+					Height="22"  
+					Width="120"
+					IsIndeterminate="{Binding IsIndeterminate}"	 
+					Maximum="{Binding Maximum}" 
+					Value="{Binding Progress, Mode=OneWay}" />
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type Threading1:BackgroundTask}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Ellipse 
+					DataContext="{Binding Converter={StaticResource ObjectToObjectHolderConverter}}" 
+					Grid.RowSpan="2"
+					HorizontalAlignment="Center" VerticalAlignment="Center" Width="17" Height="17" Stroke="{x:Null}" 
+					Fill="{Binding Value, Converter={StaticResource ExecutionStatusToBrushConverter}}" />
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}" Margin="2" Foreground="White" />
+                    <TextBlock Text="{Binding ExecutionStatus}" Margin="2" Foreground="White" />
+                </StackPanel>
+
+                <ContentPresenter Grid.Column="1" Grid.Row="2" Content="{Binding ProgressGroup}" 
+								  Visibility="{Binding IsRegistered, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type Threading:TaskProcessor}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock FontWeight="Bold" Text="{Binding Name}" Margin="2,0,2,0" Foreground="White" />
+
+                <ContentPresenter Grid.Row="1" Content="{Binding QueuedBackgroundTask}" Margin="2" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <ListView Grid.Row="0" ItemsSource="{Binding Tasks, Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="5" BorderBrush="White" BorderThickness="0.5" />
+        <ListView Grid.Row="1" ItemsSource="{Binding TaskProcessors, Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="5" BorderBrush="White" BorderThickness="0.5" />
+    </Grid>
+</UserControl>

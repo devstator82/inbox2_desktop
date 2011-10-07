@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Inbox2.Framework.Plugins.SharedControls.Profiles.UserProfileControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI" 
+	xmlns:fcontrols="clr-namespace:Inbox2.Framework.UI.Controls;assembly=Inbox2.Framework.UI"
+	xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+	VerticalAlignment="Top">
+
+	<UserControl.CommandBindings>
+		<CommandBinding Command="{x:Static fui:Commands.New}" CanExecute="New_CanExecute" Executed="New_Executed" />
+	</UserControl.CommandBindings>
+
+	<Grid Name="ProfileColumn" DockPanel.Dock="Right">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Button Content="Profile" Grid.Row="0" Height="32" Style="{StaticResource HeaderButton}" Visibility="{py:PyBinding BooleanToVisibility($[.ShowHeader])}" />
+
+        <!-- Profiles tab -->
+		<fcontrols:TabControl Name="ProfileTab" Grid.Row="1" Style="{StaticResource SocialTabControl}" Margin="0,10,0,0" SelectedIndex="0" Tag="LeftAlignedTabs" />
+	</Grid>	
+
+</UserControl>

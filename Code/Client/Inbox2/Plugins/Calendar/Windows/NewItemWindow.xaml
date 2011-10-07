@@ -1,0 +1,13 @@
+﻿<Window x:Class="Inbox2.Plugins.Calendar.Windows.NewItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:calcontrols="clr-namespace:Inbox2.Plugins.Calendar.Controls"
+    
+        Width="350"	Height="170" MinHeight="170"
+        Style="{StaticResource DialogStyle}">
+    
+    <Grid>
+        <calcontrols:EventEditControl x:Name="EventEditControl" EventSaved="EventEditControl_EventSaved" />
+    </Grid>
+    
+</Window>

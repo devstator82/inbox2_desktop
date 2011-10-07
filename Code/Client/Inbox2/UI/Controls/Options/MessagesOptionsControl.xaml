@@ -1,0 +1,247 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.Options.MessagesOptionsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+    Loaded="UserControl_Loaded">
+
+    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" Margin="18">
+
+        <!-- Messages -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Check for new messages every " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <fui:NumberTextBox x:Name="ReceiveEmailsTextBox"
+                     MinWidth="25"
+                     MaxWidth="25"
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Center" />
+
+                    <TextBlock VerticalAlignment="Center" Margin="3,0,0,0" Style="{StaticResource NormalTextBlock}">Minutes</TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Status updates -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Check for stream updates every " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <fui:NumberTextBox x:Name="SyncStatusUpdatesTextBox"
+						 MinWidth="25"
+						 MaxWidth="25"
+						 HorizontalAlignment="Left" 
+						 VerticalAlignment="Center" />
+
+                    <TextBlock VerticalAlignment="Center" Margin="3,0,0,0" Style="{StaticResource NormalTextBlock}">Minutes</TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Search updates -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Refresh Twitter search every " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource NormalTextBlock}" 
+						FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <fui:NumberTextBox x:Name="SyncSearchStreamTextBox"
+						 MinWidth="25"
+						 MaxWidth="25"
+						 HorizontalAlignment="Left" 
+						 VerticalAlignment="Center" />
+
+                    <TextBlock VerticalAlignment="Center" Margin="3,0,0,0" Style="{StaticResource NormalTextBlock}">Minutes</TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Contacts -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Check for new contacts every " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <fui:NumberTextBox x:Name="SyncContactsTextBox"
+						 MinWidth="25"
+						 MaxWidth="25"
+						 HorizontalAlignment="Left" 
+						 VerticalAlignment="Center" />
+
+                    <TextBlock VerticalAlignment="Center" Margin="3,0,0,0" Style="{StaticResource NormalTextBlock}">Minutes</TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Automatically mark messages read -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Mark as unread " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Style="{StaticResource NormalTextBlock}" 
+                           FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+					<CheckBox Name="MarkMessagesReadWhenViewing" Checked="MarkMessagesReadWhenViewing_Checked">Mark message as read when viewing in preview pane</CheckBox>
+
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Name="MarkMessagesReadAfter" Checked="MarkMessagesReadAfter_Checked">Mark messages read after </CheckBox>
+
+                        <fui:NumberTextBox x:Name="MarkMessagesReadAfterSecondsTextBox"
+							Text="3"
+							MinWidth="25"
+							MaxWidth="25"
+							HorizontalAlignment="Left" 
+							VerticalAlignment="Center" 
+							Margin="3,0,0,0"/>
+
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0" Style="{StaticResource NormalTextBlock}">seconds</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <!-- Show notifications after -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Notifications " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Style="{StaticResource NormalTextBlock}" 
+                           FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Name="ShowNotificationsPopupCheckBox">Show notification popup after receive for </CheckBox>
+
+						<fui:NumberTextBox 
+							Name="ShowNotificationsPopupForTextBox"
+	                        Text="5"
+	                        MinWidth="25"
+	                        MaxWidth="25"
+	                        HorizontalAlignment="Left" 
+	                        VerticalAlignment="Center" 
+	                        Margin="3,0,0,0"/>
+
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0" Style="{StaticResource NormalTextBlock}">seconds</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <!-- Play notification sound -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+
+                    <CheckBox Name="PlayNotificationsSoundCheckBox">Play sound after receiving new messages</CheckBox>
+
+                    <TextBlock 
+                        Style="{StaticResource NormalTextBlock}" 
+                        FontStyle="Italic"
+                        Opacity="0.8">
+                        
+                        You can customize the sound in your sound system preferences
+                        
+                        <fui:WebHyperlink NavigateUri="http://email.about.com/od/outlooktips/qt/Change_the_New_Mail_Sound_in_Outlook_Windows_Live_Mail.htm">Tell me more</fui:WebHyperlink>
+                        
+                    </TextBlock>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+    </StackPanel>
+</UserControl>

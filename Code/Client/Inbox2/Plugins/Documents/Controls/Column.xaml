@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="Inbox2.Plugins.Documents.Controls.Column"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+	xmlns:entities="clr-namespace:Inbox2.Framework.VirtualMailBox.Entities;assembly=Inbox2.Framework.VirtualMailBox" 
+    xmlns:fcontrols="clr-namespace:Inbox2.Framework.UI.Controls;assembly=Inbox2.Framework.UI">
+
+	<UserControl.CommandBindings>
+		<CommandBinding Command="{x:Static fui:Commands.New}" Executed="New_Executed" />
+		<CommandBinding Command="{x:Static fui:Commands.View}" Executed="View_Executed" CanExecute="View_CanExecute" />
+		<CommandBinding Command="{x:Static fui:Commands.Reply}" Executed="Reply_Executed" CanExecute="Reply_CanExecute" />
+		<CommandBinding Command="{x:Static fui:Commands.Forward}" Executed="Forward_Executed" CanExecute="Forward_CanExecute" />
+		<CommandBinding Command="{x:Static fui:Commands.Delete}" Executed="Delete_Executed" CanExecute="Delete_CanExecute" />
+		<CommandBinding Command="{x:Static fui:Commands.MarkRead}" Executed="MarkRead_Executed" CanExecute="MarkRead_CanExecute" />
+		<CommandBinding Command="{x:Static fui:Commands.MarkUnread}" Executed="MarkUnread_Executed" CanExecute="MarkUnread_CanExecute" />
+		<CommandBinding Command="{x:Static fui:Commands.OpenDocument}" Executed="OpenDocument_Executed" CanExecute="OpenDocument_CanExecute" />
+		<CommandBinding Command="{x:Static fui:Commands.SaveDocument}" Executed="SaveDocument_Executed" CanExecute="SaveDocument_CanExecute" />
+	</UserControl.CommandBindings>
+	
+	<UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Inbox2.Framework.VirtualMailBox;component/Templates/Entities.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--________________________________________________
+            DataTemplate containing visual for document
+            ________________________________________________-->
+            <DataTemplate DataType="{x:Type entities:Document}" x:Key="DocumentTemplate">
+                <Grid SnapsToDevicePixels="True" Background="Transparent" DataContext="{Binding Converter={StaticResource ObjectToObjectHolderConverter}}">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+
+                    <ContentPresenter Content="{Binding Value}" />
+
+                    <Grid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Open" Command="{x:Static fui:Commands.OpenDocument}" CommandParameter="{Binding}"  />
+                            <MenuItem Header="Save as..." Command="{x:Static fui:Commands.SaveDocument}" CommandParameter="{Binding}" />
+                        </ContextMenu>
+                    </Grid.ContextMenu>
+
+                </Grid>
+            </DataTemplate>
+
+        </ResourceDictionary>		
+	</UserControl.Resources>
+	
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="32" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<!--________________________________________________
+        Top title bar of messages area
+        ________________________________________________-->
+		<Button Content="{Binding Title}" Style="{StaticResource HeaderButton}" Name="CollapsableButton" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Background="Transparent" Margin="0,0,2,0">
+            <ToggleButton Name="OptionsButton" Content="Options" Visibility="{py:PyBinding NotBooleanToVisibility($[.IsInSearchMode])}" Style="{StaticResource HeaderOptionsButton}" fui:PopupManager.AttachedPopup="{Binding ElementName=OptionsPopup}" />
+        </StackPanel>
+
+        <ListView Name="DocumentsListView"
+            Grid.Row="2"
+            SelectedIndex="0"
+            AllowDrop="True" 
+            PreviewDragOver="FileDragOver" 
+            PreviewDrop="FileDrop" 
+            ScrollViewer.CanContentScroll="True"
+            VirtualizingStackPanel.IsVirtualizing="True"
+            VirtualizingStackPanel.VirtualizationMode="Recycling"
+            ItemsSource="{Binding DocumentsViewSource.View}"
+            ItemTemplate="{StaticResource DocumentTemplate}"
+            IsSynchronizedWithCurrentItem="True"
+            SelectionChanged="DocumentsListView_SelectionChanged"
+            MouseDoubleClick="DocumentsListView_MouseDoubleClick"
+            PreviewKeyDown="DocumentsListView_PreviewKeyDown" />
+
+        <fcontrols:ButtonBalloonPopup Name="OptionsPopup" AllowsTransparency="True" PlacementTarget="{Binding ElementName=OptionsButton}">
+            <Grid SnapsToDevicePixels="True" Width="245" Height="Auto">
+                <Rectangle Fill="Black" RadiusX="7" RadiusY="7" Opacity="0.9" Margin="0,7,0,0"/>
+                <Path HorizontalAlignment="Right" Margin="0,0,51,0" Opacity="0.9" VerticalAlignment="Top" Width="12" Height="7" Fill="Black" Stretch="Fill" Stroke="{x:Null}" Data="M200,280 L159.5,319.5 239.5,319.5 z"/>
+                <Button Name="PART_CloseButton" Style="{StaticResource GlobalCloseButton}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,12,5,0"/>
+                <StackPanel Margin="15,22,15,15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel VerticalAlignment="Top">
+                            <TextBlock Text="Sort" FontWeight="Bold" Foreground="White"/>
+                            <ListBox Grid.Row="1" Style="{StaticResource RadioButtonListStyle}" Grid.Column="1">
+                                <ListBox.Items>
+                                    <ListBoxItem IsSelected="{Binding Sort.Filename}">File name</ListBoxItem>
+                                    <ListBoxItem IsSelected="{Binding Sort.FileType}">File type</ListBoxItem>
+                                    <ListBoxItem IsSelected="{Binding Sort.SortDate}">Date received</ListBoxItem>
+                                </ListBox.Items>
+                            </ListBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                            <TextBlock Text="Order" FontWeight="Bold" Foreground="White"/>
+                            <ListBox Grid.Row="1" Style="{StaticResource RadioButtonListStyle}" Grid.Column="1">
+                                <ListBox.Items>
+                                    <ListBoxItem IsSelected="{Binding Sort.Ascending}">Ascending</ListBoxItem>
+                                    <ListBoxItem IsSelected="{Binding Sort.Descending}">Descending</ListBoxItem>
+                                </ListBox.Items>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+        </fcontrols:ButtonBalloonPopup>
+
+    </Grid>
+
+</UserControl>

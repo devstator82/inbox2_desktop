@@ -1,0 +1,59 @@
+﻿<ResourceDictionary
+    x:Class="Inbox2.UI.Resources.ResourceConverters"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:conv="clr-namespace:Inbox2.UI.Resources">
+
+    <conv:PassThroughConverter x:Key="PassThroughConverter" />
+	<conv:PassThroughMultiValueConverter x:Key="PassThroughMultiValueConverter" />
+	
+    <conv:MessageDateConverter x:Key="MessageDateConverter" />
+    <conv:DateToRelativeTimeConverter x:Key="DateToRelativeTimeConverter" />
+    
+	<conv:MultiObjectSelectConverter x:Key="MultiObjectSelectConverter" />
+	<conv:SnipStringConverter x:Key="SnipStringConverter" />
+
+	<conv:FilenameToIconConverter x:Key="FilenameToIconConverter" />
+	<conv:FilenameToDescriptionConverter x:Key="FilenameToDescriptionConverter" />
+
+	<conv:BitmapFormatConverter x:Key="BitmapFormatConverter" />
+	<conv:StreamToStringConverter x:Key="StreamToStringConverter" />
+    
+	<conv:HtmlStringToTextElementConverter x:Key="HtmlStringToTextElementConverter" />
+    <conv:MessageBodyConverter x:Key="MessageBodyConverter" />
+
+    <conv:UserStatusReplyConverter x:Key="UserStatusReplyConverter" />
+    <conv:UserStatusBodyConverter x:Key="UserStatusBodyConverter" />
+	<conv:FromSummaryConverter x:Key="FromSummaryConverter" />
+
+	<conv:ChannelIconConverter x:Key="ChannelIconConverter" />
+    <conv:ChannelAvatarConverter x:Key="ChannelAvatarConverter" />
+    
+	<conv:ChannelSourceAddressConverter x:Key="ChannelSourceAddressConverter" />
+    <conv:ChannelSourceDisplayNameConverter x:Key="ChannelSourceDisplayNameConverter" />
+	
+	<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+	<conv:NotBooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter" />
+	<conv:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
+	<conv:BooleanToVisibilityCollapsedConverter x:Key="BooleanToVisibilityCollapsedConverter" />
+	<conv:EmptyStringToVisibilityConverter x:Key="EmptyStringToVisibilityConverter" />
+    <conv:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+
+	<conv:BytesDisplayConverter x:Key="BytesDisplayConverter" />
+	
+	<conv:ObjectToObjectHolderConverter x:Key="ObjectToObjectHolderConverter" />
+	<conv:ObjectToEnumerableConverter x:Key="ObjectToEnumerableConverter" />
+	
+	<conv:ExecutionStatusToBrushConverter x:Key="ExecutionStatusToBrushConverter" /> 
+	
+    <conv:DocumentDescriptionConverter x:Key="DocumentDescriptionConverter" />
+
+    <conv:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+	<conv:LabelBrushConverter x:Key="LabelBrushConverter" />
+    <conv:LabelsContainerBrushConverter x:Key="LabelsContainerBrushConverter" />
+    <conv:BrushToGradientBrushConverter x:Key="BrushToGradientBrushConverter" />
+
+	<conv:GlassMarginConverter x:Key="GlassMarginConverter" />
+	<conv:WindowStateToMarginConverter x:Key="WindowStateToMarginConverter" />
+    
+</ResourceDictionary>

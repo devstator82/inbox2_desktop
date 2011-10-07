@@ -1,0 +1,394 @@
+﻿<ResourceDictionary x:Class="Inbox2.Plugins.Conversations.Controls.DataTemplates"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+    xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+    xmlns:entities="clr-namespace:Inbox2.Framework.VirtualMailBox.Entities;assembly=Inbox2.Framework.VirtualMailBox" 
+    xmlns:sharedControls="clr-namespace:Inbox2.Framework.Plugins.SharedControls;assembly=Inbox2.Framework.Plugins">
+
+    <!--________________________________________________
+    DataTemplate containing visual for activity document type
+    ________________________________________________-->
+    <DataTemplate x:Key="DocumentTemplate" DataType="{x:Type entities:Document}">
+
+        <Grid Style="{StaticResource ItemGrid}">
+            <StackPanel Name="sp" Orientation="Horizontal">
+                <Image Margin="5,3,5,4" Source="{Binding Filename, Converter={StaticResource FilenameToIconConverter}}" Width="16" Height="16" />
+				<TextBlock Text="{Binding Filename}" Margin="2,3,0,4" Style="{StaticResource TextBlockContentForegroundStyle}" TextTrimming="CharacterEllipsis" Opacity="0.75"/>
+            </StackPanel>
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Open" Command="{x:Static fui:Commands.OpenDocument}" CommandParameter="{Binding}"  />
+                    <MenuItem Header="Save as..." Command="{x:Static fui:Commands.SaveDocument}" CommandParameter="{Binding}" />
+                </ContextMenu>
+            </Grid.ContextMenu>
+        </Grid>
+
+    </DataTemplate>
+
+    <!--________________________________________________
+    DataTemplate containing visual for image content
+    ________________________________________________-->
+    <DataTemplate x:Key="ImageTemplate" DataType="{x:Type entities:Document}">
+
+        <Border Padding="5">
+            <Grid Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border BorderBrush="{StaticResource ShadowColor1}" BorderThickness="1" SnapsToDevicePixels="True">
+                    <Image DataContext="{Binding Converter={StaticResource ObjectToObjectHolderConverter}}" 
+                   Source="{Binding Value.PreviewImageSource}" Width="Auto" SnapsToDevicePixels="True" Height="Auto" MaxHeight="150" MaxWidth="150" Stretch="Uniform" />
+                </Border>
+                <Border BorderBrush="{StaticResource HighlightColor10}" BorderThickness="1" SnapsToDevicePixels="True" Margin="1" />
+            </Grid>
+            <Border.ContextMenu>
+                <ContextMenu>
+					<MenuItem Header="Open" Command="{x:Static fui:Commands.OpenDocument}" CommandParameter="{Binding}"  />
+					<MenuItem Header="Save as..." Command="{x:Static fui:Commands.SaveDocument}" CommandParameter="{Binding}" />
+				</ContextMenu>
+            </Border.ContextMenu>
+        </Border>
+
+    </DataTemplate>	
+
+	<!--________________________________________________
+    DataTemplate containing visual for activity message type
+    ________________________________________________-->
+    <DataTemplate DataType="{x:Type entities:Message}" x:Key="ActivityMessageTemplate">
+        <Grid SnapsToDevicePixels="True" Style="{StaticResource ItemGrid}" Background="Transparent">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Name="bd1" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush1}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsTodo])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Name="bd2" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush2}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsWaitingFor])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Name="bd3" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush3}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsSomeday])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Style="{StaticResource Ib2ElementBorder}">
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />               
+                    </Grid.RowDefinitions>                   
+					
+                    <!-- avatar big -->
+					<Grid Grid.Column="0" Visibility="{py:PyBinding BooleanToVisibility($[.IsLast] or $[.IsInboxView])}" SnapsToDevicePixels="True" Grid.Row="1" Grid.RowSpan="7" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="4,6,10,6" Width="38" Height="38">
+                        <Border SnapsToDevicePixels="True" BorderBrush="{StaticResource ShadowColor1}" BorderThickness="1" Width="38" Height="38" >
+                            <Image SnapsToDevicePixels="True" Source="{Binding Person.BestProfile.Avatar}" Width="36" Height="36" />
+                        </Border>
+                        <Border SnapsToDevicePixels="True" BorderBrush="{StaticResource HighlightColor4}" BorderThickness="1" Width="36" Height="36" />
+                    </Grid>
+
+					<!-- name + channels-->										
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="1" Opacity="{py:PyBinding BooleanToOpacity($[.IsRead]\, 0.75)}">
+
+                        <CheckBox VerticalAlignment="Center" Name="IsStarred" Style="{StaticResource IsStarredCheckBox}" IsChecked="{Binding IsStarred, Mode=OneWay}" Command="{x:Static fui:Commands.Star}" CommandParameter="{Binding}" />
+
+						<Image Style="{StaticResource ReplyIcon}" Stretch="Uniform" Visibility="{py:PyBinding BooleanToVisibility($[.IsSent])}" VerticalAlignment="Center" Width="13" Height="9" Margin="0,1,3,0" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" Opacity="0.8"/>
+
+						<TextBlock Padding="0,4,3,0" Text="{Binding From.DisplayName}" Style="{StaticResource TitleName}" TextTrimming="CharacterEllipsis" Visibility="{Binding IsSent, Converter={StaticResource NotBooleanToVisibilityConverter}}" />
+                        <TextBlock Padding="0,4,3,0" Text="me" Style="{StaticResource TitleName}" TextTrimming="CharacterEllipsis" Visibility="{Binding IsSent, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+						<TextBlock Padding="2,4,0,0" Text="{Binding Conversation.Messages.Count, StringFormat='(\{0\})'}" TextTrimming="CharacterEllipsis" Style="{StaticResource TextBlockContentForegroundOpaqueStyle}" Visibility="{Binding Conversation.Messages.Count, Converter={StaticResource CountToVisibilityConverter}, ConverterParameter=1}" />
+
+						<TextBlock Padding="3,2,0,0" Name="tb">
+							<Hyperlink Command="{x:Static fui:Commands.View}" CommandParameter="{Binding}">
+								<fui:BindableRun BoundText="{Binding Conversation.Context}" DataContext="{Binding DataContext, ElementName=tb}" />
+							</Hyperlink>
+						</TextBlock>						
+
+						<Image Margin="3,0,3,0" Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}, ConverterParameter=10}" ToolTip="{Binding SourceChannel.InputChannel.Authentication.Username}" Width="10" Height="10" Stretch="Uniform" Visibility="{py:PyBinding BooleanToVisibility($[.SourceChannelId] > 0)}" />
+                        <Image Margin="3,0,3,0" Source="{Binding TargetChannel, Converter={StaticResource ChannelIconConverter}, ConverterParameter=10}" ToolTip="{Binding SourceChannel.InputChannel.Authentication.Username}" Width="10" Height="10" Stretch="Uniform" Visibility="{py:PyBinding BooleanToVisibility($[.TargetChannelId] > 0)}" />
+                    
+						<Border Visibility="{py:PyBinding BooleanToVisibility($[.IsDraft])}" Background="{StaticResource DraftIconBackground}" CornerRadius="4" VerticalAlignment="Bottom" Height="11" Padding="4,0" Margin="0,0,3,4" SnapsToDevicePixels="True">
+                            <TextBlock Style="{StaticResource DraftIconTextBlock}" Text="draft" />
+                        </Border>
+                    </StackPanel>
+
+					<!-- date -->
+					<TextBlock HorizontalAlignment="Right" Padding="0,2,6,0" Margin="0,0,2,0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding SortDate, Converter={StaticResource DateToRelativeTimeConverter}}" Style="{StaticResource MessageDate}" Opacity="0.6" />
+
+					<!-- body parts -->
+					<StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="0,0,0,3">
+
+						<!-- message body-->
+						<ContentControl Content="{Binding Self, Converter={StaticResource MessageBodyConverter}}" Margin="0,0,6,5" Opacity="{py:PyBinding BooleanToOpacity($[.IsRead]\, 0.75)}"/>
+
+						<!-- Images -->
+						<ListView Margin="0,5,0,0"
+                              Style="{StaticResource WrappedListView}" 
+                              ItemsSource="{Binding ImagesFiltered}" 
+                              ItemTemplate="{StaticResource ImageTemplate}" 
+							  ItemContainerStyle="{StaticResource InvisibleSelectedItemStyle}"
+							  PreviewMouseLeftButtonUp="ListView_PreviewMouseLeftButtonUp"
+                              PreviewMouseDoubleClick="ListView_PreviewMouseDoubleClick"
+                              Visibility="{py:PyBinding BooleanToVisibility($[.ImagesFiltered.Count] > 0)}" />
+
+						<!-- Documents -->
+						<ListView 
+                              Style="{StaticResource WrappedListView}" 
+                              ItemsSource="{Binding DocumentsFiltered}" 
+                              ItemTemplate="{StaticResource DocumentTemplate}" 
+							  ItemContainerStyle="{StaticResource InvisibleSelectedItemStyle}"
+							  PreviewMouseLeftButtonUp="ListView_PreviewMouseLeftButtonUp"
+                              PreviewMouseDoubleClick="ListView_PreviewMouseDoubleClick"
+                              Visibility="{py:PyBinding BooleanToVisibility($[.DocumentsFiltered.Count] > 0)}" />
+
+						<!-- Labels -->
+						<sharedControls:LabelsEditorControl x:Name="LabelsEditor" Message="{Binding}" HideOnEmpty="true" />
+
+					</StackPanel>					                                                            
+                </Grid>
+            </Border>
+            <Border Grid.RowSpan="2" BorderBrush="{StaticResource HighlightColor10}" BorderThickness="0,0,0,1">
+				<Border BorderBrush="{StaticResource ShadowColor5}" BorderThickness="0,0,0,0" />
+            </Border>			
+
+			<Grid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="View" Command="{x:Static fui:Commands.View}" CommandParameter="{Binding}" />
+					<MenuItem Header="Reply" Command="{x:Static fui:Commands.Reply}" CommandParameter="{Binding}" />
+					<MenuItem Header="Reply all" Command="{x:Static fui:Commands.ReplyAll}" CommandParameter="{Binding}" />
+					<MenuItem Header="Forward" Command="{x:Static fui:Commands.Forward}" CommandParameter="{Binding}" />
+					<MenuItem Header="Delete" Command="{x:Static fui:Commands.Delete}" CommandParameter="{Binding}" />
+					<MenuItem Header="Mark as read" Command="{x:Static fui:Commands.MarkRead}" CommandParameter="{Binding}" />
+					<MenuItem Header="Mark as unread" Command="{x:Static fui:Commands.MarkUnread}" CommandParameter="{Binding}" />
+                    <MenuItem Header="Archive" Command="{x:Static fui:InputCommands.Archive}" CommandParameter="{Binding}" />
+					<MenuItem Header="Move to inbox" Command="{x:Static fui:InputCommands.RemoveFromCurrentView}" CommandParameter="{Binding}" Visibility="{py:PyBinding BooleanToVisibility(($[.IsArchived] and $[.IsLast]) or $[.IsTrash])}" />
+					<MenuItem Header="Productivity">
+						<MenuItem Command="{x:Static fui:InputCommands.Todo}" CommandParameter="{Binding}" Header="Make todo"></MenuItem>
+						<MenuItem Command="{x:Static fui:InputCommands.WaitingFor}" CommandParameter="{Binding}" Header="Wait for answer"></MenuItem>
+						<MenuItem Command="{x:Static fui:InputCommands.Someday}" CommandParameter="{Binding}" Header="Read someday"></MenuItem>
+						<MenuItem Command="{x:Static fui:InputCommands.AddLabel}" CommandParameter="{Binding}" Header="Add label" />
+						<MenuItem Command="{x:Static fui:InputCommands.ClearAction}" CommandParameter="{Binding}" Header="Clear"></MenuItem>                        
+					</MenuItem>
+				</ContextMenu>
+			</Grid.ContextMenu>
+		</Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="True">
+                <Setter TargetName="bd1" Property="Visibility" Value="Hidden" />
+                <Setter TargetName="bd2" Property="Visibility" Value="Hidden" />
+                <Setter TargetName="bd3" Property="Visibility" Value="Hidden" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <!--________________________________________________
+    DataTemplate containing visual for one line message short type
+    ________________________________________________-->
+    <DataTemplate DataType="{x:Type entities:Message}" x:Key="OneLineMessageShortTemplate">
+        <Grid SnapsToDevicePixels="True" Style="{StaticResource ItemGrid}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Border Name="bd1" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush1}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsTodo])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Name="bd2" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush2}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsWaitingFor])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Name="bd3" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush3}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsSomeday])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Style="{StaticResource Ib2ElementBorder}">
+                <Grid Height="24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="70"/>
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox Grid.Column="0" Name="IsStarred" Style="{StaticResource IsStarredCheckBox}" HorizontalAlignment="Right" VerticalAlignment="Center" IsChecked="{Binding IsStarred, Mode=OneWay}" Command="{x:Static fui:Commands.Star}" CommandParameter="{Binding}" />
+                    
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="3,0,3,0" Text="{Binding From.DisplayName}" TextTrimming="CharacterEllipsis" Style="{StaticResource TitleNameInOneLine}" Opacity="{py:PyBinding BooleanToOpacity($[.IsRead]\, 0.75)}" Visibility="{Binding IsSent, Converter={StaticResource NotBooleanToVisibilityConverter}}"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="3,0,3,0" Text="me" TextTrimming="CharacterEllipsis" Style="{StaticResource TitleNameInOneLine}" Opacity="{py:PyBinding BooleanToOpacity($[.IsRead]\, 0.75)}" Visibility="{Binding IsSent, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Grid.Column="2" Opacity="{py:PyBinding BooleanToOpacity($[.IsRead]\, 0.75)}">
+                        <Image Style="{StaticResource ReplyIcon}" Stretch="Uniform"  Visibility="{py:PyBinding NotBooleanToVisibility($[.IsSent])}" VerticalAlignment="Center" Width="13" Height="9" Margin="0,1,3,0" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" Opacity="0.8"/>
+                        <Border Visibility="Collapsed" Background="{StaticResource DraftIconBackground}" CornerRadius="4" Height="11" Padding="4,0" VerticalAlignment="Center" Margin="0,0,3,0" SnapsToDevicePixels="True">
+                            <TextBlock Style="{StaticResource DraftIconTextBlock}" Text="draft" />
+                        </Border>
+                        <TextBlock Name="tb" VerticalAlignment="Center" Style="{StaticResource TextBlockContentForegroundStyle}" TextTrimming="CharacterEllipsis">
+                            <Hyperlink Command="{x:Static fui:Commands.View}" CommandParameter="{Binding}">
+                                <fui:BindableRun BoundText="{Binding Conversation.Context}" DataContext="{Binding DataContext, ElementName=tb}" />
+                            </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <TextBlock HorizontalAlignment="Right" Padding="0,0,3,0" VerticalAlignment="Center" Grid.Column="3" Grid.Row="0" Text="{Binding SortDate, Converter={StaticResource DateToRelativeTimeConverter}}" Style="{StaticResource MessageDate}" Opacity="0.6" />                    
+                </Grid>
+            </Border>
+            <Border Grid.ColumnSpan="6" BorderBrush="{StaticResource ListItemSplitter}" BorderThickness="0,0,0,1" Visibility="{py:PyBinding BooleanToVisibility($[.IsLast] or $[.IsInboxView])}" >
+                <Border BorderBrush="{StaticResource ShadowColor5}" BorderThickness="0,0,0,0" />
+            </Border>
+
+			<Grid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="View" Command="{x:Static fui:Commands.View}" CommandParameter="{Binding}" />
+					<MenuItem Header="Reply" Command="{x:Static fui:Commands.Reply}" CommandParameter="{Binding}" />
+					<MenuItem Header="Reply all" Command="{x:Static fui:Commands.ReplyAll}" CommandParameter="{Binding}" />
+					<MenuItem Header="Forward" Command="{x:Static fui:Commands.Forward}" CommandParameter="{Binding}" />
+					<MenuItem Header="Delete" Command="{x:Static fui:Commands.Delete}" CommandParameter="{Binding}" />
+					<MenuItem Header="Mark as read" Command="{x:Static fui:Commands.MarkRead}" CommandParameter="{Binding}" />
+					<MenuItem Header="Mark as unread" Command="{x:Static fui:Commands.MarkUnread}" CommandParameter="{Binding}" />
+                    <MenuItem Header="Archive" Command="{x:Static fui:InputCommands.Archive}" CommandParameter="{Binding}" />
+					<MenuItem Header="Move to inbox" Command="{x:Static fui:InputCommands.RemoveFromCurrentView}" CommandParameter="{Binding}" Visibility="{py:PyBinding BooleanToVisibility(($[.IsArchived] and $[.IsLast]) or $[.IsTrash])}" />
+					<MenuItem Header="Productivity">
+						<MenuItem Command="{x:Static fui:InputCommands.Todo}" CommandParameter="{Binding}" Header="Make todo"></MenuItem>
+						<MenuItem Command="{x:Static fui:InputCommands.WaitingFor}" CommandParameter="{Binding}" Header="Wait for answer"></MenuItem>
+						<MenuItem Command="{x:Static fui:InputCommands.Someday}" CommandParameter="{Binding}" Header="Read someday"></MenuItem>
+                        <MenuItem Command="{x:Static fui:InputCommands.AddLabel}" CommandParameter="{Binding}" Header="Add label" />
+						<MenuItem Command="{x:Static fui:InputCommands.ClearAction}" CommandParameter="{Binding}" Header="Clear"></MenuItem>
+					</MenuItem>
+				</ContextMenu>
+			</Grid.ContextMenu>
+		</Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="True">
+                <Setter TargetName="bd1" Property="Visibility" Value="Hidden" />
+                <Setter TargetName="bd2" Property="Visibility" Value="Hidden" />
+                <Setter TargetName="bd3" Property="Visibility" Value="Hidden" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <!--________________________________________________
+    DataTemplate containing visual for one line message type
+    ________________________________________________-->
+    <DataTemplate DataType="{x:Type entities:Message}" x:Key="OneLineMessageTemplate">
+        <Grid SnapsToDevicePixels="True" Style="{StaticResource ItemGrid}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Border Name="bd1" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush1}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsTodo])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Name="bd2" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush2}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsWaitingFor])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Name="bd3" Grid.RowSpan="2" Background="{StaticResource LabelBackgroundBrush3}" Margin="0,-1,0,0" Visibility="{py:PyBinding BooleanToVisibility($[.IsSomeday])}">
+                <Border Background="{StaticResource ShadowColor5}">
+                    <Border Background="{StaticResource HighlightGradient8}" />
+                </Border>
+            </Border>
+
+            <Border Style="{StaticResource Ib2ElementBorder}">
+                <Grid Grid.Row="1" Height="24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="29" />
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="26"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="70"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" SnapsToDevicePixels="True" Source="{Binding Person.BestProfile.Avatar}" Margin="4,0,0,0" Width="20" Height="20" />
+
+					<Image Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding SourceChannel, Converter={StaticResource ChannelIconConverter}, ConverterParameter=10}" ToolTip="{Binding SourceChannel.InputChannel.Authentication.Username}" Width="10" Height="10" Stretch="Uniform" Visibility="{py:PyBinding BooleanToVisibility($[.SourceChannelId] > 0)}" />
+                    <Image Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding TargetChannel, Converter={StaticResource ChannelIconConverter}, ConverterParameter=10}" ToolTip="{Binding SourceChannel.InputChannel.Authentication.Username}" Width="10" Height="10" Stretch="Uniform" Visibility="{py:PyBinding BooleanToVisibility($[.TargetChannelId] > 0)}" />
+
+                    <CheckBox Grid.Column="1" Name="IsStarred" Style="{StaticResource IsStarredCheckBox}" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding IsStarred, Mode=OneWay}" Command="{x:Static fui:Commands.Star}" CommandParameter="{Binding}" />
+
+                    <TextBlock Grid.Column="3" VerticalAlignment="Center" Padding="0,0,3,0" Opacity="{py:PyBinding BooleanToOpacity($[.IsRead]\, 0.75)}">
+						<TextBlock Text="{Binding Conversation, Converter={StaticResource FromSummaryConverter}}" TextTrimming="CharacterEllipsis" Style="{StaticResource TitleNameInOneLine}" />
+						<TextBlock Text="{Binding Conversation.Messages.Count, StringFormat='(\{0\})'}" TextTrimming="CharacterEllipsis" Style="{StaticResource TitleNameInOneLine}" Visibility="{Binding Conversation.Messages.Count, Converter={StaticResource CountToVisibilityConverter}, ConverterParameter=1}" />
+					</TextBlock>
+
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Column="4" Opacity="{py:PyBinding BooleanToOpacity($[.IsRead]\, 0.75)}">
+                        <Border Visibility="Collapsed" Background="{StaticResource DraftIconBackground}" CornerRadius="4" Height="11" Padding="4,0" VerticalAlignment="Center" Margin="0,0,3,0" SnapsToDevicePixels="True">
+                            <TextBlock Style="{StaticResource DraftIconTextBlock}" Text="draft" />
+                        </Border>
+                        <TextBlock Name="tb" VerticalAlignment="Center" Style="{StaticResource TextBlockContentForegroundStyle}" TextTrimming="CharacterEllipsis">
+                            <Hyperlink Command="{x:Static fui:Commands.View}" CommandParameter="{Binding}">
+                                <fui:BindableRun BoundText="{Binding Conversation.Context}" DataContext="{Binding DataContext, ElementName=tb}" />
+                            </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <TextBlock HorizontalAlignment="Right" Padding="0,0,6,0" VerticalAlignment="Center" Grid.Column="5" Grid.Row="0" Text="{Binding SortDate, Converter={StaticResource DateToRelativeTimeConverter}}" Style="{StaticResource MessageDate}" Opacity="0.6" />
+                </Grid>
+            </Border>
+            <Border Grid.ColumnSpan="6" BorderBrush="{StaticResource ListItemSplitter}" BorderThickness="0,0,0,1" Visibility="{py:PyBinding BooleanToVisibility($[.IsLast] or $[.IsInboxView])}" >
+                <Border BorderBrush="{StaticResource ShadowColor5}" BorderThickness="0,0,0,0" />
+            </Border>
+
+			<Grid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="View" Command="{x:Static fui:Commands.View}" CommandParameter="{Binding}" />
+					<MenuItem Header="Reply" Command="{x:Static fui:Commands.Reply}" CommandParameter="{Binding}" />
+					<MenuItem Header="Reply all" Command="{x:Static fui:Commands.ReplyAll}" CommandParameter="{Binding}" />
+					<MenuItem Header="Forward" Command="{x:Static fui:Commands.Forward}" CommandParameter="{Binding}" />
+					<MenuItem Header="Delete" Command="{x:Static fui:Commands.Delete}" CommandParameter="{Binding}" />
+					<MenuItem Header="Mark as read" Command="{x:Static fui:Commands.MarkRead}" CommandParameter="{Binding}" />
+					<MenuItem Header="Mark as unread" Command="{x:Static fui:Commands.MarkUnread}" CommandParameter="{Binding}" />
+                    <MenuItem Header="Archive" Command="{x:Static fui:InputCommands.Archive}" CommandParameter="{Binding}" />
+					<MenuItem Header="Move to inbox" Command="{x:Static fui:InputCommands.RemoveFromCurrentView}" CommandParameter="{Binding}" Visibility="{py:PyBinding BooleanToVisibility(($[.IsArchived] and $[.IsLast]) or $[.IsTrash])}" />
+					<MenuItem Header="Productivity">
+						<MenuItem Command="{x:Static fui:InputCommands.Todo}" CommandParameter="{Binding}" Header="Make todo"></MenuItem>
+						<MenuItem Command="{x:Static fui:InputCommands.WaitingFor}" CommandParameter="{Binding}" Header="Wait for answer"></MenuItem>
+						<MenuItem Command="{x:Static fui:InputCommands.Someday}" CommandParameter="{Binding}" Header="Read someday"></MenuItem>
+                        <MenuItem Command="{x:Static fui:InputCommands.AddLabel}" CommandParameter="{Binding}" Header="Add label" />
+						<MenuItem Command="{x:Static fui:InputCommands.ClearAction}" CommandParameter="{Binding}" Header="Clear"></MenuItem>
+					</MenuItem>
+				</ContextMenu>
+			</Grid.ContextMenu>
+		</Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="True">
+                <Setter TargetName="bd1" Property="Visibility" Value="Hidden" />
+                <Setter TargetName="bd2" Property="Visibility" Value="Hidden" />
+                <Setter TargetName="bd3" Property="Visibility" Value="Hidden" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+	<DataTemplate DataType="{x:Type entities:Message}" x:Key="FakeMessageTemplate">
+		<Grid Style="{StaticResource ItemGrid}" Background="Transparent" />
+	</DataTemplate>
+
+</ResourceDictionary>

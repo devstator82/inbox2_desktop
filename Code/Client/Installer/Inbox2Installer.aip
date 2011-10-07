@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT type="Advanced Installer" CreateVersion="7.2.1" version="7.2.1" modules="professional" RootPath="." Language="en">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_CLEAN_RESOURCES_DISABLE_UPGRADE" Value="1"/>
+    <ROW Property="AI_CLEAN_RESOURCES_UNINSTALL" Value="1"/>
+    <ROW Property="AI_CLEAN_RESOURCES_USER_PROMPT_BASIC_UI" Value="0"/>
+    <ROW Property="AI_CLEAN_RESOURCES_USER_PROMPT_FULL_UI" Value="0"/>
+    <ROW Property="AI_MINDOTNETVERSION" MultiBuildValue="DefaultBuild:3.5" ValueLocId="-"/>
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPCONTACT" Value="support@inbox2.com"/>
+    <ROW Property="ARPHELPLINK" Value="http://help.inbox.com"/>
+    <ROW Property="ARPPRODUCTICON" Value="inbox2_icon.exe" Type="8"/>
+    <ROW Property="ARPURLINFOABOUT" Value="http://www.inbox2.com"/>
+    <ROW Property="BannerBitmap" MultiBuildValue="DefaultBuild:bannrbmp.bmp" Type="1"/>
+    <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="DialogBitmap" MultiBuildValue="DefaultBuild:dlgbmp.bmp" Type="1"/>
+    <ROW Property="Manufacturer" Value="Tabdeelee" ValueLocId="*"/>
+    <ROW Property="ProductCode" Value="1033:{FC4B5763-E425-4FCA-84A2-9E184A7054E3} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Inbox2 Desktop" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="0.5.0.1"/>
+    <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{3F6D5D7D-D95B-4DE6-8143-C956F521D700}"/>
+    <ROW Property="WindowsFamily9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows XP x86" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="Deskto~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="advanced_DIR" Directory_Parent="themes_DIR" DefaultDir="advanced"/>
+    <ROW Directory="advhr_DIR" Directory_Parent="plugins_DIR" DefaultDir="advhr"/>
+    <ROW Directory="advimage_DIR" Directory_Parent="plugins_DIR" DefaultDir="advimage"/>
+    <ROW Directory="advlink_DIR" Directory_Parent="plugins_DIR" DefaultDir="advlink"/>
+    <ROW Directory="advlist_DIR" Directory_Parent="plugins_DIR" DefaultDir="advlist"/>
+    <ROW Directory="autoresize_DIR" Directory_Parent="plugins_DIR" DefaultDir="autore~1|autoresize"/>
+    <ROW Directory="autosave_DIR" Directory_Parent="plugins_DIR" DefaultDir="autosave"/>
+    <ROW Directory="bbcode_DIR" Directory_Parent="plugins_DIR" DefaultDir="bbcode"/>
+    <ROW Directory="clearlooks2_DIR" Directory_Parent="skins_DIR" DefaultDir="clearl~1|clearlooks2"/>
+    <ROW Directory="contextmenu_DIR" Directory_Parent="plugins_DIR" DefaultDir="contex~1|contextmenu"/>
+    <ROW Directory="css_10_DIR" Directory_Parent="template_DIR" DefaultDir="css"/>
+    <ROW Directory="css_11_DIR" Directory_Parent="xhtmlxtras_DIR" DefaultDir="css"/>
+    <ROW Directory="css_1_DIR" Directory_Parent="advimage_DIR" DefaultDir="css"/>
+    <ROW Directory="css_2_DIR" Directory_Parent="advlink_DIR" DefaultDir="css"/>
+    <ROW Directory="css_3_DIR" Directory_Parent="fullpage_DIR" DefaultDir="css"/>
+    <ROW Directory="css_4_DIR" Directory_Parent="media_DIR" DefaultDir="css"/>
+    <ROW Directory="css_5_DIR" Directory_Parent="pagebreak_DIR" DefaultDir="css"/>
+    <ROW Directory="css_6_DIR" Directory_Parent="searchreplace_DIR" DefaultDir="css"/>
+    <ROW Directory="css_7_DIR" Directory_Parent="spellchecker_DIR" DefaultDir="css"/>
+    <ROW Directory="css_8_DIR" Directory_Parent="style_DIR" DefaultDir="css"/>
+    <ROW Directory="css_9_DIR" Directory_Parent="table_DIR" DefaultDir="css"/>
+    <ROW Directory="css_DIR" Directory_Parent="advhr_DIR" DefaultDir="css"/>
+    <ROW Directory="default_1_DIR" Directory_Parent="skins_2_DIR" DefaultDir="default"/>
+    <ROW Directory="default_DIR" Directory_Parent="skins_1_DIR" DefaultDir="default"/>
+    <ROW Directory="directionality_DIR" Directory_Parent="plugins_DIR" DefaultDir="direct~1|directionality"/>
+    <ROW Directory="emotions_DIR" Directory_Parent="plugins_DIR" DefaultDir="emotions"/>
+    <ROW Directory="example_DIR" Directory_Parent="plugins_DIR" DefaultDir="example"/>
+    <ROW Directory="fullpage_DIR" Directory_Parent="plugins_DIR" DefaultDir="fullpage"/>
+    <ROW Directory="fullscreen_DIR" Directory_Parent="plugins_DIR" DefaultDir="fullsc~1|fullscreen"/>
+    <ROW Directory="iespell_DIR" Directory_Parent="plugins_DIR" DefaultDir="iespell"/>
+    <ROW Directory="images_DIR" Directory_Parent="autosave_DIR" DefaultDir="images"/>
+    <ROW Directory="img_10_DIR" Directory_Parent="simple_DIR" DefaultDir="img"/>
+    <ROW Directory="img_11_DIR" Directory_Parent="o2k7_1_DIR" DefaultDir="img"/>
+    <ROW Directory="img_1_DIR" Directory_Parent="emotions_DIR" DefaultDir="img"/>
+    <ROW Directory="img_2_DIR" Directory_Parent="example_DIR" DefaultDir="img"/>
+    <ROW Directory="img_3_DIR" Directory_Parent="clearlooks2_DIR" DefaultDir="img"/>
+    <ROW Directory="img_4_DIR" Directory_Parent="media_DIR" DefaultDir="img"/>
+    <ROW Directory="img_5_DIR" Directory_Parent="pagebreak_DIR" DefaultDir="img"/>
+    <ROW Directory="img_6_DIR" Directory_Parent="spellchecker_DIR" DefaultDir="img"/>
+    <ROW Directory="img_7_DIR" Directory_Parent="advanced_DIR" DefaultDir="img"/>
+    <ROW Directory="img_8_DIR" Directory_Parent="default_DIR" DefaultDir="img"/>
+    <ROW Directory="img_9_DIR" Directory_Parent="o2k7_DIR" DefaultDir="img"/>
+    <ROW Directory="img_DIR" Directory_Parent="advimage_DIR" DefaultDir="img"/>
+    <ROW Directory="inlinepopups_DIR" Directory_Parent="plugins_DIR" DefaultDir="inline~1|inlinepopups"/>
+    <ROW Directory="insertdatetime_DIR" Directory_Parent="plugins_DIR" DefaultDir="insert~1|insertdatetime"/>
+    <ROW Directory="js_10_DIR" Directory_Parent="table_DIR" DefaultDir="js"/>
+    <ROW Directory="js_11_DIR" Directory_Parent="template_DIR" DefaultDir="js"/>
+    <ROW Directory="js_12_DIR" Directory_Parent="xhtmlxtras_DIR" DefaultDir="js"/>
+    <ROW Directory="js_13_DIR" Directory_Parent="advanced_DIR" DefaultDir="js"/>
+    <ROW Directory="js_1_DIR" Directory_Parent="advimage_DIR" DefaultDir="js"/>
+    <ROW Directory="js_2_DIR" Directory_Parent="advlink_DIR" DefaultDir="js"/>
+    <ROW Directory="js_3_DIR" Directory_Parent="emotions_DIR" DefaultDir="js"/>
+    <ROW Directory="js_4_DIR" Directory_Parent="example_DIR" DefaultDir="js"/>
+    <ROW Directory="js_5_DIR" Directory_Parent="fullpage_DIR" DefaultDir="js"/>
+    <ROW Directory="js_6_DIR" Directory_Parent="media_DIR" DefaultDir="js"/>
+    <ROW Directory="js_7_DIR" Directory_Parent="paste_DIR" DefaultDir="js"/>
+    <ROW Directory="js_8_DIR" Directory_Parent="searchreplace_DIR" DefaultDir="js"/>
+    <ROW Directory="js_9_DIR" Directory_Parent="style_DIR" DefaultDir="js"/>
+    <ROW Directory="js_DIR" Directory_Parent="advhr_DIR" DefaultDir="js"/>
+    <ROW Directory="jscripts_DIR" Directory_Parent="preview_DIR" DefaultDir="jscripts"/>
+    <ROW Directory="langs_10_DIR" Directory_Parent="searchreplace_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_11_DIR" Directory_Parent="style_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_12_DIR" Directory_Parent="table_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_13_DIR" Directory_Parent="template_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_14_DIR" Directory_Parent="xhtmlxtras_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_15_DIR" Directory_Parent="advanced_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_16_DIR" Directory_Parent="simple_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_1_DIR" Directory_Parent="advhr_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_2_DIR" Directory_Parent="advimage_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_3_DIR" Directory_Parent="advlink_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_4_DIR" Directory_Parent="autosave_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_5_DIR" Directory_Parent="emotions_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_6_DIR" Directory_Parent="example_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_7_DIR" Directory_Parent="fullpage_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_8_DIR" Directory_Parent="media_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_9_DIR" Directory_Parent="paste_DIR" DefaultDir="langs"/>
+    <ROW Directory="langs_DIR" Directory_Parent="tiny_mce_DIR" DefaultDir="langs"/>
+    <ROW Directory="layer_DIR" Directory_Parent="plugins_DIR" DefaultDir="layer"/>
+    <ROW Directory="legacyoutput_DIR" Directory_Parent="plugins_DIR" DefaultDir="legacy~1|legacyoutput"/>
+    <ROW Directory="media_DIR" Directory_Parent="plugins_DIR" DefaultDir="media"/>
+    <ROW Directory="nonbreaking_DIR" Directory_Parent="plugins_DIR" DefaultDir="nonbre~1|nonbreaking"/>
+    <ROW Directory="noneditable_DIR" Directory_Parent="plugins_DIR" DefaultDir="nonedi~1|noneditable"/>
+    <ROW Directory="o2k7_1_DIR" Directory_Parent="skins_2_DIR" DefaultDir="o2k7"/>
+    <ROW Directory="o2k7_DIR" Directory_Parent="skins_1_DIR" DefaultDir="o2k7"/>
+    <ROW Directory="pagebreak_DIR" Directory_Parent="plugins_DIR" DefaultDir="pagebr~1|pagebreak"/>
+    <ROW Directory="paste_DIR" Directory_Parent="plugins_DIR" DefaultDir="paste"/>
+    <ROW Directory="plugins_DIR" Directory_Parent="tiny_mce_DIR" DefaultDir="plugins"/>
+    <ROW Directory="preview_DIR" Directory_Parent="plugins_DIR" DefaultDir="preview"/>
+    <ROW Directory="print_DIR" Directory_Parent="plugins_DIR" DefaultDir="print"/>
+    <ROW Directory="prop_base_158_DIR" Directory_Parent="svn_79_DIR" DefaultDir="prop-b~1|prop-base"/>
+    <ROW Directory="prop_base_159_DIR" Directory_Parent="tmp_79_DIR" DefaultDir="prop-b~1|prop-base"/>
+    <ROW Directory="prop_base_74_DIR" Directory_Parent="svn_37_DIR" DefaultDir="prop-b~1|prop-base"/>
+    <ROW Directory="prop_base_75_DIR" Directory_Parent="tmp_37_DIR" DefaultDir="prop-b~1|prop-base"/>
+    <ROW Directory="props_158_DIR" Directory_Parent="svn_79_DIR" DefaultDir="props"/>
+    <ROW Directory="props_159_DIR" Directory_Parent="tmp_79_DIR" DefaultDir="props"/>
+    <ROW Directory="props_74_DIR" Directory_Parent="svn_37_DIR" DefaultDir="props"/>
+    <ROW Directory="props_75_DIR" Directory_Parent="tmp_37_DIR" DefaultDir="props"/>
+    <ROW Directory="save_DIR" Directory_Parent="plugins_DIR" DefaultDir="save"/>
+    <ROW Directory="searchreplace_DIR" Directory_Parent="plugins_DIR" DefaultDir="search~1|searchreplace"/>
+    <ROW Directory="simple_DIR" Directory_Parent="themes_DIR" DefaultDir="simple"/>
+    <ROW Directory="skins_1_DIR" Directory_Parent="advanced_DIR" DefaultDir="skins"/>
+    <ROW Directory="skins_2_DIR" Directory_Parent="simple_DIR" DefaultDir="skins"/>
+    <ROW Directory="skins_DIR" Directory_Parent="inlinepopups_DIR" DefaultDir="skins"/>
+    <ROW Directory="spellchecker_DIR" Directory_Parent="plugins_DIR" DefaultDir="spellc~1|spellchecker"/>
+    <ROW Directory="style_DIR" Directory_Parent="plugins_DIR" DefaultDir="style"/>
+    <ROW Directory="svn_37_DIR" Directory_Parent="iespell_DIR" DefaultDir="svn~1|.svn"/>
+    <ROW Directory="svn_79_DIR" Directory_Parent="css_10_DIR" DefaultDir="svn~1|.svn"/>
+    <ROW Directory="tabfocus_DIR" Directory_Parent="plugins_DIR" DefaultDir="tabfocus"/>
+    <ROW Directory="table_DIR" Directory_Parent="plugins_DIR" DefaultDir="table"/>
+    <ROW Directory="template_DIR" Directory_Parent="plugins_DIR" DefaultDir="template"/>
+    <ROW Directory="text_base_158_DIR" Directory_Parent="svn_79_DIR" DefaultDir="text-b~1|text-base"/>
+    <ROW Directory="text_base_159_DIR" Directory_Parent="tmp_79_DIR" DefaultDir="text-b~1|text-base"/>
+    <ROW Directory="text_base_74_DIR" Directory_Parent="svn_37_DIR" DefaultDir="text-b~1|text-base"/>
+    <ROW Directory="text_base_75_DIR" Directory_Parent="tmp_37_DIR" DefaultDir="text-b~1|text-base"/>
+    <ROW Directory="themes_DIR" Directory_Parent="tiny_mce_DIR" DefaultDir="themes"/>
+    <ROW Directory="tiny_mce_DIR" Directory_Parent="APPDIR" DefaultDir="tiny_mce"/>
+    <ROW Directory="tmp_37_DIR" Directory_Parent="svn_37_DIR" DefaultDir="tmp"/>
+    <ROW Directory="tmp_79_DIR" Directory_Parent="svn_79_DIR" DefaultDir="tmp"/>
+    <ROW Directory="utils_DIR" Directory_Parent="tiny_mce_DIR" DefaultDir="utils"/>
+    <ROW Directory="visualchars_DIR" Directory_Parent="plugins_DIR" DefaultDir="visual~1|visualchars"/>
+    <ROW Directory="wordcount_DIR" Directory_Parent="plugins_DIR" DefaultDir="wordco~1|wordcount"/>
+    <ROW Directory="xhtmlxtras_DIR" Directory_Parent="plugins_DIR" DefaultDir="xhtmlx~1|xhtmlxtras"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="Cjc.AwesomiumWrapper.pdb" ComponentId="{D6DDDE24-D203-4C6C-AA1B-FFF5EBF72EE7}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.exe.config" Type="0"/>
+    <ROW Component="FluidKit.dll" ComponentId="{6F1E2D73-0C4E-49F1-B1F5-BF6222AB6686}" Directory_="APPDIR" Attributes="0" KeyPath="FluidKit.dll"/>
+    <ROW Component="Google.GData.AccessControl.dll" ComponentId="{1B902A18-547A-4778-8E35-E58657271512}" Directory_="APPDIR" Attributes="0" KeyPath="Google.GData.AccessControl.dll"/>
+    <ROW Component="Google.GData.Calendar.dll" ComponentId="{562A0181-8AC1-47A0-96EE-6807848CBF37}" Directory_="APPDIR" Attributes="0" KeyPath="Google.GData.Calendar.dll"/>
+    <ROW Component="Google.GData.Client.dll" ComponentId="{9EEE1CF0-BAAE-4DF2-81D8-F9732C91CF3F}" Directory_="APPDIR" Attributes="0" KeyPath="Google.GData.Client.dll"/>
+    <ROW Component="Google.GData.Contacts.dll" ComponentId="{ED4D7081-7527-4B7C-8FF9-0B334210E204}" Directory_="APPDIR" Attributes="0" KeyPath="Google.GData.Contacts.dll"/>
+    <ROW Component="Google.GData.Extensions.dll" ComponentId="{40B70108-8062-49D8-B236-A131617E737F}" Directory_="APPDIR" Attributes="0" KeyPath="Google.GData.Extensions.dll"/>
+    <ROW Component="Hammock.ClientProfile.dll" ComponentId="{48C57267-425D-486D-AD82-7BCD7A33CC29}" Directory_="APPDIR" Attributes="0" KeyPath="Hammock.ClientProfile.dll"/>
+    <ROW Component="ICSharpCode.SharpZipLib.dll" ComponentId="{D6739242-EDB9-4F55-92CA-8172470133AB}" Directory_="APPDIR" Attributes="0" KeyPath="ICSharpCode.SharpZipLib.dll"/>
+    <ROW Component="Inbox2.Channels.AOL.dll" ComponentId="{A443915F-5608-417D-842D-72B9A77E39E0}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.AOL.dll"/>
+    <ROW Component="Inbox2.Channels.Exchange.dll" ComponentId="{70C75A4C-1CF0-46D9-B4A0-253F37E6AFA9}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Exchange.dll"/>
+    <ROW Component="Inbox2.Channels.Facebook.dll" ComponentId="{94F86EFB-D07B-457F-BA49-A7239FB9F6FB}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Facebook.dll"/>
+    <ROW Component="Inbox2.Channels.GMail.dll" ComponentId="{D7A7B4D3-0007-47D4-9808-732CE1C57F29}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.GMail.dll"/>
+    <ROW Component="Inbox2.Channels.Hotmail.dll" ComponentId="{482D570A-D0D2-4305-A4B8-7EFEDF24CFF1}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Hotmail.dll"/>
+    <ROW Component="Inbox2.Channels.Hyves.dll" ComponentId="{9B1F15AE-0195-46CB-81B7-7E119B446246}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Hyves.dll"/>
+    <ROW Component="Inbox2.Channels.Imap2.dll" ComponentId="{02479410-41FC-48B4-9187-B21E1B15BF21}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Imap2.dll"/>
+    <ROW Component="Inbox2.Channels.LinkedIn.dll" ComponentId="{F66FF8CB-F172-43D7-99ED-448C7E889384}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.LinkedIn.dll"/>
+    <ROW Component="Inbox2.Channels.Other.dll" ComponentId="{7492DC2E-641C-4C16-BEEF-1C8DC476E605}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Other.dll"/>
+    <ROW Component="Inbox2.Channels.Pop3.dll" ComponentId="{2E77D1CB-0D01-48F6-BD35-358DDB15AB8D}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Pop3.dll"/>
+    <ROW Component="Inbox2.Channels.Smtp.dll" ComponentId="{65E10615-BD2D-4FE2-BF89-552C69E8AD08}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Smtp.dll"/>
+    <ROW Component="Inbox2.Channels.Twitter.dll" ComponentId="{51F51987-3AD4-484E-98F5-91275B2B298E}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Twitter.dll"/>
+    <ROW Component="Inbox2.Channels.Yahoo.dll" ComponentId="{500C57CA-EA33-4AF0-8FD3-65AF0CB9D5F7}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Yahoo.dll"/>
+    <ROW Component="Inbox2.Channels.Yammer.dll" ComponentId="{07FFF679-3295-4CB9-9258-901D3A462CCA}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Channels.Yammer.dll"/>
+    <ROW Component="Inbox2.Core.Configuration.dll" ComponentId="{DB476A1A-87BA-4BEC-BEDB-DF716286D674}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Core.Configuration.dll"/>
+    <ROW Component="Inbox2.Core.DataAccess.dll" ComponentId="{9C5D4A25-C50E-4334-A12A-E4EE1C889D1C}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Core.DataAccess.dll"/>
+    <ROW Component="Inbox2.Core.LauncherCommands.dll" ComponentId="{F27D4384-48D5-48FD-AEBD-CD0FCD85F16F}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Core.LauncherCommands.dll"/>
+    <ROW Component="Inbox2.Core.Search.dll" ComponentId="{F8921F5F-AAE6-4937-92A8-7C1A83E74336}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Core.Search.dll"/>
+    <ROW Component="Inbox2.Core.Storage.dll" ComponentId="{F929B0C2-78F5-48BC-A219-5544BC096B14}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Core.Storage.dll"/>
+    <ROW Component="Inbox2.Core.Threading.dll" ComponentId="{14E4C7CD-92C9-4C8D-8692-F33BBB0BDD11}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Core.Threading.dll"/>
+    <ROW Component="Inbox2.Core.dll" ComponentId="{40D7731D-0DAA-4DAC-AB73-2ACECF66FF4E}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Core.dll"/>
+    <ROW Component="Inbox2.Framework.Extensions.dll" ComponentId="{A7B64153-C4D2-48E6-A72A-FD35538A1CC2}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.Extensions.dll"/>
+    <ROW Component="Inbox2.Framework.Interfaces.dll" ComponentId="{139E10C1-8951-4973-B76D-1C53EEFC5BA5}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.Interfaces.dll"/>
+    <ROW Component="Inbox2.Framework.Interop.dll" ComponentId="{04E41E27-E90A-41D1-BEC0-2D481EA057F5}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.Interop.dll"/>
+    <ROW Component="Inbox2.Framework.Localization.dll" ComponentId="{37D8B092-F276-4F68-ADDD-CE03C2B2C923}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.Localization.dll"/>
+    <ROW Component="Inbox2.Framework.Persistance.dll" ComponentId="{E4F0017F-3E64-4934-8A7E-79BB93C9A57B}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.Persistance.dll"/>
+    <ROW Component="Inbox2.Framework.Plugins.dll" ComponentId="{7A933C48-77EC-456F-8FD2-B5702B70EAFB}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.Plugins.dll"/>
+    <ROW Component="Inbox2.Framework.Threading.dll" ComponentId="{97AD6370-A04F-426A-8392-4E42AC4834FF}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.Threading.dll"/>
+    <ROW Component="Inbox2.Framework.UI.dll" ComponentId="{3DFAB3B0-6885-455A-AB23-C982A3AC6D56}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.UI.dll"/>
+    <ROW Component="Inbox2.Framework.Utils.dll" ComponentId="{07A06625-A17D-45B8-9B6E-A05A69E0C830}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.Utils.dll"/>
+    <ROW Component="Inbox2.Framework.VirtualMailBox.dll" ComponentId="{F94DA99B-1C65-471B-A9E2-3AF671EC6DC7}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.VirtualMailBox.dll"/>
+    <ROW Component="Inbox2.Framework.dll" ComponentId="{48E45FDD-CD26-4B0D-970B-3D9E2A9F793E}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Framework.dll"/>
+    <ROW Component="Inbox2.Platform.Channels.dll" ComponentId="{34BE65BF-9945-408A-93F5-98D2D49EA920}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Platform.Channels.dll"/>
+    <ROW Component="Inbox2.Platform.Framework.dll" ComponentId="{33495D22-9C4F-4F17-8499-85C7F88F786E}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Platform.Framework.dll"/>
+    <ROW Component="Inbox2.Platform.Interfaces.dll" ComponentId="{28607675-EF20-49F2-963E-E94592DD77F0}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Platform.Interfaces.dll"/>
+    <ROW Component="Inbox2.Platform.Logging.dll" ComponentId="{621FE683-7C8C-4B77-8731-7DEBA2C134C4}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Platform.Logging.dll"/>
+    <ROW Component="Inbox2.Plugins.ColumnSearch.dll" ComponentId="{3333289D-9517-462E-8510-93DAD3B9B486}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Plugins.ColumnSearch.dll"/>
+    <ROW Component="Inbox2.Plugins.Contacts.dll" ComponentId="{B0E9BE3D-4A24-47B4-B171-E3F18620DFA5}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Plugins.Contacts.dll"/>
+    <ROW Component="Inbox2.Plugins.Conversations.dll" ComponentId="{ABF1977C-2B05-4A85-974D-9B94FF353F35}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Plugins.Conversations.dll"/>
+    <ROW Component="Inbox2.Plugins.Documents.dll" ComponentId="{38D49A6C-7976-4325-8306-176E6CD20A41}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Plugins.Documents.dll"/>
+    <ROW Component="Inbox2.Plugins.StatusUpdates.dll" ComponentId="{37E9419F-D69F-47CF-8BDE-C91F54159E15}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Plugins.StatusUpdates.dll"/>
+    <ROW Component="Inbox2.UI.Launcher.dll" ComponentId="{70656F69-529E-4ECE-8860-B4DE30C4DAAC}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.UI.Launcher.dll"/>
+    <ROW Component="Inbox2.UI.Resources.dll" ComponentId="{FE68C813-4357-4FAD-990E-2D839ACBA11C}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.UI.Resources.dll"/>
+    <ROW Component="Inbox2.UI.Themes.DarkSide.dll" ComponentId="{E82B98AB-9AD8-48E2-8E8E-CD67CA175385}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.UI.Themes.DarkSide.dll"/>
+    <ROW Component="Inbox2.UI.dll" ComponentId="{A974D605-DEE3-498C-A8B0-658ABA314317}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.UI.dll"/>
+    <ROW Component="Inbox2.Utils.Scraper.dll" ComponentId="{BC50C11D-FA41-41E5-8860-11F81B4132A5}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.Utils.Scraper.dll"/>
+    <ROW Component="Inbox2.exe" ComponentId="{9C5C8BFF-978F-4AEE-8AEC-05BF20A96830}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2.exe"/>
+    <ROW Component="Inbox2DefaultMailClient.exe" ComponentId="{F76563EA-4A70-4B44-B880-C6EBF3139D08}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2DefaultMailClient.exe"/>
+    <ROW Component="Inbox2Upgrade.exe" ComponentId="{FBDC7C58-37E4-4D88-8B0F-82369D500AE6}" Directory_="APPDIR" Attributes="0" KeyPath="Inbox2Upgrade.exe"/>
+    <ROW Component="Interop.SHDocVw.dll" ComponentId="{6A65AD18-F818-4C80-9287-F212E5D2B8C7}" Directory_="APPDIR" Attributes="0" KeyPath="Interop.SHDocVw.dll"/>
+    <ROW Component="Interop.Shell32.dll" ComponentId="{0F74FB96-2CC5-4954-9AE5-A679D7DCE326}" Directory_="APPDIR" Attributes="0" KeyPath="Interop.Shell32.dll"/>
+    <ROW Component="IronPython.dll" ComponentId="{BBBDC123-12FB-4A04-A5D1-FE11D5306871}" Directory_="APPDIR" Attributes="0" KeyPath="IronPython.dll"/>
+    <ROW Component="Lucene.Net.dll" ComponentId="{FCAB2596-A369-4E48-829B-866C6E8841F9}" Directory_="APPDIR" Attributes="0" KeyPath="Lucene.Net.dll"/>
+    <ROW Component="LumiSoft.Net.dll" ComponentId="{A0C89E7A-00C6-456B-80A7-1F6AD3A9BC6A}" Directory_="APPDIR" Attributes="0" KeyPath="LumiSoft.Net.dll"/>
+    <ROW Component="Microsoft.Dynamic.dll" ComponentId="{70D4E6A4-7B3B-4691-9EF9-06CFC34E39B0}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Dynamic.dll"/>
+    <ROW Component="Microsoft.Scripting.Core.dll" ComponentId="{6AAEF8D7-C73E-4F37-808E-0016E3156668}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Scripting.Core.dll"/>
+    <ROW Component="Microsoft.Scripting.Debugging.dll" ComponentId="{72E1A91C-1284-477E-BFCF-3C1B9017721B}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Scripting.Debugging.dll"/>
+    <ROW Component="Microsoft.Scripting.ExtensionAttribute.dll" ComponentId="{F5611932-20A8-44A6-AF9C-9A1D1BD9A921}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Scripting.ExtensionAttribute.dll"/>
+    <ROW Component="Microsoft.Scripting.dll" ComponentId="{86BFCA00-B4CC-40B6-9162-CEA9AFD2E24C}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Scripting.dll"/>
+    <ROW Component="Microsoft.mshtml.dll" ComponentId="{1E22179D-AE46-4D56-B9C2-D003B6806BE0}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.mshtml.dll"/>
+    <ROW Component="MsHtmHstInterop.dll" ComponentId="{3AFD47D0-ECB9-4A27-B2EA-5F9CDD05D52E}" Directory_="APPDIR" Attributes="0" KeyPath="MsHtmHstInterop.dll"/>
+    <ROW Component="MySql.Data.dll" ComponentId="{CDC37322-C2D4-4079-9BC0-331B888B10BD}" Directory_="APPDIR" Attributes="0" KeyPath="MySql.Data.dll"/>
+    <ROW Component="Newtonsoft.Json.Net35.dll" ComponentId="{0104FC1E-2BD1-4BD5-8380-5F16EE01CB20}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.Net35.dll"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{7CA97674-2106-443F-8AE3-C8D1955C86AD}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
+    <ROW Component="PyBinding.dll" ComponentId="{673AB085-62DF-479A-80CD-3299C7D4E6C2}" Directory_="APPDIR" Attributes="0" KeyPath="PyBinding.dll"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{55762DB5-530C-4AFB-B487-2CC3C557B7E4}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="System.ComponentModel.Composition.dll" ComponentId="{3CAAA252-00CB-4873-ABC3-E672C84F6A5A}" Directory_="APPDIR" Attributes="0" KeyPath="System.ComponentModel.Composition.dll"/>
+    <ROW Component="System.Data.SQLite.dll" ComponentId="{9C62CF4D-871D-4B5E-8414-BB0D5DD7E20B}" Directory_="APPDIR" Attributes="0" KeyPath="System.Data.SQLite.dll"/>
+    <ROW Component="TweetSharp.dll" ComponentId="{45220705-8309-4458-B4D5-80DE60152994}" Directory_="APPDIR" Attributes="0" KeyPath="TweetSharp.dll"/>
+    <ROW Component="abbr.htm" ComponentId="{601929DD-9C63-462F-9A0A-FAD64F6957BD}" Directory_="xhtmlxtras_DIR" Attributes="0" KeyPath="abbr.htm" Type="0"/>
+    <ROW Component="abbr.js" ComponentId="{B1F8AC8A-F72D-461D-834F-D140632071D3}" Directory_="js_12_DIR" Attributes="0" KeyPath="abbr.js" Type="0"/>
+    <ROW Component="about.htm" ComponentId="{72D1D6C6-18A3-411F-B005-D379825613E8}" Directory_="advanced_DIR" Attributes="0" KeyPath="about.htm" Type="0"/>
+    <ROW Component="about.js" ComponentId="{C2640306-19CB-490C-BD5A-AAC9A80C6EE4}" Directory_="js_13_DIR" Attributes="0" KeyPath="about.js" Type="0"/>
+    <ROW Component="advhr.css" ComponentId="{1062A41C-6551-440D-9B29-BACAE82BB41D}" Directory_="css_DIR" Attributes="0" KeyPath="advhr.css" Type="0"/>
+    <ROW Component="advimage.css" ComponentId="{8DB83FE6-EB67-4E10-9883-E076BA99B448}" Directory_="css_1_DIR" Attributes="0" KeyPath="advimage.css" Type="0"/>
+    <ROW Component="advlink.css" ComponentId="{A979FF9C-1784-41B4-8C0D-56AC7EECE85E}" Directory_="css_2_DIR" Attributes="0" KeyPath="advlink.css" Type="0"/>
+    <ROW Component="advlink.js" ComponentId="{7808FBC3-94BD-4C6C-B40B-8FC37BBBF393}" Directory_="js_2_DIR" Attributes="0" KeyPath="advlink.js" Type="0"/>
+    <ROW Component="alert.gif" ComponentId="{572A4ABA-698C-4C97-80CB-83DF6150CB54}" Directory_="img_3_DIR" Attributes="0" KeyPath="alert.gif" Type="0"/>
+    <ROW Component="attributes.css" ComponentId="{3B2AC4B5-CF16-4DD4-A8B7-E6E1F50F937B}" Directory_="css_11_DIR" Attributes="0" KeyPath="attributes.css" Type="0"/>
+    <ROW Component="blank.htm" ComponentId="{D9D1BD18-9BF2-45AF-A6C4-AD178C2698E0}" Directory_="template_DIR" Attributes="0" KeyPath="blank.htm" Type="0"/>
+    <ROW Component="button_bg.png" ComponentId="{F1675776-DFA2-4195-90CB-66766EEFDF78}" Directory_="img_9_DIR" Attributes="0" KeyPath="button_bg.png" Type="0"/>
+    <ROW Component="button_bg.png_1" ComponentId="{95DAB6D9-BB67-41C5-B801-3CE530967151}" Directory_="img_11_DIR" Attributes="0" KeyPath="button_bg.png_1" Type="0"/>
+    <ROW Component="buttons.png" ComponentId="{F057932D-C0DF-483A-ADB2-0114025E3EBC}" Directory_="img_8_DIR" Attributes="0" KeyPath="buttons.png" Type="0"/>
+    <ROW Component="cell.css" ComponentId="{F313CE68-A6C7-4826-AED6-57618F97424C}" Directory_="css_9_DIR" Attributes="0" KeyPath="cell.css" Type="0"/>
+    <ROW Component="cell.htm" ComponentId="{498FAE88-11FE-4ABE-A688-F305EFF79084}" Directory_="table_DIR" Attributes="0" KeyPath="cell.htm" Type="0"/>
+    <ROW Component="cell.js" ComponentId="{829BE91A-9575-4381-854A-3043BC9EE8BD}" Directory_="js_10_DIR" Attributes="0" KeyPath="cell.js" Type="0"/>
+    <ROW Component="colorpicker.jpg" ComponentId="{AF81B788-7482-4D25-96E4-467D9B48C6E4}" Directory_="img_7_DIR" Attributes="0" KeyPath="colorpicker.jpg" Type="0"/>
+    <ROW Component="content.css" ComponentId="{CB177A84-3F4E-4DD8-8F86-7FC6DB4A0DF2}" Directory_="css_4_DIR" Attributes="0" KeyPath="content.css" Type="0"/>
+    <ROW Component="content.css_1" ComponentId="{0D2D38CB-612F-4AF7-8101-431CCF0BDDC0}" Directory_="css_5_DIR" Attributes="0" KeyPath="content.css_1" Type="0"/>
+    <ROW Component="content.css_2" ComponentId="{A41D1DD9-30CB-4908-BBC5-BEF433F67DD9}" Directory_="css_7_DIR" Attributes="0" KeyPath="content.css_2" Type="0"/>
+    <ROW Component="content.css_3" ComponentId="{4243BCF1-2440-45D9-AAFB-50FFEEDE137E}" Directory_="default_DIR" Attributes="0" KeyPath="content.css_3" Type="0"/>
+    <ROW Component="content.css_4" ComponentId="{06406F61-96EE-42E7-BBC0-247F2C866304}" Directory_="o2k7_DIR" Attributes="0" KeyPath="content.css_4" Type="0"/>
+    <ROW Component="content.css_5" ComponentId="{16F65973-9395-4AB9-9876-18C3B48515A9}" Directory_="default_1_DIR" Attributes="0" KeyPath="content.css_5" Type="0"/>
+    <ROW Component="content.css_6" ComponentId="{832ABE84-C696-424E-AF91-8451121B0A9C}" Directory_="o2k7_1_DIR" Attributes="0" KeyPath="content.css_6" Type="0"/>
+    <ROW Component="dialog.htm" ComponentId="{482533C2-3B91-47A5-9530-3CA733DD13CA}" Directory_="example_DIR" Attributes="0" KeyPath="dialog.htm" Type="0"/>
+    <ROW Component="dialog.js" ComponentId="{788BE72E-675C-4368-885F-438C0A8350EE}" Directory_="js_4_DIR" Attributes="0" KeyPath="dialog.js" Type="0"/>
+    <ROW Component="editable_selects.js" ComponentId="{ED89DC8F-FC22-4EAC-9BC1-4D58501DADA8}" Directory_="utils_DIR" Attributes="0" KeyPath="editable_selects.js" Type="0"/>
+    <ROW Component="editor_plugin.js" ComponentId="{5D4505C7-2287-4202-AC4A-E5A0FA635823}" Directory_="advhr_DIR" Attributes="0" KeyPath="editor_plugin.js" Type="0"/>
+    <ROW Component="editor_plugin.js.svn_base_12" ComponentId="{412441BF-B66E-445A-BA97-1128BF8B41AD}" Directory_="text_base_74_DIR" Attributes="0" KeyPath="editor_plugin.js.svn_base_13" Type="0"/>
+    <ROW Component="editor_plugin.js_1" ComponentId="{1B7BA457-8DB4-462C-A511-108F1AAA5EFA}" Directory_="advimage_DIR" Attributes="0" KeyPath="editor_plugin.js_1" Type="0"/>
+    <ROW Component="editor_plugin.js_10" ComponentId="{76D2A19A-F6C9-45AF-942E-721E7D7F161E}" Directory_="fullpage_DIR" Attributes="0" KeyPath="editor_plugin.js_11" Type="0"/>
+    <ROW Component="editor_plugin.js_11" ComponentId="{22FF2132-D163-44BB-B8AA-4D2A9705D776}" Directory_="fullscreen_DIR" Attributes="0" KeyPath="editor_plugin.js_12" Type="0"/>
+    <ROW Component="editor_plugin.js_12" ComponentId="{1C8E5275-5465-4A03-AC29-B5F59C72C3B4}" Directory_="iespell_DIR" Attributes="0" KeyPath="editor_plugin.js_13" Type="0"/>
+    <ROW Component="editor_plugin.js_13" ComponentId="{C98F94E5-7421-4C26-8A41-48C3B1BE95C4}" Directory_="inlinepopups_DIR" Attributes="0" KeyPath="editor_plugin.js_14" Type="0"/>
+    <ROW Component="editor_plugin.js_14" ComponentId="{28C7F9F1-38FA-47EF-A0E0-4E0620416F44}" Directory_="insertdatetime_DIR" Attributes="0" KeyPath="editor_plugin.js_15" Type="0"/>
+    <ROW Component="editor_plugin.js_15" ComponentId="{C2990390-47D9-4545-B016-AED1D8BDCB7F}" Directory_="layer_DIR" Attributes="0" KeyPath="editor_plugin.js_16" Type="0"/>
+    <ROW Component="editor_plugin.js_16" ComponentId="{7E268C14-9B6C-4082-8209-60063E1CEF94}" Directory_="legacyoutput_DIR" Attributes="0" KeyPath="editor_plugin.js_17" Type="0"/>
+    <ROW Component="editor_plugin.js_17" ComponentId="{294A4565-CCA3-4D3D-B49C-7075C7E1CFC2}" Directory_="media_DIR" Attributes="0" KeyPath="editor_plugin.js_18" Type="0"/>
+    <ROW Component="editor_plugin.js_18" ComponentId="{F4C096BC-7187-46F3-BA76-D99BFA940026}" Directory_="nonbreaking_DIR" Attributes="0" KeyPath="editor_plugin.js_19" Type="0"/>
+    <ROW Component="editor_plugin.js_19" ComponentId="{C558A87C-8816-4DFB-B6FB-42F234963EFA}" Directory_="noneditable_DIR" Attributes="0" KeyPath="editor_plugin.js_20" Type="0"/>
+    <ROW Component="editor_plugin.js_2" ComponentId="{67820BBF-81AF-4D73-A6FD-5269C235E380}" Directory_="advlink_DIR" Attributes="0" KeyPath="editor_plugin.js_2" Type="0"/>
+    <ROW Component="editor_plugin.js_20" ComponentId="{D1A1EAB2-EBFF-4038-9985-AF0EDC341464}" Directory_="pagebreak_DIR" Attributes="0" KeyPath="editor_plugin.js_21" Type="0"/>
+    <ROW Component="editor_plugin.js_21" ComponentId="{475D5F69-9EFF-4CCC-B7E8-AF3DC6946794}" Directory_="paste_DIR" Attributes="0" KeyPath="editor_plugin.js_22" Type="0"/>
+    <ROW Component="editor_plugin.js_22" ComponentId="{CB8BCE68-2A10-4D32-BB10-1CB180780376}" Directory_="preview_DIR" Attributes="0" KeyPath="editor_plugin.js_23" Type="0"/>
+    <ROW Component="editor_plugin.js_23" ComponentId="{B246D064-E0A8-4372-A3F5-A6E3A7AFB14D}" Directory_="print_DIR" Attributes="0" KeyPath="editor_plugin.js_24" Type="0"/>
+    <ROW Component="editor_plugin.js_24" ComponentId="{46487152-0DE3-49B5-972C-0604EB17725B}" Directory_="save_DIR" Attributes="0" KeyPath="editor_plugin.js_25" Type="0"/>
+    <ROW Component="editor_plugin.js_25" ComponentId="{1EFC2E29-6517-4E39-A2B9-4CB079ABF1BC}" Directory_="searchreplace_DIR" Attributes="0" KeyPath="editor_plugin.js_26" Type="0"/>
+    <ROW Component="editor_plugin.js_26" ComponentId="{8B9C511F-52E7-432E-823B-1A52FA070B77}" Directory_="spellchecker_DIR" Attributes="0" KeyPath="editor_plugin.js_27" Type="0"/>
+    <ROW Component="editor_plugin.js_27" ComponentId="{60D705BE-FB7B-46EA-8B01-112E5A042E04}" Directory_="style_DIR" Attributes="0" KeyPath="editor_plugin.js_28" Type="0"/>
+    <ROW Component="editor_plugin.js_28" ComponentId="{35B806BF-B3D4-4CBF-9BF6-7EB479B8B149}" Directory_="tabfocus_DIR" Attributes="0" KeyPath="editor_plugin.js_29" Type="0"/>
+    <ROW Component="editor_plugin.js_29" ComponentId="{C7CBEF99-285E-42A2-8AA3-3CF74341C69D}" Directory_="visualchars_DIR" Attributes="0" KeyPath="editor_plugin.js_32" Type="0"/>
+    <ROW Component="editor_plugin.js_3" ComponentId="{01CF34F0-B5AF-4596-AF74-803464572E8B}" Directory_="advlist_DIR" Attributes="0" KeyPath="editor_plugin.js_3" Type="0"/>
+    <ROW Component="editor_plugin.js_30" ComponentId="{5F5992E7-80E4-47C8-B977-70DC4E0784CF}" Directory_="wordcount_DIR" Attributes="0" KeyPath="editor_plugin.js_33" Type="0"/>
+    <ROW Component="editor_plugin.js_4" ComponentId="{918CB1C0-9BFA-4A9F-B481-B93AD1BDB4CB}" Directory_="autoresize_DIR" Attributes="0" KeyPath="editor_plugin.js_4" Type="0"/>
+    <ROW Component="editor_plugin.js_5" ComponentId="{0AA39827-7049-4AEC-9D19-E5CE9076C301}" Directory_="autosave_DIR" Attributes="0" KeyPath="editor_plugin.js_5" Type="0"/>
+    <ROW Component="editor_plugin.js_6" ComponentId="{0E331CEC-62D2-4249-8BC8-BB7CEC1E2C53}" Directory_="bbcode_DIR" Attributes="0" KeyPath="editor_plugin.js_6" Type="0"/>
+    <ROW Component="editor_plugin.js_7" ComponentId="{485DE9B6-BCE6-4799-AF73-420061156D16}" Directory_="contextmenu_DIR" Attributes="0" KeyPath="editor_plugin.js_7" Type="0"/>
+    <ROW Component="editor_plugin.js_8" ComponentId="{B1CA0712-241C-4843-B79F-1AC3AEEED66B}" Directory_="directionality_DIR" Attributes="0" KeyPath="editor_plugin.js_8" Type="0"/>
+    <ROW Component="editor_plugin.js_9" ComponentId="{FDAEFB09-2BE8-4504-A932-F3CD14F46EBA}" Directory_="emotions_DIR" Attributes="0" KeyPath="editor_plugin.js_9" Type="0"/>
+    <ROW Component="editor_template.js" ComponentId="{8041B75E-CF28-4D00-B324-BBA7CF6F8796}" Directory_="simple_DIR" Attributes="0" KeyPath="editor_template.js_1" Type="0"/>
+    <ROW Component="embed.js" ComponentId="{DDF34ABB-2C1D-4163-BC8B-FBF58AAEBC36}" Directory_="js_6_DIR" Attributes="0" KeyPath="embed.js" Type="0"/>
+    <ROW Component="embed.js_1" ComponentId="{FAF2B796-596D-4F44-8514-3F74A0794A4F}" Directory_="jscripts_DIR" Attributes="0" KeyPath="embed.js_1" Type="0"/>
+    <ROW Component="emotions.js" ComponentId="{B3F6856C-4F1A-47EA-9034-AC743A71926F}" Directory_="js_3_DIR" Attributes="0" KeyPath="emotions.js" Type="0"/>
+    <ROW Component="en.js" ComponentId="{D4E47E85-7581-4CFA-866E-BEFEA68FABCB}" Directory_="langs_DIR" Attributes="0" KeyPath="en.js" Type="0"/>
+    <ROW Component="en.js_1" ComponentId="{5AC320E3-509F-4A49-928B-D254E325FB9A}" Directory_="langs_4_DIR" Attributes="0" KeyPath="en.js_1" Type="0"/>
+    <ROW Component="en.js_2" ComponentId="{782DD916-8848-48F9-89FE-14716DF753D1}" Directory_="langs_6_DIR" Attributes="0" KeyPath="en.js_2" Type="0"/>
+    <ROW Component="en.js_3" ComponentId="{C6EB2031-7969-4F26-B4CB-8FC1ACB3B381}" Directory_="langs_15_DIR" Attributes="0" KeyPath="en.js_3" Type="0"/>
+    <ROW Component="en.js_4" ComponentId="{5D974558-6059-4E5D-850C-4B3ABD356EB9}" Directory_="langs_16_DIR" Attributes="0" KeyPath="en.js_4" Type="0"/>
+    <ROW Component="en_dlg.js" ComponentId="{E8221564-3D6A-4D8F-B5B6-9FFAB3A32C93}" Directory_="langs_1_DIR" Attributes="0" KeyPath="en_dlg.js" Type="0"/>
+    <ROW Component="en_dlg.js_1" ComponentId="{246E848F-CDCD-461F-AEB9-AE5C04A948E1}" Directory_="langs_2_DIR" Attributes="0" KeyPath="en_dlg.js_1" Type="0"/>
+    <ROW Component="en_dlg.js_10" ComponentId="{3611CBE8-461F-4776-A399-FE8F9B9CA062}" Directory_="langs_13_DIR" Attributes="0" KeyPath="en_dlg.js_11" Type="0"/>
+    <ROW Component="en_dlg.js_11" ComponentId="{56625DAF-1032-49AA-A02F-CA18F62E1CA9}" Directory_="langs_14_DIR" Attributes="0" KeyPath="en_dlg.js_12" Type="0"/>
+    <ROW Component="en_dlg.js_2" ComponentId="{0EA4F1D0-FFF4-449C-95EB-88FD6D1F818B}" Directory_="langs_3_DIR" Attributes="0" KeyPath="en_dlg.js_2" Type="0"/>
+    <ROW Component="en_dlg.js_3" ComponentId="{F51C4704-BBDB-4145-8B27-DD74878032BB}" Directory_="langs_5_DIR" Attributes="0" KeyPath="en_dlg.js_3" Type="0"/>
+    <ROW Component="en_dlg.js_4" ComponentId="{D85D819F-7D84-407F-9F51-DE1F08443FAC}" Directory_="langs_7_DIR" Attributes="0" KeyPath="en_dlg.js_5" Type="0"/>
+    <ROW Component="en_dlg.js_5" ComponentId="{013501D9-110E-4D56-9D96-9F13C1792727}" Directory_="langs_8_DIR" Attributes="0" KeyPath="en_dlg.js_6" Type="0"/>
+    <ROW Component="en_dlg.js_6" ComponentId="{216EBE22-D4E3-4F3C-8337-417A27B38F6D}" Directory_="langs_9_DIR" Attributes="0" KeyPath="en_dlg.js_7" Type="0"/>
+    <ROW Component="en_dlg.js_7" ComponentId="{F2B0E079-9DD3-4EF5-B331-D32288C9482F}" Directory_="langs_10_DIR" Attributes="0" KeyPath="en_dlg.js_8" Type="0"/>
+    <ROW Component="en_dlg.js_8" ComponentId="{842EF150-6469-4537-9AF5-528C6B44A100}" Directory_="langs_11_DIR" Attributes="0" KeyPath="en_dlg.js_9" Type="0"/>
+    <ROW Component="en_dlg.js_9" ComponentId="{48B420E1-F277-46A2-BD1A-89F1CF4A4BFD}" Directory_="langs_12_DIR" Attributes="0" KeyPath="en_dlg.js_10" Type="0"/>
+    <ROW Component="entries_36" ComponentId="{92BF85AF-0DF8-4973-A396-8DDEA0681033}" Directory_="svn_37_DIR" Attributes="0" KeyPath="entries_37" Type="0"/>
+    <ROW Component="entries_78" ComponentId="{6FA80380-F6B4-4C10-A3D6-8170E6FF978B}" Directory_="svn_79_DIR" Attributes="0" KeyPath="entries_79" Type="0"/>
+    <ROW Component="example.gif" ComponentId="{13384790-B7EC-4384-BC61-87E639FD8726}" Directory_="img_2_DIR" Attributes="0" KeyPath="example.gif" Type="0"/>
+    <ROW Component="flash.gif" ComponentId="{1C3484F9-FD7C-4A83-A765-F726EAA865A4}" Directory_="img_4_DIR" Attributes="0" KeyPath="flash.gif" Type="0"/>
+    <ROW Component="fullpage.css" ComponentId="{F8BEE077-67E7-490C-BCFC-92B44DA8A162}" Directory_="css_3_DIR" Attributes="0" KeyPath="fullpage.css" Type="0"/>
+    <ROW Component="fullpage.js" ComponentId="{3F245A60-0180-4A47-85CD-E7C4C5E8E9E9}" Directory_="js_5_DIR" Attributes="0" KeyPath="fullpage.js" Type="0"/>
+    <ROW Component="icons.gif" ComponentId="{507CB213-18DE-4D88-93FB-130859D392C0}" Directory_="img_10_DIR" Attributes="0" KeyPath="icons.gif_1" Type="0"/>
+    <ROW Component="image.js" ComponentId="{75B6D1B4-2BB0-4F98-815A-82120E83E96D}" Directory_="js_1_DIR" Attributes="0" KeyPath="image.js" Type="0"/>
+    <ROW Component="images" ComponentId="{FACEFAF8-582D-4C48-8812-34701CB1736B}" Directory_="images_DIR" Attributes="0"/>
+    <ROW Component="license.txt" ComponentId="{4D7D31D1-6C75-4865-A518-26BC16C6A991}" Directory_="tiny_mce_DIR" Attributes="0" KeyPath="license.txt" Type="0"/>
+    <ROW Component="log4net.dll" ComponentId="{1AA0A2BE-1FBB-4333-82F3-69413AA379A2}" Directory_="APPDIR" Attributes="0" KeyPath="log4net.dll"/>
+    <ROW Component="pagebreak.gif" ComponentId="{19A37E3A-62B1-4A81-AA35-18BC09D09047}" Directory_="img_5_DIR" Attributes="0" KeyPath="pagebreak.gif" Type="0"/>
+    <ROW Component="pastetext.js" ComponentId="{64512579-29CC-4CAE-93EB-DAF44DE889DF}" Directory_="js_7_DIR" Attributes="0" KeyPath="pastetext.js" Type="0"/>
+    <ROW Component="prop_base_158" ComponentId="{F2A812BA-0B9B-4517-812B-1A4AA407B67B}" Directory_="prop_base_158_DIR" Attributes="0"/>
+    <ROW Component="prop_base_159" ComponentId="{FEBA3503-CE9E-4F67-A057-5E85231EB937}" Directory_="prop_base_159_DIR" Attributes="0"/>
+    <ROW Component="prop_base_74" ComponentId="{691B3377-F392-4307-BB18-AB08267C5ADC}" Directory_="prop_base_74_DIR" Attributes="0"/>
+    <ROW Component="prop_base_75" ComponentId="{9344FABE-984B-4F51-9D38-FD8C768CD388}" Directory_="prop_base_75_DIR" Attributes="0"/>
+    <ROW Component="props.css" ComponentId="{62A521C2-A7E5-451C-891D-E76440D762B4}" Directory_="css_8_DIR" Attributes="0" KeyPath="props.css" Type="0"/>
+    <ROW Component="props.js" ComponentId="{27E8A4F5-DA88-4004-8BB2-D96F22517DBE}" Directory_="js_9_DIR" Attributes="0" KeyPath="props.js" Type="0"/>
+    <ROW Component="props_158" ComponentId="{5513E2A5-13F9-428C-A8EA-6696EF2C24F5}" Directory_="props_158_DIR" Attributes="0"/>
+    <ROW Component="props_159" ComponentId="{EB3DE58B-BB85-4863-89AC-AC8836011A1B}" Directory_="props_159_DIR" Attributes="0"/>
+    <ROW Component="props_74" ComponentId="{E5572EFF-FF68-4BF3-8516-7DE779B7398A}" Directory_="props_74_DIR" Attributes="0"/>
+    <ROW Component="props_75" ComponentId="{42672AE9-3161-41B1-8F46-39CA539307A0}" Directory_="props_75_DIR" Attributes="0"/>
+    <ROW Component="protobuf_net.dll" ComponentId="{1A369904-0CDB-40EC-9CEC-D8D9B1AF5952}" Directory_="APPDIR" Attributes="0" KeyPath="protobuf_net.dll"/>
+    <ROW Component="rule.js" ComponentId="{5E9E25A3-927D-4A83-BE54-DA9CD615FA55}" Directory_="js_DIR" Attributes="0" KeyPath="rule.js" Type="0"/>
+    <ROW Component="sample.gif" ComponentId="{BB17C1F9-53FB-4442-AF58-51F50573F4E8}" Directory_="img_DIR" Attributes="0" KeyPath="sample.gif" Type="0"/>
+    <ROW Component="searchreplace.css" ComponentId="{AC754F52-11C2-45FD-AD52-A706795B3FB3}" Directory_="css_6_DIR" Attributes="0" KeyPath="searchreplace.css" Type="0"/>
+    <ROW Component="searchreplace.js" ComponentId="{F38FF8CC-480F-4575-AF72-78FBEBB25C6F}" Directory_="js_8_DIR" Attributes="0" KeyPath="searchreplace.js" Type="0"/>
+    <ROW Component="smiley_cool.gif" ComponentId="{847CDE0F-1859-4E73-87F3-206001F5709C}" Directory_="img_1_DIR" Attributes="0" KeyPath="smiley_cool.gif" Type="0"/>
+    <ROW Component="template.css" ComponentId="{1E9818BF-B73F-4156-9F37-BE53927A94A9}" Directory_="css_10_DIR" Attributes="0" KeyPath="template.css" Type="0"/>
+    <ROW Component="template.css.svn_base" ComponentId="{1193644D-BE7A-4967-A6D1-020DC1EE58C0}" Directory_="text_base_158_DIR" Attributes="0" KeyPath="template.css.svn_base" Type="0"/>
+    <ROW Component="template.js" ComponentId="{D03A95A9-E6F2-4807-9F28-EEA35D65EBC3}" Directory_="js_11_DIR" Attributes="0" KeyPath="template.js" Type="0"/>
+    <ROW Component="text_base_159" ComponentId="{E6A3D198-B47B-46BE-85A1-57BCB2D6DBF1}" Directory_="text_base_159_DIR" Attributes="0"/>
+    <ROW Component="text_base_75" ComponentId="{D2461AB4-8536-4D1B-AC16-FCE9F7C3C124}" Directory_="text_base_75_DIR" Attributes="0"/>
+    <ROW Component="unrar.dll" ComponentId="{1DEE446F-5815-4C11-B169-0B90A4727909}" Directory_="APPDIR" Attributes="0" KeyPath="unrar.dll"/>
+    <ROW Component="window.css" ComponentId="{8FF8428D-98B2-4F9C-8100-14480CCFF65D}" Directory_="clearlooks2_DIR" Attributes="0" KeyPath="window.css" Type="0"/>
+    <ROW Component="wline.gif" ComponentId="{240AC925-4AD9-48CE-8741-E03D44562CCE}" Directory_="img_6_DIR" Attributes="0" KeyPath="wline.gif" Type="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="Cjc.AwesomiumWrapper.pdb FluidKit.dll Google.GData.AccessControl.dll Google.GData.Calendar.dll Google.GData.Client.dll Google.GData.Contacts.dll Google.GData.Extensions.dll ICSharpCode.SharpZipLib.dll Inbox2.Channels.AOL.dll Inbox2.Channels.Exchange.dll Inbox2.Channels.Facebook.dll Inbox2.Channels.GMail.dll Inbox2.Channels.Hotmail.dll Inbox2.Channels.Hyves.dll Inbox2.Channels.Imap2.dll Inbox2.Channels.LinkedIn.dll Inbox2.Channels.Other.dll Inbox2.Channels.Pop3.dll Inbox2.Channels.Smtp.dll Inbox2.Channels.Twitter.dll Inbox2.Channels.Yahoo.dll Inbox2.Channels.Yammer.dll Inbox2.Core.Configuration.dll Inbox2.Core.DataAccess.dll Inbox2.Core.dll Inbox2.Core.LauncherCommands.dll Inbox2.Core.Search.dll Inbox2.Core.Storage.dll Inbox2.Core.Threading.dll Inbox2.exe Inbox2.Framework.dll Inbox2.Framework.Extensions.dll Inbox2.Framework.Interfaces.dll Inbox2.Framework.Interop.dll Inbox2.Framework.Localization.dll Inbox2.Framework.Persistance.dll Inbox2.Framework.Plugins.dll Inbox2.Framework.Threading.dll Inbox2.Framework.UI.dll Inbox2.Framework.Utils.dll Inbox2.Framework.VirtualMailBox.dll Inbox2.Platform.Channels.dll Inbox2.Platform.Framework.dll Inbox2.Platform.Interfaces.dll Inbox2.Platform.Logging.dll Inbox2.Plugins.ColumnSearch.dll Inbox2.Plugins.Contacts.dll Inbox2.Plugins.Conversations.dll Inbox2.Plugins.Documents.dll Inbox2.Plugins.StatusUpdates.dll Inbox2.UI.dll Inbox2.UI.Launcher.dll Inbox2.UI.Resources.dll Inbox2.UI.Themes.DarkSide.dll Inbox2.Utils.Scraper.dll Inbox2Upgrade.exe Interop.SHDocVw.dll Interop.Shell32.dll IronPython.dll log4net.dll Lucene.Net.dll LumiSoft.Net.dll Microsoft.Dynamic.dll Microsoft.mshtml.dll Microsoft.Scripting.Core.dll Microsoft.Scripting.Debugging.dll Microsoft.Scripting.dll Microsoft.Scripting.ExtensionAttribute.dll MsHtmHstInterop.dll MySql.Data.dll Newtonsoft.Json.dll PyBinding.dll System.ComponentModel.Composition.dll System.Data.SQLite.dll unrar.dll SHORTCUTDIR prop_base_74 props_74 prop_base_75 props_75 text_base_75 prop_base_158 props_158 prop_base_159 props_159 text_base_159 en.js license.txt advhr.css editor_plugin.js rule.js en_dlg.js advimage.css editor_plugin.js_1 sample.gif image.js en_dlg.js_1 advlink.css editor_plugin.js_2 advlink.js en_dlg.js_2 editor_plugin.js_3 editor_plugin.js_4 editor_plugin.js_5 en.js_1 editor_plugin.js_6 editor_plugin.js_7 editor_plugin.js_8 editor_plugin.js_9 smiley_cool.gif emotions.js en_dlg.js_3 dialog.htm example.gif dialog.js en.js_2 fullpage.css editor_plugin.js_10 fullpage.js en_dlg.js_4 editor_plugin.js_11 entries_36 editor_plugin.js.svn_base_12 editor_plugin.js_12 editor_plugin.js_13 alert.gif window.css editor_plugin.js_14 editor_plugin.js_15 editor_plugin.js_16 content.css editor_plugin.js_17 flash.gif embed.js en_dlg.js_5 editor_plugin.js_18 editor_plugin.js_19 content.css_1 editor_plugin.js_20 pagebreak.gif editor_plugin.js_21 pastetext.js en_dlg.js_6 editor_plugin.js_22 embed.js_1 editor_plugin.js_23 editor_plugin.js_24 searchreplace.css editor_plugin.js_25 searchreplace.js en_dlg.js_7 content.css_2 editor_plugin.js_26 wline.gif props.css editor_plugin.js_27 props.js en_dlg.js_8 editor_plugin.js_28 cell.htm cell.css cell.js en_dlg.js_9 blank.htm entries_78 template.css.svn_base template.css en_dlg.js_10 editor_plugin.js_29 editor_plugin.js_30 abbr.htm attributes.css abbr.js en_dlg.js_11 about.htm colorpicker.jpg about.js en.js_3 content.css_3 buttons.png content.css_4 button_bg.png editor_template.js icons.gif en.js_4 content.css_5 content.css_6 button_bg.png_1 editable_selects.js images template.js Inbox2DefaultMailClient.exe protobuf_net.dll Hammock.ClientProfile.dll TweetSharp.dll Newtonsoft.Json.Net35.dll"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="FluidKit.dll" Component_="FluidKit.dll" FileName="FluidKit.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\FluidKit.dll" SelfReg="false" Sequence="1"/>
+    <ROW File="Google.GData.AccessControl.dll" Component_="Google.GData.AccessControl.dll" FileName="Google~1.dll|Google.GData.AccessControl.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Google.GData.AccessControl.dll" SelfReg="false" Sequence="2"/>
+    <ROW File="Google.GData.Calendar.dll" Component_="Google.GData.Calendar.dll" FileName="Google~2.dll|Google.GData.Calendar.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Google.GData.Calendar.dll" SelfReg="false" Sequence="3"/>
+    <ROW File="Google.GData.Client.dll" Component_="Google.GData.Client.dll" FileName="Google~3.dll|Google.GData.Client.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Google.GData.Client.dll" SelfReg="false" Sequence="4"/>
+    <ROW File="Google.GData.Contacts.dll" Component_="Google.GData.Contacts.dll" FileName="Google~4.dll|Google.GData.Contacts.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Google.GData.Contacts.dll" SelfReg="false" Sequence="5"/>
+    <ROW File="Google.GData.Extensions.dll" Component_="Google.GData.Extensions.dll" FileName="Google~5.dll|Google.GData.Extensions.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Google.GData.Extensions.dll" SelfReg="false" Sequence="6"/>
+    <ROW File="Hammock.ClientProfile.dll" Component_="Hammock.ClientProfile.dll" FileName="Hammoc~1.dll|Hammock.ClientProfile.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Hammock.ClientProfile.dll" SelfReg="false" Sequence="332"/>
+    <ROW File="ICSharpCode.SharpZipLib.dll" Component_="ICSharpCode.SharpZipLib.dll" FileName="ICShar~1.dll|ICSharpCode.SharpZipLib.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\ICSharpCode.SharpZipLib.dll" SelfReg="false" Sequence="7"/>
+    <ROW File="Inbox2.Channels.AOL.dll" Component_="Inbox2.Channels.AOL.dll" FileName="Inbox2~1.dll|Inbox2.Channels.AOL.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.AOL.dll" SelfReg="false" Sequence="8"/>
+    <ROW File="Inbox2.Channels.Exchange.dll" Component_="Inbox2.Channels.Exchange.dll" FileName="Inbox2~2.dll|Inbox2.Channels.Exchange.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Exchange.dll" SelfReg="false" Sequence="9"/>
+    <ROW File="Inbox2.Channels.Facebook.dll" Component_="Inbox2.Channels.Facebook.dll" FileName="Inbox2~3.dll|Inbox2.Channels.Facebook.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Facebook.dll" SelfReg="false" Sequence="10"/>
+    <ROW File="Inbox2.Channels.GMail.dll" Component_="Inbox2.Channels.GMail.dll" FileName="Inbox2~4.dll|Inbox2.Channels.GMail.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.GMail.dll" SelfReg="false" Sequence="11"/>
+    <ROW File="Inbox2.Channels.Hotmail.dll" Component_="Inbox2.Channels.Hotmail.dll" FileName="Inbox2~5.dll|Inbox2.Channels.Hotmail.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Hotmail.dll" SelfReg="false" Sequence="12"/>
+    <ROW File="Inbox2.Channels.Hyves.dll" Component_="Inbox2.Channels.Hyves.dll" FileName="Inbox2~6.dll|Inbox2.Channels.Hyves.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Hyves.dll" SelfReg="false" Sequence="13"/>
+    <ROW File="Inbox2.Channels.Imap2.dll" Component_="Inbox2.Channels.Imap2.dll" FileName="Inbox2~7.dll|Inbox2.Channels.Imap2.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Imap2.dll" SelfReg="false" Sequence="14"/>
+    <ROW File="Inbox2.Channels.LinkedIn.dll" Component_="Inbox2.Channels.LinkedIn.dll" FileName="Inbox2~8.dll|Inbox2.Channels.LinkedIn.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.LinkedIn.dll" SelfReg="false" Sequence="15"/>
+    <ROW File="Inbox2.Channels.Other.dll" Component_="Inbox2.Channels.Other.dll" FileName="Inbox2~9.dll|Inbox2.Channels.Other.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Other.dll" SelfReg="false" Sequence="16"/>
+    <ROW File="Inbox2.Channels.Pop3.dll" Component_="Inbox2.Channels.Pop3.dll" FileName="Inbox~10.dll|Inbox2.Channels.Pop3.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Pop3.dll" SelfReg="false" Sequence="17"/>
+    <ROW File="Inbox2.Channels.Smtp.dll" Component_="Inbox2.Channels.Smtp.dll" FileName="Inbox~11.dll|Inbox2.Channels.Smtp.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Smtp.dll" SelfReg="false" Sequence="18"/>
+    <ROW File="Inbox2.Channels.Twitter.dll" Component_="Inbox2.Channels.Twitter.dll" FileName="Inbox~12.dll|Inbox2.Channels.Twitter.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Twitter.dll" SelfReg="false" Sequence="19"/>
+    <ROW File="Inbox2.Channels.Yahoo.dll" Component_="Inbox2.Channels.Yahoo.dll" FileName="Inbox~13.dll|Inbox2.Channels.Yahoo.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Yahoo.dll" SelfReg="false" Sequence="20"/>
+    <ROW File="Inbox2.Channels.Yammer.dll" Component_="Inbox2.Channels.Yammer.dll" FileName="Inbox~14.dll|Inbox2.Channels.Yammer.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Channels.Yammer.dll" SelfReg="false" Sequence="21"/>
+    <ROW File="Inbox2.Core.Configuration.dll" Component_="Inbox2.Core.Configuration.dll" FileName="Inbox~15.dll|Inbox2.Core.Configuration.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Core.Configuration.dll" SelfReg="false" Sequence="22"/>
+    <ROW File="Inbox2.Core.DataAccess.dll" Component_="Inbox2.Core.DataAccess.dll" FileName="Inbox~16.dll|Inbox2.Core.DataAccess.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Core.DataAccess.dll" SelfReg="false" Sequence="23"/>
+    <ROW File="Inbox2.Core.LauncherCommands.dll" Component_="Inbox2.Core.LauncherCommands.dll" FileName="Inbox~18.dll|Inbox2.Core.LauncherCommands.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Core.LauncherCommands.dll" SelfReg="false" Sequence="25"/>
+    <ROW File="Inbox2.Core.Search.dll" Component_="Inbox2.Core.Search.dll" FileName="Inbox~19.dll|Inbox2.Core.Search.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Core.Search.dll" SelfReg="false" Sequence="26"/>
+    <ROW File="Inbox2.Core.Storage.dll" Component_="Inbox2.Core.Storage.dll" FileName="Inbox~20.dll|Inbox2.Core.Storage.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Core.Storage.dll" SelfReg="false" Sequence="27"/>
+    <ROW File="Inbox2.Core.Threading.dll" Component_="Inbox2.Core.Threading.dll" FileName="Inbox~21.dll|Inbox2.Core.Threading.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Core.Threading.dll" SelfReg="false" Sequence="28"/>
+    <ROW File="Inbox2.Core.dll" Component_="Inbox2.Core.dll" FileName="Inbox~17.dll|Inbox2.Core.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Core.dll" SelfReg="false" Sequence="24"/>
+    <ROW File="Inbox2.Framework.Extensions.dll" Component_="Inbox2.Framework.Extensions.dll" FileName="Inbox~23.dll|Inbox2.Framework.Extensions.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.Extensions.dll" SelfReg="false" Sequence="32"/>
+    <ROW File="Inbox2.Framework.Interfaces.dll" Component_="Inbox2.Framework.Interfaces.dll" FileName="Inbox~24.dll|Inbox2.Framework.Interfaces.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.Interfaces.dll" SelfReg="false" Sequence="33"/>
+    <ROW File="Inbox2.Framework.Interop.dll" Component_="Inbox2.Framework.Interop.dll" FileName="Inbox~25.dll|Inbox2.Framework.Interop.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.Interop.dll" SelfReg="false" Sequence="34"/>
+    <ROW File="Inbox2.Framework.Localization.dll" Component_="Inbox2.Framework.Localization.dll" FileName="Inbox~26.dll|Inbox2.Framework.Localization.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.Localization.dll" SelfReg="false" Sequence="35"/>
+    <ROW File="Inbox2.Framework.Persistance.dll" Component_="Inbox2.Framework.Persistance.dll" FileName="Inbox~27.dll|Inbox2.Framework.Persistance.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.Persistance.dll" SelfReg="false" Sequence="36"/>
+    <ROW File="Inbox2.Framework.Plugins.dll" Component_="Inbox2.Framework.Plugins.dll" FileName="Inbox~28.dll|Inbox2.Framework.Plugins.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.Plugins.dll" SelfReg="false" Sequence="37"/>
+    <ROW File="Inbox2.Framework.Threading.dll" Component_="Inbox2.Framework.Threading.dll" FileName="Inbox~29.dll|Inbox2.Framework.Threading.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.Threading.dll" SelfReg="false" Sequence="38"/>
+    <ROW File="Inbox2.Framework.UI.dll" Component_="Inbox2.Framework.UI.dll" FileName="Inbox~30.dll|Inbox2.Framework.UI.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.UI.dll" SelfReg="false" Sequence="39"/>
+    <ROW File="Inbox2.Framework.Utils.dll" Component_="Inbox2.Framework.Utils.dll" FileName="Inbox~31.dll|Inbox2.Framework.Utils.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.Utils.dll" SelfReg="false" Sequence="40"/>
+    <ROW File="Inbox2.Framework.VirtualMailBox.dll" Component_="Inbox2.Framework.VirtualMailBox.dll" FileName="Inbox~32.dll|Inbox2.Framework.VirtualMailBox.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.VirtualMailBox.dll" SelfReg="false" Sequence="41"/>
+    <ROW File="Inbox2.Framework.dll" Component_="Inbox2.Framework.dll" FileName="Inbox~22.dll|Inbox2.Framework.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Framework.dll" SelfReg="false" Sequence="31"/>
+    <ROW File="Inbox2.Platform.Channels.dll" Component_="Inbox2.Platform.Channels.dll" FileName="Inbox~33.dll|Inbox2.Platform.Channels.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Platform.Channels.dll" SelfReg="false" Sequence="42"/>
+    <ROW File="Inbox2.Platform.Framework.dll" Component_="Inbox2.Platform.Framework.dll" FileName="Inbox~34.dll|Inbox2.Platform.Framework.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Platform.Framework.dll" SelfReg="false" Sequence="43"/>
+    <ROW File="Inbox2.Platform.Interfaces.dll" Component_="Inbox2.Platform.Interfaces.dll" FileName="Inbox~35.dll|Inbox2.Platform.Interfaces.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Platform.Interfaces.dll" SelfReg="false" Sequence="44"/>
+    <ROW File="Inbox2.Platform.Logging.dll" Component_="Inbox2.Platform.Logging.dll" FileName="Inbox~36.dll|Inbox2.Platform.Logging.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Platform.Logging.dll" SelfReg="false" Sequence="45"/>
+    <ROW File="Inbox2.Plugins.ColumnSearch.dll" Component_="Inbox2.Plugins.ColumnSearch.dll" FileName="Inbox~38.dll|Inbox2.Plugins.ColumnSearch.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Plugins.ColumnSearch.dll" SelfReg="false" Sequence="46"/>
+    <ROW File="Inbox2.Plugins.Contacts.dll" Component_="Inbox2.Plugins.Contacts.dll" FileName="Inbox~39.dll|Inbox2.Plugins.Contacts.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Plugins.Contacts.dll" SelfReg="false" Sequence="47"/>
+    <ROW File="Inbox2.Plugins.Conversations.dll" Component_="Inbox2.Plugins.Conversations.dll" FileName="Inbox~40.dll|Inbox2.Plugins.Conversations.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Plugins.Conversations.dll" SelfReg="false" Sequence="48"/>
+    <ROW File="Inbox2.Plugins.Documents.dll" Component_="Inbox2.Plugins.Documents.dll" FileName="Inbox~41.dll|Inbox2.Plugins.Documents.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Plugins.Documents.dll" SelfReg="false" Sequence="49"/>
+    <ROW File="Inbox2.Plugins.StatusUpdates.dll" Component_="Inbox2.Plugins.StatusUpdates.dll" FileName="Inbox~42.dll|Inbox2.Plugins.StatusUpdates.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Plugins.StatusUpdates.dll" SelfReg="false" Sequence="50"/>
+    <ROW File="Inbox2.UI.Launcher.dll" Component_="Inbox2.UI.Launcher.dll" FileName="Inbox~44.dll|Inbox2.UI.Launcher.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.UI.Launcher.dll" SelfReg="false" Sequence="52"/>
+    <ROW File="Inbox2.UI.Resources.dll" Component_="Inbox2.UI.Resources.dll" FileName="Inbox~45.dll|Inbox2.UI.Resources.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.UI.Resources.dll" SelfReg="false" Sequence="53"/>
+    <ROW File="Inbox2.UI.Themes.DarkSide.dll" Component_="Inbox2.UI.Themes.DarkSide.dll" FileName="Inbox~46.dll|Inbox2.UI.Themes.DarkSide.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.UI.Themes.DarkSide.dll" SelfReg="false" Sequence="54"/>
+    <ROW File="Inbox2.UI.dll" Component_="Inbox2.UI.dll" FileName="Inbox~43.dll|Inbox2.UI.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.UI.dll" SelfReg="false" Sequence="51"/>
+    <ROW File="Inbox2.Utils.Scraper.dll" Component_="Inbox2.Utils.Scraper.dll" FileName="Inbox~47.dll|Inbox2.Utils.Scraper.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.Utils.Scraper.dll" SelfReg="false" Sequence="55"/>
+    <ROW File="Inbox2.exe" Component_="Inbox2.exe" FileName="Inbox2.exe" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.exe" SelfReg="false" Sequence="29"/>
+    <ROW File="Inbox2.exe.config" Component_="Cjc.AwesomiumWrapper.pdb" FileName="Inbox2~1.con|Inbox2.exe.config" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2.exe.config" SelfReg="false" Sequence="30"/>
+    <ROW File="Inbox2DefaultMailClient.exe" Component_="Inbox2DefaultMailClient.exe" FileName="Inbox2~2.exe|Inbox2DefaultMailClient.exe" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2DefaultMailClient.exe" SelfReg="false" Sequence="330"/>
+    <ROW File="Inbox2Upgrade.exe" Component_="Inbox2Upgrade.exe" FileName="Inbox2~1.exe|Inbox2Upgrade.exe" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Inbox2Upgrade.exe" SelfReg="false" Sequence="56"/>
+    <ROW File="Interop.SHDocVw.dll" Component_="Interop.SHDocVw.dll" FileName="Intero~1.dll|Interop.SHDocVw.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Interop.SHDocVw.dll" SelfReg="false" Sequence="57"/>
+    <ROW File="Interop.Shell32.dll" Component_="Interop.Shell32.dll" FileName="Intero~2.dll|Interop.Shell32.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Interop.Shell32.dll" SelfReg="false" Sequence="58"/>
+    <ROW File="IronPython.dll" Component_="IronPython.dll" FileName="IronPy~1.dll|IronPython.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\IronPython.dll" SelfReg="false" Sequence="59"/>
+    <ROW File="Lucene.Net.dll" Component_="Lucene.Net.dll" FileName="Lucene~1.dll|Lucene.Net.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Lucene.Net.dll" SelfReg="false" Sequence="61"/>
+    <ROW File="LumiSoft.Net.dll" Component_="LumiSoft.Net.dll" FileName="LumiSo~1.dll|LumiSoft.Net.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\LumiSoft.Net.dll" SelfReg="false" Sequence="62"/>
+    <ROW File="Microsoft.Dynamic.dll" Component_="Microsoft.Dynamic.dll" FileName="Micros~1.dll|Microsoft.Dynamic.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Microsoft.Dynamic.dll" SelfReg="false" Sequence="63"/>
+    <ROW File="Microsoft.Scripting.Core.dll" Component_="Microsoft.Scripting.Core.dll" FileName="Micros~3.dll|Microsoft.Scripting.Core.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Microsoft.Scripting.Core.dll" SelfReg="false" Sequence="65"/>
+    <ROW File="Microsoft.Scripting.Debugging.dll" Component_="Microsoft.Scripting.Debugging.dll" FileName="Micros~4.dll|Microsoft.Scripting.Debugging.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Microsoft.Scripting.Debugging.dll" SelfReg="false" Sequence="66"/>
+    <ROW File="Microsoft.Scripting.ExtensionAttribute.dll" Component_="Microsoft.Scripting.ExtensionAttribute.dll" FileName="Micros~6.dll|Microsoft.Scripting.ExtensionAttribute.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Microsoft.Scripting.ExtensionAttribute.dll" SelfReg="false" Sequence="68"/>
+    <ROW File="Microsoft.Scripting.dll" Component_="Microsoft.Scripting.dll" FileName="Micros~5.dll|Microsoft.Scripting.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Microsoft.Scripting.dll" SelfReg="false" Sequence="67"/>
+    <ROW File="Microsoft.mshtml.dll" Component_="Microsoft.mshtml.dll" FileName="Micros~2.dll|Microsoft.mshtml.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Microsoft.mshtml.dll" SelfReg="false" Sequence="64"/>
+    <ROW File="MsHtmHstInterop.dll" Component_="MsHtmHstInterop.dll" FileName="MsHtmH~1.dll|MsHtmHstInterop.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\MsHtmHstInterop.dll" SelfReg="false" Sequence="69"/>
+    <ROW File="MySql.Data.dll" Component_="MySql.Data.dll" FileName="MySqlD~1.dll|MySql.Data.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\MySql.Data.dll" SelfReg="false" Sequence="70"/>
+    <ROW File="Newtonsoft.Json.Net35.dll" Component_="Newtonsoft.Json.Net35.dll" FileName="Newton~2.dll|Newtonsoft.Json.Net35.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Newtonsoft.Json.Net35.dll" SelfReg="false" Sequence="334"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="Newton~1.dll|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\Newtonsoft.Json.dll" SelfReg="false" Sequence="71"/>
+    <ROW File="PyBinding.dll" Component_="PyBinding.dll" FileName="PyBind~1.dll|PyBinding.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\PyBinding.dll" SelfReg="false" Sequence="72"/>
+    <ROW File="StartupScript.py" Component_="Cjc.AwesomiumWrapper.pdb" FileName="Startu~1.py|StartupScript.py" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\StartupScript.py" SelfReg="false" Sequence="73"/>
+    <ROW File="System.ComponentModel.Composition.dll" Component_="System.ComponentModel.Composition.dll" FileName="System~1.dll|System.ComponentModel.Composition.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\System.ComponentModel.Composition.dll" SelfReg="false" Sequence="74"/>
+    <ROW File="System.Data.SQLite.dll" Component_="System.Data.SQLite.dll" FileName="System~2.dll|System.Data.SQLite.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\System.Data.SQLite.dll" SelfReg="false" Sequence="75"/>
+    <ROW File="ThreadView.html" Component_="Cjc.AwesomiumWrapper.pdb" FileName="Thread~1.htm|ThreadView.html" Attributes="0" SourcePath="..\Streams\ThreadView.html" SelfReg="false" Sequence="79"/>
+    <ROW File="TweetSharp.dll" Component_="TweetSharp.dll" FileName="TweetS~1.dll|TweetSharp.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\TweetSharp.dll" SelfReg="false" Sequence="333"/>
+    <ROW File="abbr.htm" Component_="abbr.htm" FileName="abbr.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\abbr.htm" SelfReg="false" Sequence="257"/>
+    <ROW File="abbr.js" Component_="abbr.js" FileName="abbr.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\js\abbr.js" SelfReg="false" Sequence="267"/>
+    <ROW File="about.htm" Component_="about.htm" FileName="about.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\about.htm" SelfReg="false" Sequence="275"/>
+    <ROW File="about.js" Component_="about.js" FileName="about.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\js\about.js" SelfReg="false" Sequence="284"/>
+    <ROW File="acronym.htm" Component_="abbr.htm" FileName="acronym.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\acronym.htm" SelfReg="false" Sequence="258"/>
+    <ROW File="acronym.js" Component_="abbr.js" FileName="acronym.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\js\acronym.js" SelfReg="false" Sequence="268"/>
+    <ROW File="advhr.css" Component_="advhr.css" FileName="advhr.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advhr\css\advhr.css" SelfReg="false" Sequence="82"/>
+    <ROW File="advimage.css" Component_="advimage.css" FileName="advimage.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advimage\css\advimage.css" SelfReg="false" Sequence="88"/>
+    <ROW File="advlink.css" Component_="advlink.css" FileName="advlink.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advlink\css\advlink.css" SelfReg="false" Sequence="95"/>
+    <ROW File="advlink.js" Component_="advlink.js" FileName="advlink.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advlink\js\advlink.js" SelfReg="false" Sequence="98"/>
+    <ROW File="alert.gif" Component_="alert.gif" FileName="alert.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\alert.gif" SelfReg="false" Sequence="158"/>
+    <ROW File="anchor.htm" Component_="about.htm" FileName="anchor.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\anchor.htm" SelfReg="false" Sequence="276"/>
+    <ROW File="anchor.js" Component_="about.js" FileName="anchor.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\js\anchor.js" SelfReg="false" Sequence="285"/>
+    <ROW File="attributes.css" Component_="attributes.css" FileName="attrib~1.css|attributes.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\css\attributes.css" SelfReg="false" Sequence="261"/>
+    <ROW File="attributes.htm" Component_="abbr.htm" FileName="attrib~1.htm|attributes.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\attributes.htm" SelfReg="false" Sequence="259"/>
+    <ROW File="attributes.js" Component_="abbr.js" FileName="attrib~1.js|attributes.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\js\attributes.js" SelfReg="false" Sequence="269"/>
+    <ROW File="blank.htm" Component_="blank.htm" FileName="blank.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\template\blank.htm" SelfReg="false" Sequence="245"/>
+    <ROW File="button.gif" Component_="alert.gif" FileName="button.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\button.gif" SelfReg="false" Sequence="159"/>
+    <ROW File="button_bg.png" Component_="button_bg.png" FileName="button~1.png|button_bg.png" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\o2k7\img\button_bg.png" SelfReg="false" Sequence="305"/>
+    <ROW File="button_bg.png_1" Component_="button_bg.png_1" FileName="button~1.png|button_bg.png" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\skins\o2k7\img\button_bg.png" SelfReg="false" Sequence="319"/>
+    <ROW File="button_bg_black.png" Component_="button_bg.png" FileName="button~2.png|button_bg_black.png" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\o2k7\img\button_bg_black.png" SelfReg="false" Sequence="306"/>
+    <ROW File="button_bg_silver.png" Component_="button_bg.png" FileName="button~3.png|button_bg_silver.png" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\o2k7\img\button_bg_silver.png" SelfReg="false" Sequence="307"/>
+    <ROW File="buttons.gif" Component_="alert.gif" FileName="buttons.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\buttons.gif" SelfReg="false" Sequence="160"/>
+    <ROW File="buttons.png" Component_="buttons.png" FileName="buttons.png" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\img\buttons.png" SelfReg="false" Sequence="296"/>
+    <ROW File="cell.css" Component_="cell.css" FileName="cell.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\css\cell.css" SelfReg="false" Sequence="232"/>
+    <ROW File="cell.htm" Component_="cell.htm" FileName="cell.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\cell.htm" SelfReg="false" Sequence="231"/>
+    <ROW File="cell.js" Component_="cell.js" FileName="cell.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\js\cell.js" SelfReg="false" Sequence="237"/>
+    <ROW File="charmap.htm" Component_="about.htm" FileName="charmap.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\charmap.htm" SelfReg="false" Sequence="277"/>
+    <ROW File="charmap.js" Component_="about.js" FileName="charmap.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\js\charmap.js" SelfReg="false" Sequence="286"/>
+    <ROW File="cite.htm" Component_="abbr.htm" FileName="cite.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\cite.htm" SelfReg="false" Sequence="260"/>
+    <ROW File="cite.js" Component_="abbr.js" FileName="cite.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\js\cite.js" SelfReg="false" Sequence="270"/>
+    <ROW File="color_picker.htm" Component_="about.htm" FileName="color_~1.htm|color_picker.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\color_picker.htm" SelfReg="false" Sequence="278"/>
+    <ROW File="color_picker.js" Component_="about.js" FileName="color_~1.js|color_picker.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\js\color_picker.js" SelfReg="false" Sequence="287"/>
+    <ROW File="colorpicker.jpg" Component_="colorpicker.jpg" FileName="colorp~1.jpg|colorpicker.jpg" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\img\colorpicker.jpg" SelfReg="false" Sequence="282"/>
+    <ROW File="confirm.gif" Component_="alert.gif" FileName="confirm.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\confirm.gif" SelfReg="false" Sequence="161"/>
+    <ROW File="content.css" Component_="content.css" FileName="content.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\css\content.css" SelfReg="false" Sequence="173"/>
+    <ROW File="content.css_1" Component_="content.css_1" FileName="content.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\pagebreak\css\content.css" SelfReg="false" Sequence="192"/>
+    <ROW File="content.css_2" Component_="content.css_2" FileName="content.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\spellchecker\css\content.css" SelfReg="false" Sequence="219"/>
+    <ROW File="content.css_3" Component_="content.css_3" FileName="content.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\content.css" SelfReg="false" Sequence="294"/>
+    <ROW File="content.css_4" Component_="content.css_4" FileName="content.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\o2k7\content.css" SelfReg="false" Sequence="303"/>
+    <ROW File="content.css_5" Component_="content.css_5" FileName="content.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\skins\default\content.css" SelfReg="false" Sequence="316"/>
+    <ROW File="content.css_6" Component_="content.css_6" FileName="content.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\skins\o2k7\content.css" SelfReg="false" Sequence="318"/>
+    <ROW File="corners.gif" Component_="alert.gif" FileName="corners.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\corners.gif" SelfReg="false" Sequence="162"/>
+    <ROW File="del.htm" Component_="abbr.htm" FileName="del.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\del.htm" SelfReg="false" Sequence="263"/>
+    <ROW File="del.js" Component_="abbr.js" FileName="del.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\js\del.js" SelfReg="false" Sequence="271"/>
+    <ROW File="dialog.css" Component_="content.css_3" FileName="dialog.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\dialog.css" SelfReg="false" Sequence="295"/>
+    <ROW File="dialog.css_1" Component_="content.css_4" FileName="dialog.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\o2k7\dialog.css" SelfReg="false" Sequence="304"/>
+    <ROW File="dialog.htm" Component_="dialog.htm" FileName="dialog.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\example\dialog.htm" SelfReg="false" Sequence="135"/>
+    <ROW File="dialog.js" Component_="dialog.js" FileName="dialog.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\example\js\dialog.js" SelfReg="false" Sequence="139"/>
+    <ROW File="editable_selects.js" Component_="editable_selects.js" FileName="editab~1.js|editable_selects.js" Attributes="0" SourcePath="..\Streams\tiny_mce\utils\editable_selects.js" SelfReg="false" Sequence="324"/>
+    <ROW File="editor.html" Component_="Cjc.AwesomiumWrapper.pdb" FileName="editor~1.htm|editor.html" Attributes="0" SourcePath="..\Streams\editor.html" SelfReg="false" Sequence="77"/>
+    <ROW File="editor_plugin.js" Component_="editor_plugin.js" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advhr\editor_plugin.js" SelfReg="false" Sequence="83"/>
+    <ROW File="editor_plugin.js.svn_base_13" Component_="editor_plugin.js.svn_base_12" FileName="editor~1.svn|editor_plugin.js.svn-base" Attributes="1" SourcePath="..\Streams\tiny_mce\plugins\iespell\.svn\text-base\editor_plugin.js.svn-base" SelfReg="false" Sequence="152"/>
+    <ROW File="editor_plugin.js_1" Component_="editor_plugin.js_1" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advimage\editor_plugin.js" SelfReg="false" Sequence="89"/>
+    <ROW File="editor_plugin.js_10" Component_="dialog.htm" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\example\editor_plugin.js" SelfReg="false" Sequence="136"/>
+    <ROW File="editor_plugin.js_11" Component_="editor_plugin.js_10" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullpage\editor_plugin.js" SelfReg="false" Sequence="143"/>
+    <ROW File="editor_plugin.js_12" Component_="editor_plugin.js_11" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullscreen\editor_plugin.js" SelfReg="false" Sequence="148"/>
+    <ROW File="editor_plugin.js_13" Component_="editor_plugin.js_12" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\iespell\editor_plugin.js" SelfReg="false" Sequence="154"/>
+    <ROW File="editor_plugin.js_14" Component_="editor_plugin.js_13" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\editor_plugin.js" SelfReg="false" Sequence="156"/>
+    <ROW File="editor_plugin.js_15" Component_="editor_plugin.js_14" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\insertdatetime\editor_plugin.js" SelfReg="false" Sequence="167"/>
+    <ROW File="editor_plugin.js_16" Component_="editor_plugin.js_15" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\layer\editor_plugin.js" SelfReg="false" Sequence="169"/>
+    <ROW File="editor_plugin.js_17" Component_="editor_plugin.js_16" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\legacyoutput\editor_plugin.js" SelfReg="false" Sequence="171"/>
+    <ROW File="editor_plugin.js_18" Component_="editor_plugin.js_17" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\editor_plugin.js" SelfReg="false" Sequence="175"/>
+    <ROW File="editor_plugin.js_19" Component_="editor_plugin.js_18" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\nonbreaking\editor_plugin.js" SelfReg="false" Sequence="188"/>
+    <ROW File="editor_plugin.js_2" Component_="editor_plugin.js_2" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advlink\editor_plugin.js" SelfReg="false" Sequence="96"/>
+    <ROW File="editor_plugin.js_20" Component_="editor_plugin.js_19" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\noneditable\editor_plugin.js" SelfReg="false" Sequence="190"/>
+    <ROW File="editor_plugin.js_21" Component_="editor_plugin.js_20" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\pagebreak\editor_plugin.js" SelfReg="false" Sequence="193"/>
+    <ROW File="editor_plugin.js_22" Component_="editor_plugin.js_21" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\paste\editor_plugin.js" SelfReg="false" Sequence="197"/>
+    <ROW File="editor_plugin.js_23" Component_="editor_plugin.js_22" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\preview\editor_plugin.js" SelfReg="false" Sequence="204"/>
+    <ROW File="editor_plugin.js_24" Component_="editor_plugin.js_23" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\print\editor_plugin.js" SelfReg="false" Sequence="209"/>
+    <ROW File="editor_plugin.js_25" Component_="editor_plugin.js_24" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\save\editor_plugin.js" SelfReg="false" Sequence="211"/>
+    <ROW File="editor_plugin.js_26" Component_="editor_plugin.js_25" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\searchreplace\editor_plugin.js" SelfReg="false" Sequence="214"/>
+    <ROW File="editor_plugin.js_27" Component_="editor_plugin.js_26" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\spellchecker\editor_plugin.js" SelfReg="false" Sequence="220"/>
+    <ROW File="editor_plugin.js_28" Component_="editor_plugin.js_27" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\style\editor_plugin.js" SelfReg="false" Sequence="224"/>
+    <ROW File="editor_plugin.js_29" Component_="editor_plugin.js_28" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\tabfocus\editor_plugin.js" SelfReg="false" Sequence="229"/>
+    <ROW File="editor_plugin.js_3" Component_="editor_plugin.js_3" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advlist\editor_plugin.js" SelfReg="false" Sequence="101"/>
+    <ROW File="editor_plugin.js_30" Component_="cell.htm" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\editor_plugin.js" SelfReg="false" Sequence="235"/>
+    <ROW File="editor_plugin.js_31" Component_="blank.htm" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\template\editor_plugin.js" SelfReg="false" Sequence="249"/>
+    <ROW File="editor_plugin.js_32" Component_="editor_plugin.js_29" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\visualchars\editor_plugin.js" SelfReg="false" Sequence="253"/>
+    <ROW File="editor_plugin.js_33" Component_="editor_plugin.js_30" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\wordcount\editor_plugin.js" SelfReg="false" Sequence="255"/>
+    <ROW File="editor_plugin.js_34" Component_="abbr.htm" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\editor_plugin.js" SelfReg="false" Sequence="264"/>
+    <ROW File="editor_plugin.js_4" Component_="editor_plugin.js_4" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\autoresize\editor_plugin.js" SelfReg="false" Sequence="103"/>
+    <ROW File="editor_plugin.js_5" Component_="editor_plugin.js_5" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\autosave\editor_plugin.js" SelfReg="false" Sequence="105"/>
+    <ROW File="editor_plugin.js_6" Component_="editor_plugin.js_6" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\bbcode\editor_plugin.js" SelfReg="false" Sequence="108"/>
+    <ROW File="editor_plugin.js_7" Component_="editor_plugin.js_7" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\contextmenu\editor_plugin.js" SelfReg="false" Sequence="110"/>
+    <ROW File="editor_plugin.js_8" Component_="editor_plugin.js_8" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\directionality\editor_plugin.js" SelfReg="false" Sequence="112"/>
+    <ROW File="editor_plugin.js_9" Component_="editor_plugin.js_9" FileName="editor~1.js|editor_plugin.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\editor_plugin.js" SelfReg="false" Sequence="114"/>
+    <ROW File="editor_plugin_src.js" Component_="editor_plugin.js" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advhr\editor_plugin_src.js" SelfReg="false" Sequence="84"/>
+    <ROW File="editor_plugin_src.js.svn_base_13" Component_="editor_plugin.js.svn_base_12" FileName="editor~2.svn|editor_plugin_src.js.svn-base" Attributes="1" SourcePath="..\Streams\tiny_mce\plugins\iespell\.svn\text-base\editor_plugin_src.js.svn-base" SelfReg="false" Sequence="153"/>
+    <ROW File="editor_plugin_src.js_1" Component_="editor_plugin.js_1" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advimage\editor_plugin_src.js" SelfReg="false" Sequence="90"/>
+    <ROW File="editor_plugin_src.js_10" Component_="dialog.htm" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\example\editor_plugin_src.js" SelfReg="false" Sequence="137"/>
+    <ROW File="editor_plugin_src.js_11" Component_="editor_plugin.js_10" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullpage\editor_plugin_src.js" SelfReg="false" Sequence="144"/>
+    <ROW File="editor_plugin_src.js_12" Component_="editor_plugin.js_11" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullscreen\editor_plugin_src.js" SelfReg="false" Sequence="149"/>
+    <ROW File="editor_plugin_src.js_13" Component_="editor_plugin.js_12" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\iespell\editor_plugin_src.js" SelfReg="false" Sequence="155"/>
+    <ROW File="editor_plugin_src.js_14" Component_="editor_plugin.js_13" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\editor_plugin_src.js" SelfReg="false" Sequence="157"/>
+    <ROW File="editor_plugin_src.js_15" Component_="editor_plugin.js_14" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\insertdatetime\editor_plugin_src.js" SelfReg="false" Sequence="168"/>
+    <ROW File="editor_plugin_src.js_16" Component_="editor_plugin.js_15" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\layer\editor_plugin_src.js" SelfReg="false" Sequence="170"/>
+    <ROW File="editor_plugin_src.js_17" Component_="editor_plugin.js_16" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\legacyoutput\editor_plugin_src.js" SelfReg="false" Sequence="172"/>
+    <ROW File="editor_plugin_src.js_18" Component_="editor_plugin.js_17" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\editor_plugin_src.js" SelfReg="false" Sequence="176"/>
+    <ROW File="editor_plugin_src.js_19" Component_="editor_plugin.js_18" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\nonbreaking\editor_plugin_src.js" SelfReg="false" Sequence="189"/>
+    <ROW File="editor_plugin_src.js_2" Component_="editor_plugin.js_2" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advlink\editor_plugin_src.js" SelfReg="false" Sequence="97"/>
+    <ROW File="editor_plugin_src.js_20" Component_="editor_plugin.js_19" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\noneditable\editor_plugin_src.js" SelfReg="false" Sequence="191"/>
+    <ROW File="editor_plugin_src.js_21" Component_="editor_plugin.js_20" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\pagebreak\editor_plugin_src.js" SelfReg="false" Sequence="194"/>
+    <ROW File="editor_plugin_src.js_22" Component_="editor_plugin.js_21" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\paste\editor_plugin_src.js" SelfReg="false" Sequence="198"/>
+    <ROW File="editor_plugin_src.js_23" Component_="editor_plugin.js_22" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\preview\editor_plugin_src.js" SelfReg="false" Sequence="205"/>
+    <ROW File="editor_plugin_src.js_24" Component_="editor_plugin.js_23" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\print\editor_plugin_src.js" SelfReg="false" Sequence="210"/>
+    <ROW File="editor_plugin_src.js_25" Component_="editor_plugin.js_24" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\save\editor_plugin_src.js" SelfReg="false" Sequence="212"/>
+    <ROW File="editor_plugin_src.js_26" Component_="editor_plugin.js_25" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\searchreplace\editor_plugin_src.js" SelfReg="false" Sequence="215"/>
+    <ROW File="editor_plugin_src.js_27" Component_="editor_plugin.js_26" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\spellchecker\editor_plugin_src.js" SelfReg="false" Sequence="221"/>
+    <ROW File="editor_plugin_src.js_28" Component_="editor_plugin.js_27" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\style\editor_plugin_src.js" SelfReg="false" Sequence="225"/>
+    <ROW File="editor_plugin_src.js_29" Component_="editor_plugin.js_28" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\tabfocus\editor_plugin_src.js" SelfReg="false" Sequence="230"/>
+    <ROW File="editor_plugin_src.js_3" Component_="editor_plugin.js_3" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advlist\editor_plugin_src.js" SelfReg="false" Sequence="102"/>
+    <ROW File="editor_plugin_src.js_30" Component_="cell.htm" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\editor_plugin_src.js" SelfReg="false" Sequence="236"/>
+    <ROW File="editor_plugin_src.js_31" Component_="blank.htm" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\template\editor_plugin_src.js" SelfReg="false" Sequence="250"/>
+    <ROW File="editor_plugin_src.js_32" Component_="editor_plugin.js_29" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\visualchars\editor_plugin_src.js" SelfReg="false" Sequence="254"/>
+    <ROW File="editor_plugin_src.js_33" Component_="editor_plugin.js_30" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\wordcount\editor_plugin_src.js" SelfReg="false" Sequence="256"/>
+    <ROW File="editor_plugin_src.js_34" Component_="abbr.htm" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\editor_plugin_src.js" SelfReg="false" Sequence="265"/>
+    <ROW File="editor_plugin_src.js_4" Component_="editor_plugin.js_4" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\autoresize\editor_plugin_src.js" SelfReg="false" Sequence="104"/>
+    <ROW File="editor_plugin_src.js_5" Component_="editor_plugin.js_5" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\autosave\editor_plugin_src.js" SelfReg="false" Sequence="106"/>
+    <ROW File="editor_plugin_src.js_6" Component_="editor_plugin.js_6" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\bbcode\editor_plugin_src.js" SelfReg="false" Sequence="109"/>
+    <ROW File="editor_plugin_src.js_7" Component_="editor_plugin.js_7" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\contextmenu\editor_plugin_src.js" SelfReg="false" Sequence="111"/>
+    <ROW File="editor_plugin_src.js_8" Component_="editor_plugin.js_8" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\directionality\editor_plugin_src.js" SelfReg="false" Sequence="113"/>
+    <ROW File="editor_plugin_src.js_9" Component_="editor_plugin.js_9" FileName="editor~2.js|editor_plugin_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\editor_plugin_src.js" SelfReg="false" Sequence="115"/>
+    <ROW File="editor_rtl.html" Component_="Cjc.AwesomiumWrapper.pdb" FileName="editor~2.htm|editor_rtl.html" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\editor_rtl.html" SelfReg="false" Sequence="329"/>
+    <ROW File="editor_template.js" Component_="about.htm" FileName="editor~1.js|editor_template.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\editor_template.js" SelfReg="false" Sequence="279"/>
+    <ROW File="editor_template.js_1" Component_="editor_template.js" FileName="editor~1.js|editor_template.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\editor_template.js" SelfReg="false" Sequence="312"/>
+    <ROW File="editor_template_src.js" Component_="about.htm" FileName="editor~2.js|editor_template_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\editor_template_src.js" SelfReg="false" Sequence="280"/>
+    <ROW File="editor_template_src.js_1" Component_="editor_template.js" FileName="editor~2.js|editor_template_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\editor_template_src.js" SelfReg="false" Sequence="313"/>
+    <ROW File="element_common.js" Component_="abbr.js" FileName="elemen~1.js|element_common.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\js\element_common.js" SelfReg="false" Sequence="272"/>
+    <ROW File="embed.js" Component_="embed.js" FileName="embed.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\js\embed.js" SelfReg="false" Sequence="184"/>
+    <ROW File="embed.js_1" Component_="embed.js_1" FileName="embed.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\preview\jscripts\embed.js" SelfReg="false" Sequence="207"/>
+    <ROW File="emotions.htm" Component_="editor_plugin.js_9" FileName="emotions.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\emotions.htm" SelfReg="false" Sequence="116"/>
+    <ROW File="emotions.js" Component_="emotions.js" FileName="emotions.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\js\emotions.js" SelfReg="false" Sequence="133"/>
+    <ROW File="en.js" Component_="en.js" FileName="en.js" Attributes="0" SourcePath="..\Streams\tiny_mce\langs\en.js" SelfReg="false" Sequence="80"/>
+    <ROW File="en.js_1" Component_="en.js_1" FileName="en.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\autosave\langs\en.js" SelfReg="false" Sequence="107"/>
+    <ROW File="en.js_2" Component_="en.js_2" FileName="en.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\example\langs\en.js" SelfReg="false" Sequence="140"/>
+    <ROW File="en.js_3" Component_="en.js_3" FileName="en.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\langs\en.js" SelfReg="false" Sequence="291"/>
+    <ROW File="en.js_4" Component_="en.js_4" FileName="en.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\langs\en.js" SelfReg="false" Sequence="315"/>
+    <ROW File="en_dlg.js" Component_="en_dlg.js" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advhr\langs\en_dlg.js" SelfReg="false" Sequence="86"/>
+    <ROW File="en_dlg.js_1" Component_="en_dlg.js_1" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advimage\langs\en_dlg.js" SelfReg="false" Sequence="94"/>
+    <ROW File="en_dlg.js_10" Component_="en_dlg.js_9" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\langs\en_dlg.js" SelfReg="false" Sequence="241"/>
+    <ROW File="en_dlg.js_11" Component_="en_dlg.js_10" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\template\langs\en_dlg.js" SelfReg="false" Sequence="251"/>
+    <ROW File="en_dlg.js_12" Component_="en_dlg.js_11" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\langs\en_dlg.js" SelfReg="false" Sequence="274"/>
+    <ROW File="en_dlg.js_13" Component_="en.js_3" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\langs\en_dlg.js" SelfReg="false" Sequence="292"/>
+    <ROW File="en_dlg.js_2" Component_="en_dlg.js_2" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advlink\langs\en_dlg.js" SelfReg="false" Sequence="99"/>
+    <ROW File="en_dlg.js_3" Component_="en_dlg.js_3" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\langs\en_dlg.js" SelfReg="false" Sequence="134"/>
+    <ROW File="en_dlg.js_4" Component_="en.js_2" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\example\langs\en_dlg.js" SelfReg="false" Sequence="141"/>
+    <ROW File="en_dlg.js_5" Component_="en_dlg.js_4" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullpage\langs\en_dlg.js" SelfReg="false" Sequence="147"/>
+    <ROW File="en_dlg.js_6" Component_="en_dlg.js_5" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\langs\en_dlg.js" SelfReg="false" Sequence="186"/>
+    <ROW File="en_dlg.js_7" Component_="en_dlg.js_6" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\paste\langs\en_dlg.js" SelfReg="false" Sequence="201"/>
+    <ROW File="en_dlg.js_8" Component_="en_dlg.js_7" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\searchreplace\langs\en_dlg.js" SelfReg="false" Sequence="217"/>
+    <ROW File="en_dlg.js_9" Component_="en_dlg.js_8" FileName="en_dlg.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\style\langs\en_dlg.js" SelfReg="false" Sequence="227"/>
+    <ROW File="entries_37" Component_="entries_36" FileName="entries" Attributes="1" SourcePath="..\Streams\tiny_mce\plugins\iespell\.svn\entries" SelfReg="false" Sequence="151"/>
+    <ROW File="entries_79" Component_="entries_78" FileName="entries" Attributes="1" SourcePath="..\Streams\tiny_mce\plugins\template\css\.svn\entries" SelfReg="false" Sequence="246"/>
+    <ROW File="example.gif" Component_="example.gif" FileName="example.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\example\img\example.gif" SelfReg="false" Sequence="138"/>
+    <ROW File="example.html" Component_="editor_plugin.js_22" FileName="exampl~1.htm|example.html" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\preview\example.html" SelfReg="false" Sequence="206"/>
+    <ROW File="flash.gif" Component_="flash.gif" FileName="flash.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\img\flash.gif" SelfReg="false" Sequence="177"/>
+    <ROW File="flv_player.swf" Component_="flash.gif" FileName="flv_pl~1.swf|flv_player.swf" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\img\flv_player.swf" SelfReg="false" Sequence="178"/>
+    <ROW File="form_utils.js" Component_="editable_selects.js" FileName="form_u~1.js|form_utils.js" Attributes="0" SourcePath="..\Streams\tiny_mce\utils\form_utils.js" SelfReg="false" Sequence="325"/>
+    <ROW File="fullpage.css" Component_="fullpage.css" FileName="fullpage.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullpage\css\fullpage.css" SelfReg="false" Sequence="142"/>
+    <ROW File="fullpage.htm" Component_="editor_plugin.js_10" FileName="fullpage.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullpage\fullpage.htm" SelfReg="false" Sequence="145"/>
+    <ROW File="fullpage.js" Component_="fullpage.js" FileName="fullpage.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullpage\js\fullpage.js" SelfReg="false" Sequence="146"/>
+    <ROW File="fullscreen.htm" Component_="editor_plugin.js_11" FileName="fullsc~1.htm|fullscreen.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\fullscreen\fullscreen.htm" SelfReg="false" Sequence="150"/>
+    <ROW File="horizontal.gif" Component_="alert.gif" FileName="horizo~1.gif|horizontal.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\horizontal.gif" SelfReg="false" Sequence="163"/>
+    <ROW File="icons.gif" Component_="colorpicker.jpg" FileName="icons.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\img\icons.gif" SelfReg="false" Sequence="283"/>
+    <ROW File="icons.gif_1" Component_="icons.gif" FileName="icons.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\img\icons.gif" SelfReg="false" Sequence="314"/>
+    <ROW File="image.htm" Component_="editor_plugin.js_1" FileName="image.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advimage\image.htm" SelfReg="false" Sequence="91"/>
+    <ROW File="image.htm_1" Component_="about.htm" FileName="image.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\image.htm" SelfReg="false" Sequence="281"/>
+    <ROW File="image.js" Component_="image.js" FileName="image.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advimage\js\image.js" SelfReg="false" Sequence="93"/>
+    <ROW File="image.js_1" Component_="about.js" FileName="image.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\js\image.js" SelfReg="false" Sequence="288"/>
+    <ROW File="ins.htm" Component_="abbr.htm" FileName="ins.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\ins.htm" SelfReg="false" Sequence="266"/>
+    <ROW File="ins.js" Component_="abbr.js" FileName="ins.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\js\ins.js" SelfReg="false" Sequence="273"/>
+    <ROW File="items.gif" Component_="buttons.png" FileName="items.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\img\items.gif" SelfReg="false" Sequence="297"/>
+    <ROW File="jquery.js" Component_="Cjc.AwesomiumWrapper.pdb" FileName="jquery.js" Attributes="0" SourcePath="..\Streams\jquery.js" SelfReg="false" Sequence="78"/>
+    <ROW File="license.txt" Component_="license.txt" FileName="license.txt" Attributes="0" SourcePath="..\Streams\tiny_mce\license.txt" SelfReg="false" Sequence="81"/>
+    <ROW File="link.htm" Component_="editor_plugin.js_2" FileName="link.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advlink\link.htm" SelfReg="false" Sequence="100"/>
+    <ROW File="link.htm_1" Component_="about.htm" FileName="link.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\link.htm" SelfReg="false" Sequence="293"/>
+    <ROW File="link.js" Component_="about.js" FileName="link.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\js\link.js" SelfReg="false" Sequence="289"/>
+    <ROW File="log4net.dll" Component_="log4net.dll" FileName="log4net.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\log4net.dll" SelfReg="false" Sequence="60"/>
+    <ROW File="mctabs.js" Component_="editable_selects.js" FileName="mctabs.js" Attributes="0" SourcePath="..\Streams\tiny_mce\utils\mctabs.js" SelfReg="false" Sequence="326"/>
+    <ROW File="media.css" Component_="content.css" FileName="media.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\css\media.css" SelfReg="false" Sequence="174"/>
+    <ROW File="media.htm" Component_="editor_plugin.js_17" FileName="media.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\media.htm" SelfReg="false" Sequence="187"/>
+    <ROW File="media.js" Component_="embed.js" FileName="media.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\js\media.js" SelfReg="false" Sequence="185"/>
+    <ROW File="menu_arrow.gif" Component_="buttons.png" FileName="menu_a~1.gif|menu_arrow.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\img\menu_arrow.gif" SelfReg="false" Sequence="298"/>
+    <ROW File="menu_check.gif" Component_="buttons.png" FileName="menu_c~1.gif|menu_check.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\img\menu_check.gif" SelfReg="false" Sequence="299"/>
+    <ROW File="merge_cells.htm" Component_="cell.htm" FileName="merge_~1.htm|merge_cells.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\merge_cells.htm" SelfReg="false" Sequence="242"/>
+    <ROW File="merge_cells.js" Component_="cell.js" FileName="merge_~1.js|merge_cells.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\js\merge_cells.js" SelfReg="false" Sequence="238"/>
+    <ROW File="pagebreak.gif" Component_="pagebreak.gif" FileName="pagebr~1.gif|pagebreak.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\pagebreak\img\pagebreak.gif" SelfReg="false" Sequence="195"/>
+    <ROW File="pastetext.htm" Component_="editor_plugin.js_21" FileName="pastet~1.htm|pastetext.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\paste\pastetext.htm" SelfReg="false" Sequence="202"/>
+    <ROW File="pastetext.js" Component_="pastetext.js" FileName="pastet~1.js|pastetext.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\paste\js\pastetext.js" SelfReg="false" Sequence="199"/>
+    <ROW File="pasteword.htm" Component_="editor_plugin.js_21" FileName="pastew~1.htm|pasteword.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\paste\pasteword.htm" SelfReg="false" Sequence="203"/>
+    <ROW File="pasteword.js" Component_="pastetext.js" FileName="pastew~1.js|pasteword.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\paste\js\pasteword.js" SelfReg="false" Sequence="200"/>
+    <ROW File="popup.css" Component_="attributes.css" FileName="popup.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\xhtmlxtras\css\popup.css" SelfReg="false" Sequence="262"/>
+    <ROW File="preview.html" Component_="editor_plugin.js_22" FileName="previe~1.htm|preview.html" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\preview\preview.html" SelfReg="false" Sequence="208"/>
+    <ROW File="progress.gif" Component_="buttons.png" FileName="progress.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\img\progress.gif" SelfReg="false" Sequence="300"/>
+    <ROW File="props.css" Component_="props.css" FileName="props.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\style\css\props.css" SelfReg="false" Sequence="223"/>
+    <ROW File="props.htm" Component_="editor_plugin.js_27" FileName="props.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\style\props.htm" SelfReg="false" Sequence="228"/>
+    <ROW File="props.js" Component_="props.js" FileName="props.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\style\js\props.js" SelfReg="false" Sequence="226"/>
+    <ROW File="protobuf_net.dll" Component_="protobuf_net.dll" FileName="protob~1.dll|protobuf-net.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\protobuf-net.dll" SelfReg="false" Sequence="331"/>
+    <ROW File="quicktime.gif" Component_="flash.gif" FileName="quickt~1.gif|quicktime.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\img\quicktime.gif" SelfReg="false" Sequence="179"/>
+    <ROW File="realmedia.gif" Component_="flash.gif" FileName="realme~1.gif|realmedia.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\img\realmedia.gif" SelfReg="false" Sequence="180"/>
+    <ROW File="row.css" Component_="cell.css" FileName="row.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\css\row.css" SelfReg="false" Sequence="233"/>
+    <ROW File="row.htm" Component_="cell.htm" FileName="row.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\row.htm" SelfReg="false" Sequence="243"/>
+    <ROW File="row.js" Component_="cell.js" FileName="row.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\js\row.js" SelfReg="false" Sequence="239"/>
+    <ROW File="rule.htm" Component_="editor_plugin.js" FileName="rule.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advhr\rule.htm" SelfReg="false" Sequence="87"/>
+    <ROW File="rule.js" Component_="rule.js" FileName="rule.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advhr\js\rule.js" SelfReg="false" Sequence="85"/>
+    <ROW File="sample.gif" Component_="sample.gif" FileName="sample.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\advimage\img\sample.gif" SelfReg="false" Sequence="92"/>
+    <ROW File="searchreplace.css" Component_="searchreplace.css" FileName="search~1.css|searchreplace.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\searchreplace\css\searchreplace.css" SelfReg="false" Sequence="213"/>
+    <ROW File="searchreplace.htm" Component_="editor_plugin.js_25" FileName="search~1.htm|searchreplace.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\searchreplace\searchreplace.htm" SelfReg="false" Sequence="218"/>
+    <ROW File="searchreplace.js" Component_="searchreplace.js" FileName="search~1.js|searchreplace.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\searchreplace\js\searchreplace.js" SelfReg="false" Sequence="216"/>
+    <ROW File="shockwave.gif" Component_="flash.gif" FileName="shockw~1.gif|shockwave.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\img\shockwave.gif" SelfReg="false" Sequence="181"/>
+    <ROW File="smiley_cool.gif" Component_="smiley_cool.gif" FileName="smiley~1.gif|smiley-cool.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-cool.gif" SelfReg="false" Sequence="117"/>
+    <ROW File="smiley_cry.gif" Component_="smiley_cool.gif" FileName="smiley~2.gif|smiley-cry.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-cry.gif" SelfReg="false" Sequence="118"/>
+    <ROW File="smiley_embarassed.gif" Component_="smiley_cool.gif" FileName="smiley~3.gif|smiley-embarassed.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-embarassed.gif" SelfReg="false" Sequence="119"/>
+    <ROW File="smiley_foot_in_mouth.gif" Component_="smiley_cool.gif" FileName="smiley~4.gif|smiley-foot-in-mouth.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-foot-in-mouth.gif" SelfReg="false" Sequence="120"/>
+    <ROW File="smiley_frown.gif" Component_="smiley_cool.gif" FileName="smiley~5.gif|smiley-frown.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-frown.gif" SelfReg="false" Sequence="121"/>
+    <ROW File="smiley_innocent.gif" Component_="smiley_cool.gif" FileName="smiley~6.gif|smiley-innocent.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-innocent.gif" SelfReg="false" Sequence="122"/>
+    <ROW File="smiley_kiss.gif" Component_="smiley_cool.gif" FileName="smiley~7.gif|smiley-kiss.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-kiss.gif" SelfReg="false" Sequence="123"/>
+    <ROW File="smiley_laughing.gif" Component_="smiley_cool.gif" FileName="smiley~8.gif|smiley-laughing.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-laughing.gif" SelfReg="false" Sequence="124"/>
+    <ROW File="smiley_money_mouth.gif" Component_="smiley_cool.gif" FileName="smiley~9.gif|smiley-money-mouth.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-money-mouth.gif" SelfReg="false" Sequence="125"/>
+    <ROW File="smiley_sealed.gif" Component_="smiley_cool.gif" FileName="smile~10.gif|smiley-sealed.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-sealed.gif" SelfReg="false" Sequence="126"/>
+    <ROW File="smiley_smile.gif" Component_="smiley_cool.gif" FileName="smile~11.gif|smiley-smile.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-smile.gif" SelfReg="false" Sequence="127"/>
+    <ROW File="smiley_surprised.gif" Component_="smiley_cool.gif" FileName="smile~12.gif|smiley-surprised.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-surprised.gif" SelfReg="false" Sequence="128"/>
+    <ROW File="smiley_tongue_out.gif" Component_="smiley_cool.gif" FileName="smile~13.gif|smiley-tongue-out.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-tongue-out.gif" SelfReg="false" Sequence="129"/>
+    <ROW File="smiley_undecided.gif" Component_="smiley_cool.gif" FileName="smile~14.gif|smiley-undecided.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-undecided.gif" SelfReg="false" Sequence="130"/>
+    <ROW File="smiley_wink.gif" Component_="smiley_cool.gif" FileName="smile~15.gif|smiley-wink.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-wink.gif" SelfReg="false" Sequence="131"/>
+    <ROW File="smiley_yell.gif" Component_="smiley_cool.gif" FileName="smile~16.gif|smiley-yell.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\emotions\img\smiley-yell.gif" SelfReg="false" Sequence="132"/>
+    <ROW File="source_editor.htm" Component_="about.htm" FileName="source~1.htm|source_editor.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\source_editor.htm" SelfReg="false" Sequence="311"/>
+    <ROW File="source_editor.js" Component_="about.js" FileName="source~1.js|source_editor.js" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\js\source_editor.js" SelfReg="false" Sequence="290"/>
+    <ROW File="table.css" Component_="cell.css" FileName="table.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\css\table.css" SelfReg="false" Sequence="234"/>
+    <ROW File="table.htm" Component_="cell.htm" FileName="table.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\table.htm" SelfReg="false" Sequence="244"/>
+    <ROW File="table.js" Component_="cell.js" FileName="table.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\table\js\table.js" SelfReg="false" Sequence="240"/>
+    <ROW File="tabs.gif" Component_="buttons.png" FileName="tabs.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\img\tabs.gif" SelfReg="false" Sequence="301"/>
+    <ROW File="template.css" Component_="template.css" FileName="template.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\template\css\template.css" SelfReg="false" Sequence="248"/>
+    <ROW File="template.css.svn_base" Component_="template.css.svn_base" FileName="templa~1.svn|template.css.svn-base" Attributes="1" SourcePath="..\Streams\tiny_mce\plugins\template\css\.svn\text-base\template.css.svn-base" SelfReg="false" Sequence="247"/>
+    <ROW File="template.htm" Component_="editor_plugin.js_13" FileName="template.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\template.htm" SelfReg="false" Sequence="166"/>
+    <ROW File="template.htm_1" Component_="blank.htm" FileName="template.htm" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\template\template.htm" SelfReg="false" Sequence="252"/>
+    <ROW File="template.js" Component_="template.js" FileName="template.js" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\template\js\template.js" SelfReg="false" Sequence="328"/>
+    <ROW File="tiny_mce.js" Component_="license.txt" FileName="tiny_mce.js" Attributes="0" SourcePath="..\Streams\tiny_mce\tiny_mce.js" SelfReg="false" Sequence="321"/>
+    <ROW File="tiny_mce_popup.js" Component_="license.txt" FileName="tiny_m~1.js|tiny_mce_popup.js" Attributes="0" SourcePath="..\Streams\tiny_mce\tiny_mce_popup.js" SelfReg="false" Sequence="322"/>
+    <ROW File="tiny_mce_src.js" Component_="license.txt" FileName="tiny_m~2.js|tiny_mce_src.js" Attributes="0" SourcePath="..\Streams\tiny_mce\tiny_mce_src.js" SelfReg="false" Sequence="323"/>
+    <ROW File="trans.gif" Component_="flash.gif" FileName="trans.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\img\trans.gif" SelfReg="false" Sequence="182"/>
+    <ROW File="trans.gif_1" Component_="pagebreak.gif" FileName="trans.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\pagebreak\img\trans.gif" SelfReg="false" Sequence="196"/>
+    <ROW File="ui.css" Component_="content.css_3" FileName="ui.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\default\ui.css" SelfReg="false" Sequence="302"/>
+    <ROW File="ui.css_1" Component_="content.css_4" FileName="ui.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\o2k7\ui.css" SelfReg="false" Sequence="308"/>
+    <ROW File="ui.css_2" Component_="content.css_5" FileName="ui.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\skins\default\ui.css" SelfReg="false" Sequence="317"/>
+    <ROW File="ui.css_3" Component_="content.css_6" FileName="ui.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\simple\skins\o2k7\ui.css" SelfReg="false" Sequence="320"/>
+    <ROW File="ui_black.css" Component_="content.css_4" FileName="ui_black.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\o2k7\ui_black.css" SelfReg="false" Sequence="309"/>
+    <ROW File="ui_silver.css" Component_="content.css_4" FileName="ui_sil~1.css|ui_silver.css" Attributes="0" SourcePath="..\Streams\tiny_mce\themes\advanced\skins\o2k7\ui_silver.css" SelfReg="false" Sequence="310"/>
+    <ROW File="unrar.dll" Component_="unrar.dll" FileName="unrar.dll" Attributes="0" SourcePath="..\Inbox2\bin\x86\Release\unrar.dll" SelfReg="false" Sequence="76"/>
+    <ROW File="validate.js" Component_="editable_selects.js" FileName="validate.js" Attributes="0" SourcePath="..\Streams\tiny_mce\utils\validate.js" SelfReg="false" Sequence="327"/>
+    <ROW File="vertical.gif" Component_="alert.gif" FileName="vertical.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\vertical.gif" SelfReg="false" Sequence="164"/>
+    <ROW File="window.css" Component_="window.css" FileName="window.css" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\inlinepopups\skins\clearlooks2\window.css" SelfReg="false" Sequence="165"/>
+    <ROW File="windowsmedia.gif" Component_="flash.gif" FileName="window~1.gif|windowsmedia.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\media\img\windowsmedia.gif" SelfReg="false" Sequence="183"/>
+    <ROW File="wline.gif" Component_="wline.gif" FileName="wline.gif" Attributes="0" SourcePath="..\Streams\tiny_mce\plugins\spellchecker\img\wline.gif" SelfReg="false" Sequence="222"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.AiRemoveRegComponent">
+    <ROW RemoveReg="_" InstallMode="2" Condition="(AI_CLEAN_RESOURCES_UNINSTALL = &quot;1&quot;) AND (NOT UPGRADINGPRODUCTCODE)"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" Languages="en" InstallationType="4" PackageType="1"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_FRAGS&gt;FolderDlg.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_FRAGS&gt;UI.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="AI_AiRemoveRegsCommit" Description="Executing file registry operations." Template="Removing registry entry: [1]" DescriptionLocId="ActionText.Description.AI_AiRemoveRegsCommit" TemplateLocId="ActionText.Template.AI_AiRemoveRegsCommit"/>
+    <ROW Action="AI_AiRemoveRegsDeferred" Description="Executing registry removal operations." Template="Removing registry entry: [1]" DescriptionLocId="ActionText.Description.AI_AiRemoveRegsDeferred" TemplateLocId="ActionText.Template.AI_AiRemoveRegsDeferred"/>
+    <ROW Action="AI_AiRemoveRegsImmediate" Description="Generating actions to remove registry entries." DescriptionLocId="ActionText.Description.AI_AiRemoveRegsImmediate"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
+    <ROW Property="AI_DOTNET35_CLIENTPROFILE_SEARCH" Signature_="AI_DotNet35ClientProfileSearchSgn" Builds="DefaultBuild"/>
+    <ROW Property="AI_DOTNET35_SEARCH" Signature_="AI_DotNet35SearchSgn" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="ResourceCleaner.dll" SourcePath="&lt;AI_CUSTACTS&gt;ResourceCleaner.dll"/>
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="bannrbmp.bmp" SourcePath="bannrbmp.bmp"/>
+    <ROW Name="dlgbmp.bmp" SourcePath="dlgbmp.bmp"/>
+    <ROW Name="viewer.exe" SourcePath="&lt;AI_CUSTACTS&gt;viewer.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ATTRIBUTE name="FixedSizeBitmaps" value="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR"/>
+    <ROW Directory_="images_DIR" Component_="images"/>
+    <ROW Directory_="prop_base_74_DIR" Component_="prop_base_74"/>
+    <ROW Directory_="props_74_DIR" Component_="props_74"/>
+    <ROW Directory_="prop_base_75_DIR" Component_="prop_base_75"/>
+    <ROW Directory_="props_75_DIR" Component_="props_75"/>
+    <ROW Directory_="text_base_75_DIR" Component_="text_base_75"/>
+    <ROW Directory_="prop_base_158_DIR" Component_="prop_base_158"/>
+    <ROW Directory_="props_158_DIR" Component_="props_158"/>
+    <ROW Directory_="prop_base_159_DIR" Component_="prop_base_159"/>
+    <ROW Directory_="props_159_DIR" Component_="props_159"/>
+    <ROW Directory_="text_base_159_DIR" Component_="text_base_159"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_AiRemoveRegsCommit" Type="11777" Source="ResourceCleaner.dll" Target="OnAiRemoveRegs" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveRegsDeferred" Type="11265" Source="ResourceCleaner.dll" Target="OnAiRemoveRegs" WithoutSeq="true"/>
+    <ROW Action="AI_AiRemoveRegsImmediate" Type="1" Source="ResourceCleaner.dll" Target="OnAiRemoveRegsImmediate"/>
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_LaunchApp" Type="1" Source="aicustact.dll" Target="[#Inbox2Upgrade.exe]"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFilesFolder]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+    <ROW Action="uninstall" Type="1026" Source="viewer.exe" Target="http://www.inbox2.com/uninstall"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiExtComponent">
+    <ROW Extension=".ib2" Component_="Inbox2.exe" ProgId_="[|Manufacturer].[|ProductName]" Feature_="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="inbox2_icon.exe" SourcePath="..\Inbox2\inbox2_icon.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="Not Installed" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="uninstall" Condition="REMOVE=&quot;ALL&quot;" Sequence="1651"/>
+    <ROW Action="AI_AiRemoveRegsImmediate" Sequence="2599"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="(AI_DOTNET35_SEARCH = &quot;#1&quot;) OR (AI_DOTNET35_CLIENTPROFILE_SEARCH = &quot;#1&quot;)" Description="[ProductName] cannot be installed on systems with .NET Framework version smaller than [AI_MINDOTNETVERSION]" DescriptionLocId="AI.LaunchCondition.DotNET" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="Version9X OR VersionNT64 OR (VersionNT &gt;= 501)" Description="[ProductName] cannot be installed on systems earlier than [WindowsTypeNT]" DescriptionLocId="AI.LaunchCondition.NoSpecificNT" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsFamily9X]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiProgIdComponent">
+    <ROW ProgId="[|Manufacturer].[|ProductName]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
+    <ROW Signature_="AI_DotNet35ClientProfileSearchSgn" Root="2" Key="SOFTWARE\Microsoft\NET Framework Setup\DotNetClient\v3.5" Name="Install" Type="2"/>
+    <ROW Signature_="AI_DotNet35SearchSgn" Root="2" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5" Name="Install" Type="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRemoveRegComponent">
+    <ROW RemoveRegistry="_" Root="2" Key="Software\Clients\Mail\Inbox2" Name="-" Component_="Inbox2.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Inbox2.exe" Directory_="SHORTCUTDIR" Name="Inbox2" Component_="Inbox2.exe" Target="[#Inbox2.exe]" Description="Inbox2.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="Inbox2.exe_1" Directory_="DesktopFolder" Name="Inbox2" Component_="Inbox2.exe" Target="[#Inbox2.exe]" Description="Inbox2.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiVerbComponent">
+    <ROW Extension_=".ib2" Component_="Inbox2.exe" Verb="open" Sequence="0" Command="&amp;Open" Argument="&quot;%1&quot;"/>
+  </COMPONENT>
+</DOCUMENT>

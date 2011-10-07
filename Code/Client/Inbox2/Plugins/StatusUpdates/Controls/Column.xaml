@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Inbox2.Plugins.StatusUpdates.Controls.Column"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="DataTemplates.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="32" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<!--________________________________________________
+        Top title bar of messages area
+        ________________________________________________-->
+		<Button Content="Status updates" Style="{StaticResource HeaderButton}" />
+
+		<ListView Name="StatusUpdatesSource"              
+            Grid.Row="1"
+            SelectedIndex="0"
+            ScrollViewer.CanContentScroll="True"
+            VirtualizingStackPanel.IsVirtualizing="True"
+            VirtualizingStackPanel.VirtualizationMode="Recycling"
+            IsSynchronizedWithCurrentItem="True" />
+
+	</Grid>
+</UserControl>

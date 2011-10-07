@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9B222C61-ECAD-46C0-A3DD-66E0590F9B50}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inbox2.Framework.VirtualMailBox</RootNamespace>
+    <AssemblyName>Inbox2.Framework.VirtualMailBox</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\Inbox2.Framework.VirtualMailBox.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisInputAssembly>bin\x64\Debug\Inbox2.Framework.VirtualMailBox.dll</CodeAnalysisInputAssembly>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Inbox2.Framework.VirtualMailBox.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisInputAssembly>bin\x64\Release\Inbox2.Framework.VirtualMailBox.dll</CodeAnalysisInputAssembly>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\Inbox2.Framework.VirtualMailBox.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisInputAssembly>bin\x86\Debug\Inbox2.Framework.VirtualMailBox.dll</CodeAnalysisInputAssembly>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Inbox2.Framework.VirtualMailBox.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisInputAssembly>bin\x86\Release\Inbox2.Framework.VirtualMailBox.dll</CodeAnalysisInputAssembly>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Inbox2.Platform.Channels">
+      <HintPath>..\..\..\..\Stable Assemblies\Inbox2.Platform.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Framework">
+      <HintPath>..\..\..\..\Stable Assemblies\Inbox2.Platform.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Interfaces">
+      <HintPath>..\..\..\..\Stable Assemblies\Inbox2.Platform.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Logging">
+      <HintPath>..\..\..\..\Stable Assemblies\Inbox2.Platform.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PyBinding">
+      <HintPath>..\..\..\..\..\ThirdParty\PyBinding\PyBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ChannelFactory.cs" />
+    <Compile Include="CommandQueue.cs" />
+    <Compile Include="Inbox2Environment.cs" />
+    <Compile Include="Comparers\MailAddressEqualityComparer.cs" />
+    <Compile Include="Comparers\MessageEqualityComparer.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="Entities\ChannelConfig.cs" />
+    <Compile Include="Entities\Conversation.cs" />
+    <Compile Include="Entities\Document.cs" />
+    <Compile Include="Entities\DocumentVersion.cs" />
+    <Compile Include="Entities\FeedItem.cs" />
+    <Compile Include="Entities\Label.cs" />
+    <Compile Include="Entities\LabelsContainer.cs" />
+    <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\Profile.cs" />
+    <Compile Include="Entities\QueuedCommand.cs" />
+    <Compile Include="Entities\Recipients.cs" />
+    <Compile Include="EntityFactory.cs" />
+    <Compile Include="DataLoadTask.cs" />
+    <Compile Include="MailBoxStats.cs" />
+    <Compile Include="Mappers\DocumentContentMapper.cs" />
+    <Compile Include="Entities\UserStatus.cs" />
+    <Compile Include="Entities\UserStatusAttachment.cs" />
+    <Compile Include="ClientMessageAccess.cs" />
+    <Compile Include="SearchKeyWords.cs" />
+    <Compile Include="ThreadSafeCollection.cs" />
+    <Compile Include="Mappers\MessageContentMapper.cs" />
+    <Compile Include="ThreadSafeDictionary.cs" />
+    <Compile Include="View\ActivityView.cs" />
+    <Compile Include="View\Filter.cs" />
+    <Compile Include="View\ViewFilter.cs" />
+    <Compile Include="VirtualMailBox.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Configuration\Inbox2.Core.Configuration.csproj">
+      <Project>{2E870F3B-1BBB-44B0-B534-4A1D1CCB17C8}</Project>
+      <Name>Inbox2.Core.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extensions\Inbox2.Framework.Extensions.csproj">
+      <Project>{CFEC0A6E-AFAE-4FC1-8F07-B1B0F97B4162}</Project>
+      <Name>Inbox2.Framework.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inbox2.Framework.csproj">
+      <Project>{B6402BD1-3B14-4ED8-A0A2-11665AEC6D3F}</Project>
+      <Name>Inbox2.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Inbox2.Framework.Interfaces.csproj">
+      <Project>{8E52D082-3EF7-4A0A-961C-E63C8D4B1947}</Project>
+      <Name>Inbox2.Framework.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interop\Inbox2.Framework.Interop.csproj">
+      <Project>{7F48ED3E-C647-472C-9FAE-827F7F9BCCAC}</Project>
+      <Name>Inbox2.Framework.Interop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Localization\Inbox2.Framework.Localization.csproj">
+      <Project>{4E91D564-1B6E-4FF0-A177-3ED4632EA5D2}</Project>
+      <Name>Inbox2.Framework.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistance\Inbox2.Framework.Persistance.csproj">
+      <Project>{C20E7E84-728A-4891-B99B-D6DD4029FFF4}</Project>
+      <Name>Inbox2.Framework.Persistance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Threading\Inbox2.Framework.Threading.csproj">
+      <Project>{428793DE-2946-4FB0-B8B8-E372084A58E7}</Project>
+      <Name>Inbox2.Framework.Threading</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UI\Inbox2.Framework.UI.csproj">
+      <Project>{2654801F-269C-4D48-A200-E37D23AFF668}</Project>
+      <Name>Inbox2.Framework.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Templates\Entities.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Templates\Message.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Templates\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Templates\Conversation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Templates\Document.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Templates\Person.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Templates\Profile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

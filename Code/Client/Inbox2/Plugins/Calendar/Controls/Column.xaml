@@ -1,0 +1,371 @@
+﻿<UserControl x:Class="Inbox2.Plugins.Calendar.Controls.Column"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+	xmlns:fcontrols="clr-namespace:Inbox2.Framework.UI.Controls;assembly=Inbox2.Framework.UI"
+	xmlns:entities="clr-namespace:Inbox2.Framework.Plugins.Entities;assembly=Inbox2.Framework.Plugins"
+	xmlns:resources="clr-namespace:Inbox2.Plugins.Calendar.Resources"
+	xmlns:helpers="clr-namespace:Inbox2.Plugins.Calendar.Helpers"
+	xmlns:calcontrols="clr-namespace:Inbox2.Plugins.Calendar.Controls"
+    Loaded="UserControl_Loaded">
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static fui:Commands.New}" Executed="New_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.Next}" Executed="Next_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.Previous}" Executed="Previous_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.ViewCalendarDay}" Executed="ViewCalendarDay_Executed" />
+        <CommandBinding Command="{x:Static fui:Commands.ViewCalenderEvent}" Executed="ViewCalenderEvent_Executed" />
+    </UserControl.CommandBindings>
+
+    <UserControl.Resources>
+        
+        <!-- ******************* -->
+        <!-- Calendar Converters -->
+        <!-- ******************* -->
+        <resources:DayLabelConverter x:Key="DayLabelConverter" />
+        <resources:EventDateAndTimeConverter x:Key="EventDateAndTimeConverter" />
+        
+        
+        <!-- ****************** -->
+        <!-- Calendar Templates -->
+        <!-- ****************** -->
+
+        <!-- Template for an calendar event in a day -->
+        <DataTemplate x:Key="CalendarEvent" DataType="{x:Type entities:Event}">
+            <Button
+                Style="{StaticResource CalendarColumnEventButton}"
+                Command="{x:Static fui:Commands.ViewCalenderEvent}" CommandParameter="{Binding}"
+                fui:PopupManager.AttachedPopup="{Binding ElementName=PopUp_CalendarEventDetails}"
+                MouseEnter="ViewCalendarEvent_MouseEnter" />
+        </DataTemplate>
+        
+        <!-- Template for an calendar day -->
+        <DataTemplate DataType="{x:Type helpers:Day}">
+            <ToggleButton
+                Style="{StaticResource CalendarColumnDayToggleButton}"
+                Command="{x:Static fui:Commands.ViewCalendarDay}" CommandParameter="{Binding}">
+                <Grid Margin="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Event buttons for whole day events -->
+                    <ItemsControl
+                        Grid.Row="0" Name="WholeDay"
+                        Style="{StaticResource HorizontalItemsControlNoMargin}"
+                        ItemsSource="{Binding WholeDayViewSource.View}"
+                        ItemTemplate="{StaticResource CalendarEvent}" />
+
+                    <!-- Label for day of month and seperate border -->
+                    <Label
+                        Grid.Row="0" Content="{Binding DateDay}"
+                        Style="{StaticResource CalendarDayLabel}"
+                        Opacity="{Binding IsInCurrentMonth, Converter={StaticResource DayLabelConverter}}" />
+                    <Grid Grid.Row="1">
+                        <!-- TODO CalendarPlugin: Make a Line of it -->
+                        <!-- TODO CalendarPlugin: Make a style of it -->
+                        <Rectangle Stroke="White" Margin="0,0,1,0" SnapsToDevicePixels="True" Opacity="0.2" StrokeDashArray="3,5" />
+                    </Grid>
+
+                    <!-- Event buttons for afternoon events -->
+                    <ItemsControl
+                        Grid.Row="2" Name="Afternoon"
+                        Style="{StaticResource HorizontalItemsControlNoMargin}"
+                        ItemsSource="{Binding AfternoonViewSource.View}"
+                        ItemTemplate="{StaticResource CalendarEvent}" />
+
+                    <!-- Event buttons for midday events -->
+                    <ItemsControl
+                        Grid.Row="3" Name="Midday"
+                        Style="{StaticResource HorizontalItemsControlNoMargin}"
+                        ItemsSource="{Binding MiddayViewSource.View}"
+                        ItemTemplate="{StaticResource CalendarEvent}" />
+
+                    <!-- Event buttons for evening events -->
+                    <ItemsControl
+                        Grid.Row="4" Name="Evening"
+                        Style="{StaticResource HorizontalItemsControlNoMargin}"
+                        ItemsSource="{Binding EveningViewSource.View}"
+                        ItemTemplate="{StaticResource CalendarEvent}" />
+                </Grid>
+            </ToggleButton>
+        </DataTemplate>
+        
+        
+        <!-- ******************* -->
+        <!-- EventList Templates -->
+        <!-- ******************* -->
+        
+        <!-- Default template for an event -->
+        <DataTemplate x:Key="CalendarListDefaultEvent" DataType="{x:Type entities:Event}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <!-- Calendar label -->
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.RowSpan="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Source="{Binding SourceChannelId, Converter={StaticResource ChannelIconConverter}}"
+                    Margin="6,10,0,2"
+                    Width="16"
+                    Height="16"
+                    Stretch="Uniform" />
+                
+                <!-- Subject -->
+                <TextBlock
+                    x:Name="TextBlockSubject"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Style="{StaticResource TextBlockContentForegroundStyle}" VerticalAlignment="Center"
+                    TextTrimming="CharacterEllipsis">
+                    <Hyperlink><!-- TODO CalendarPlugin: Click="Hyperlink_Click">-->
+                        <fui:BindableRun BoundText="{Binding Subject}" DataContext="{Binding DataContext, ElementName=TextBlockSubject}" />
+                    </Hyperlink>
+                </TextBlock>
+                
+                <!-- Infolabels -->
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Style="{StaticResource RecurrenceButton}" />
+                
+                <!-- Date and Time -->
+                <TextBlock
+                    x:Name="TextBlockEventDateAndTime"
+                    Grid.Row="1" Grid.Column="1"
+                    Text="{Binding Converter={StaticResource EventDateAndTimeConverter}}"
+                    Style="{StaticResource TextBlockContentForegroundOpaqueStyle}" VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        
+        <!-- Template for an quick edit calendar event in the list -->
+        <DataTemplate x:Key="CalendarListQuickEditEvent" DataType="{x:Type entities:Event}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <!-- Selected border -->
+                <Border
+                    Grid.Row="0" Grid.RowSpan="3"
+                    Grid.Column="0" Grid.ColumnSpan="3"
+                    Style="{StaticResource SelectedEventBorder}" />
+
+                <!-- Quick edit header -->
+                <Button
+                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                    Style="{StaticResource QuickEditEventButtonHeader}"
+                    Content="Quick Edit">
+                </Button>
+                
+                <!-- Calendar label image -->
+                <Image
+                    Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Source="{Binding SourceChannelId, Converter={StaticResource ChannelIconConverter}}"
+                    Margin="6,10,0,2"
+                    Width="16" Height="16"
+                    Stretch="Uniform" />
+                
+                <!-- Edit Subject -->
+                <TextBox
+                    x:Name="TextBoxSubject"
+                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                    Margin="0,1,0,0"
+                    HorizontalAlignment="Stretch"
+                    Width="Auto"
+                    Text="{Binding Subject}" />
+                
+                <!-- Infolabels -->
+                <Button
+                    Grid.Row="1" Grid.Column="3"
+                    Style="{StaticResource RecurrenceButton}" />
+                
+                <!-- Edit Time -->
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,2,3,3" Orientation="Horizontal">
+                    <TextBlock Text="From" Style="{StaticResource TextBlockContentForegroundOpaqueStyle}" VerticalAlignment="Center" />
+                    <ComboBox MinWidth="70" Text="{Binding StartDate}" Margin="2,0,2,0" />
+                    <TextBlock Text="To" Style="{StaticResource TextBlockContentForegroundOpaqueStyle}" VerticalAlignment="Center" />
+                    <ComboBox MinWidth="70" Text="{Binding EndDate}" Margin="2,0,2,0" />
+                    <CheckBox IsChecked="{Binding IsWholeDay}" Content="Lasts whole day" VerticalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        
+        <!-- Selector for determining which template to show -->
+        <resources:EventTemplateSelector
+            x:Key="EventTemplateSelector" 
+			DefaultEventTemplate="{StaticResource CalendarListDefaultEvent}"
+            QuickEditEventTemplate="{StaticResource CalendarListQuickEditEvent}" />
+        
+        <!-- Template for an calendar event in the list -->
+        <DataTemplate x:Key="CalendarListEvent" DataType="{x:Type entities:Event}">
+            <Grid SnapsToDevicePixels="True" Background="Transparent" DataContext="{Binding Converter={StaticResource ObjectToObjectHolderConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <!-- Content presenter for the given event -->
+                <ContentPresenter
+                    Grid.Row="0"
+                    Content="{Binding Value}"
+                    ContentTemplateSelector="{StaticResource EventTemplateSelector}" />
+                
+                <!-- Bottom border -->
+                <Border Grid.Row="1" Style="{StaticResource SeperaterBorderStyle}" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <!-- ****************************** -->
+        <!-- Top title bar of messages area -->
+        <!-- ****************************** -->
+        <Button Content="Calendar" Style="{StaticResource HeaderButton}" Name="CollapsableButton" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Background="Transparent" Margin="0,0,2,0">
+            <ToggleButton Content="Options" Style="{StaticResource HeaderOptionsButton}" Name="OptionsButton" fui:PopupManager.AttachedPopup="{Binding ElementName=OptionsPopup}" fui:HotKeyManager.HotKey="ctrl+D2" />
+            <Button Content="New" Style="{StaticResource HeaderNewButton}" Command="{x:Static fui:Commands.New}" />
+        </StackPanel>
+        
+        
+        <!-- ********************* -->
+        <!-- Content of the column -->
+        <!-- ********************* -->
+        
+        <!-- Seperate column in: calendar view and event list -->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!-- Calendar view -->
+            <Grid Name="CalendarView" Grid.Row="0" Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <!-- Navigator -->
+                <StackPanel Name="CalendarNavigation" Grid.Row="0" Orientation="Horizontal">
+                    <Button Command="{x:Static fui:Commands.Previous}" Style="{StaticResource PreviousMonthButton}" />
+                    <Label Name="LabelCurrentMonth" Style="{StaticResource CalendarNavigatorLabel}" />
+                    <Button Command="{x:Static fui:Commands.Next}" Style="{StaticResource NextMonthButton}" />
+                </StackPanel>
+                <Border Grid.Row="1" Style="{StaticResource SeperaterBorderStyle}" />
+                
+                <!-- Days header -->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Labels -->
+                    <Label Grid.Column="0" Style="{StaticResource CalendarColumnDaysHeader}" Content="Mon" />
+                    <Label Grid.Column="1" Style="{StaticResource CalendarColumnDaysHeader}" Content="Tue" />
+                    <Label Grid.Column="2" Style="{StaticResource CalendarColumnDaysHeader}" Content="Wed" />
+                    <Label Grid.Column="3" Style="{StaticResource CalendarColumnDaysHeader}" Content="Thu" />
+                    <Label Grid.Column="4" Style="{StaticResource CalendarColumnDaysHeader}" Content="Fri" />
+                    <Label Grid.Column="5" Style="{StaticResource CalendarColumnDaysHeader}" Content="Sat" />
+                    <Label Grid.Column="6" Style="{StaticResource CalendarColumnDaysHeader}" Content="Sun" />
+                </Grid>
+                
+                <!-- Calendar days-->
+                <Grid Grid.Row="3" Name="CalendarViewGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                
+                <!-- Bottom border to seperate -->
+                <Border Grid.Row="4" Style="{StaticResource SeperaterBorderStyle}" />
+            </Grid>
+            
+            <!-- Event List -->
+            <Button
+                x:Name="EventsListViewHeader"
+                Grid.Row="1"
+                Style="{DynamicResource CalendarColumnListViewButton}"
+                Content="Events on the selected days" />
+            <ListView
+                Grid.Row="2"
+                Name="EventsListView"
+                ScrollViewer.CanContentScroll="True"
+                VirtualizingStackPanel.IsVirtualizing="True"
+                VirtualizingStackPanel.VirtualizationMode="Recycling"
+                ItemsSource="{Binding SelectedDaysViewSource.View}"
+                ItemTemplate="{StaticResource CalendarListEvent}"
+                IsSynchronizedWithCurrentItem="True"
+                SelectionChanged="EventsListView_SelectionChanged"
+                PreviewKeyDown="EventsListView_PreviewKeyDown" />
+                <!--
+                TODO CalendarPlugin: Listevents
+                MouseDoubleClick="EventsListView_MouseDoubleClick"-->
+            <!--<ListView
+				  
+				  
+				  
+				  fui:PopupManager.AttachedPopup="{Binding ElementName=QuickMessagePopup}" />-->
+        </Grid>
+        
+        <!-- ****************** -->
+        <!-- Additional objects -->
+        <!-- ****************** -->
+        <calcontrols:EventDetailsPopup x:Name="PopUp_CalendarEventDetails" />
+        
+    </Grid>
+    
+</UserControl>

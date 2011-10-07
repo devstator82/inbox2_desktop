@@ -1,0 +1,230 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.Options.ProfileOptionsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI"
+    xmlns:py="clr-namespace:PyBinding;assembly=PyBinding"
+    Loaded="UserControl_Loaded">
+
+    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" Margin="18">
+
+        <!-- Display Name Input Field -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                           Text="Display name: " 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource NormalTextBlock}" 
+                           FontWeight="Bold"
+                           SnapsToDevicePixels="True" />
+
+                <TextBox x:Name="DisplayNameTextBox" 
+                         Grid.Column="1" 
+                         Text="{Binding FullName}" 
+                         Width="200"
+                         HorizontalAlignment="Left" 
+                         VerticalAlignment="Center" />
+            </Grid>
+        </Border>
+
+        <!-- Signature Input Field -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                           Text="Signature: " 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Style="{StaticResource NormalTextBlock}" 
+                           FontWeight="Bold"
+                           SnapsToDevicePixels="True" />
+
+                <TextBox x:Name="SignatureTextBox" 
+                         Grid.Column="1" 
+                         Width="Auto"
+                         Height="100"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Center"                                     
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True" />
+            </Grid>
+        </Border>
+
+        <!-- Default E-mail Address Input Field -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Default account: " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <ComboBox Name="DefaultEmailAddressComboBox" 
+                      Grid.Column="1" 
+                      ItemsSource="{Binding ChannelConfigurations}"
+                      SelectedValuePath="IsDefault"
+                      SelectedValue="{Binding Path=IsDefault}"
+					  Visibility="{py:PyBinding BooleanToVisibility($[.HasMailChannelConfigured])}"
+                      Width="Auto">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="17" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="{Binding Converter={StaticResource ChannelIconConverter}, ConverterParameter=13}" Width="13" Height="13" Margin="1,1,2,1" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                                <TextBlock Grid.Column="1" Text="{Binding InputChannel.Authentication.Username}" />                                
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+        </Border>
+
+        <!-- Customer improvement program -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Improve Inbox2: " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <CheckBox Name="IsStatsDisabledCheckBox" Content="I do not want to help improve Inbox2" IsChecked="True" />
+                    <TextBlock>
+                    <fui:WebHyperlink NavigateUri="http://help.inbox2.com/entries/117123-what-is-the-customer-improvement-program">What is this?</fui:WebHyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Default email client -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Default email client: " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <CheckBox Name="IsDefaultEmailClientCheckBox" Content="Check if Inbox2 is the default email client on startup" IsChecked="True" />
+
+                    <Button Style="{StaticResource OptionPopupButton}" Name="CheckNowButton" Width="100" FontWeight="Bold" Click="CheckNow_Click">Check now</Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Load all messages notification -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Load more messages: " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <TextBlock Grid.Column="1" Grid.Row="0"
+                       Text="Inbox2 downloads 50 messages from all your accounts by default. Click the button to load all your messages." 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       TextWrapping="Wrap"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontStyle="Italic"
+                       Opacity="0.8"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                    <Button Style="{StaticResource OptionPopupButton}" Name="LoadAllMessagesButton" Width="150" FontWeight="Bold" Click="LoadAllMessages_Click">Load all my messages</Button>
+                </StackPanel>  
+
+            </Grid>
+        </Border>
+
+        <!-- Customer improvement program -->
+        <Border Background="{StaticResource HighlightColor4}" BorderBrush="{StaticResource ShadowColor2}" BorderThickness="1" CornerRadius="5" Margin="3">
+            <Grid HorizontalAlignment="Stretch" Margin="10">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                       Text="Updates: " 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontWeight="Bold"
+                       SnapsToDevicePixels="True" />
+
+                <TextBlock Grid.Column="1" Grid.Row="0"
+                       Text="Click on the button to see of there is a new version of Inbox2 desktop available" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       TextWrapping="Wrap"
+                       Style="{StaticResource NormalTextBlock}" 
+                       FontStyle="Italic"
+                       Opacity="0.8"
+                       SnapsToDevicePixels="True" />
+
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                    <Button Style="{StaticResource OptionPopupButton}" Name="CheckForUpdateButton" Width="150" FontWeight="Bold" Click="CheckForUpdateButton_Click">Check for new version</Button>
+
+                    <TextBlock Margin="5,0,0,0" Name="CheckForUpdateTextBlock" VerticalAlignment="Center" Style="{StaticResource NormalTextBlock}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+    </StackPanel>
+</UserControl>

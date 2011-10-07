@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61EF019B-7EFF-4383-ABFF-17C053A7DB50}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inbox2.Core.Threading</RootNamespace>
+    <AssemblyName>Inbox2.Core.Threading</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Inbox2.Platform.Channels">
+      <HintPath>..\..\..\..\Stable Assemblies\Inbox2.Platform.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Framework">
+      <HintPath>..\..\..\..\Stable Assemblies\Inbox2.Platform.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Interfaces">
+      <HintPath>..\..\..\..\Stable Assemblies\Inbox2.Platform.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Inbox2.Platform.Logging">
+      <HintPath>..\..\..\..\Stable Assemblies\Inbox2.Platform.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\ThirdParty\Json.Net\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="protobuf-net, Version=1.0.0.280, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Stable Assemblies\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=2008.9.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ThirdParty\MEF\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Commands\CommandFactory.cs" />
+    <Compile Include="Commands\SendMessageCommand.cs" />
+    <Compile Include="Commands\SendStatusUpdateCommand.cs" />
+    <Compile Include="Commands\SyncEntityCommand.cs" />
+    <Compile Include="Handlers\ContactsHandler.cs" />
+    <Compile Include="Handlers\DocumentsHandler.cs" />
+    <Compile Include="Handlers\Matchers\ContactMatcher.cs" />
+    <Compile Include="Handlers\Matchers\MessageMatcher.cs" />
+    <Compile Include="Handlers\Matchers\ProfileMatcher.cs" />
+    <Compile Include="Handlers\MessagesHandler.cs" />
+    <Compile Include="Handlers\UserStatusHandler.cs" />
+    <Compile Include="ProcessingPool.cs" />
+    <Compile Include="Repeat\Repeat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repeat\Run.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repeat\ScheduledItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repeat\ScheduledTaskRunner.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TaskProcessor.cs" />
+    <Compile Include="TaskQueue.cs" />
+    <Compile Include="Tasks\Application\CheckForUpdateTask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\Application\PurgeDataTask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\Application\RemoveChannelTask.cs" />
+    <Compile Include="Tasks\Application\ShipLogTask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\Commands\CleanupCommandsTask.cs" />
+    <Compile Include="Tasks\Commands\ExecuteCommandsTask.cs" />
+    <Compile Include="Tasks\ExceptionHelper.cs" />
+    <Compile Include="Tasks\Receive\EnumerateLabelsFolderTask.cs" />
+    <Compile Include="Tasks\Receive\EnumerateMessagesFolderTask.cs" />
+    <Compile Include="Tasks\Receive\ProcessLabelsTask.cs" />
+    <Compile Include="Tasks\Receive\ReceiveFoldersTask.cs" />
+    <Compile Include="Tasks\Receive\ReceiveMessageDetailsTask.cs" />
+    <Compile Include="Tasks\Receive\ReceiveMessagesTask.cs" />
+    <Compile Include="Tasks\Receive\ReceiveTask.cs" />
+    <Compile Include="Tasks\Receive\UpdateMessageStateTask.cs" />
+    <Compile Include="Tasks\Sync\SyncContactsTask.cs" />
+    <Compile Include="Tasks\Sync\SyncSearchStreamTask.cs" />
+    <Compile Include="Tasks\Sync\SyncStatusUpdatesTask.cs" />
+    <Compile Include="Tasks\Sync\SyncTask.cs" />
+    <Compile Include="Tasks\Sync\UserStatusParser.cs" />
+    <Compile Include="Tasks\Tasks.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tasks\Users\ValidateLoginTask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Extensions\Inbox2.Framework.Extensions.csproj">
+      <Project>{CFEC0A6E-AFAE-4FC1-8F07-B1B0F97B4162}</Project>
+      <Name>Inbox2.Framework.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Inbox2.Framework.csproj">
+      <Project>{B6402BD1-3B14-4ED8-A0A2-11665AEC6D3F}</Project>
+      <Name>Inbox2.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Interfaces\Inbox2.Framework.Interfaces.csproj">
+      <Project>{8E52D082-3EF7-4A0A-961C-E63C8D4B1947}</Project>
+      <Name>Inbox2.Framework.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Localization\Inbox2.Framework.Localization.csproj">
+      <Project>{4E91D564-1B6E-4FF0-A177-3ED4632EA5D2}</Project>
+      <Name>Inbox2.Framework.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Persistance\Inbox2.Framework.Persistance.csproj">
+      <Project>{C20E7E84-728A-4891-B99B-D6DD4029FFF4}</Project>
+      <Name>Inbox2.Framework.Persistance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Plugins\Inbox2.Framework.Plugins.csproj">
+      <Project>{EF22C92A-3F62-4420-BF6B-B6F6D8CFCF40}</Project>
+      <Name>Inbox2.Framework.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Threading\Inbox2.Framework.Threading.csproj">
+      <Project>{428793DE-2946-4FB0-B8B8-E372084A58E7}</Project>
+      <Name>Inbox2.Framework.Threading</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Utils\Inbox2.Framework.Utils.csproj">
+      <Project>{0A5281EA-0E45-448A-9828-A7E96DA1B530}</Project>
+      <Name>Inbox2.Framework.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\VirtualMailBox\Inbox2.Framework.VirtualMailBox.csproj">
+      <Project>{9B222C61-ECAD-46C0-A3DD-66E0590F9B50}</Project>
+      <Name>Inbox2.Framework.VirtualMailBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Configuration\Inbox2.Core.Configuration.csproj">
+      <Project>{2E870F3B-1BBB-44B0-B534-4A1D1CCB17C8}</Project>
+      <Name>Inbox2.Core.Configuration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

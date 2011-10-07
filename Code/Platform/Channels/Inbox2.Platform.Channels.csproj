@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{43B96CD2-D7DA-4286-A209-EE9585EF6927}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inbox2.Platform.Channels</RootNamespace>
+    <AssemblyName>Inbox2.Platform.Channels</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Stable Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Inbox2.Utils.Scraper, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Stable Assemblies\Inbox2.Utils.Scraper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\IndexAttribute.cs" />
+    <Compile Include="Attributes\PersistAttribute.cs" />
+    <Compile Include="ChannelBuilder.cs" />
+    <Compile Include="ChannelContext.cs" />
+    <Compile Include="ChannelInstance.cs" />
+    <Compile Include="ChannelProfileInfoBuilder.cs" />
+    <Compile Include="Configuration\Authentication.cs" />
+    <Compile Include="Configuration\Channel.cs" />
+    <Compile Include="Configuration\ChannelCharasteristics.cs" />
+    <Compile Include="Configuration\ChannelConfiguration.cs" />
+    <Compile Include="Connections\ChannelConnectionBase.cs" />
+    <Compile Include="Connections\ClientConnectionPool.cs" />
+    <Compile Include="Connections\CloudConnectionPool.cs" />
+    <Compile Include="Connections\IConnectionPool.cs" />
+    <Compile Include="Connections\PoolableConnectionBase.cs" />
+    <Compile Include="Connections\PushConnectionPool.cs" />
+    <Compile Include="DefaultCredentialsProvider.cs" />
+    <Compile Include="Entities\ChannelAvatar.cs" />
+    <Compile Include="Entities\ChannelCalendar.cs" />
+    <Compile Include="Entities\ChannelEvent.cs" />
+    <Compile Include="Entities\ChannelFolder.cs" />
+    <Compile Include="Entities\ChannelMetaData.cs" />
+    <Compile Include="Entities\ChannelRecurrence.cs" />
+    <Compile Include="Entities\ChannelSocialProfile.cs" />
+    <Compile Include="Entities\ChannelStatusUpdate.cs" />
+    <Compile Include="Entities\ChannelStatusUpdateAttachment.cs" />
+    <Compile Include="Entities\EventClassType.cs" />
+    <Compile Include="Entities\EventPriority.cs" />
+    <Compile Include="Entities\EventState.cs" />
+    <Compile Include="Entities\LabelsSupport.cs" />
+    <Compile Include="Entities\ProfileType.cs" />
+    <Compile Include="Entities\ContentType.cs" />
+    <Compile Include="Entities\EntityStates.cs" />
+    <Compile Include="Entities\ChannelFolderType.cs" />
+    <Compile Include="Entities\ChannelPerson.cs" />
+    <Compile Include="Entities\ChannelProfile.cs" />
+    <Compile Include="Entities\RecurrenceFrequency.cs" />
+    <Compile Include="Entities\SourceAddressCollection.cs" />
+    <Compile Include="Entities\SourceAddressComparer.cs" />
+    <Compile Include="Exceptions\ChannelAuthenticationException.cs" />
+    <Compile Include="Entities\ChannelContact.cs" />
+    <Compile Include="Entities\ChannelCredentials.cs" />
+    <Compile Include="Entities\ChannelAttachment.cs" />
+    <Compile Include="Exceptions\ChannelConnectException.cs" />
+    <Compile Include="Exceptions\ChannelException.cs" />
+    <Compile Include="Entities\ChannelMessageHeader.cs" />
+    <Compile Include="Entities\ChannelState.cs" />
+    <Compile Include="Connections\ConnectionPool.cs" />
+    <Compile Include="Connections\ConnectionPoolScavenger.cs" />
+    <Compile Include="Entities\DataEventArgs.cs" />
+    <Compile Include="Exceptions\ChannelFunctionalException.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringBuilderExtensions.cs" />
+    <Compile Include="Inbox2Channel.cs" />
+    <Compile Include="Interfaces\ConnectionType.cs" />
+    <Compile Include="Interfaces\Delegates.cs" />
+    <Compile Include="Interfaces\Enumerations.cs" />
+    <Compile Include="Interfaces\IChannelCredentialsProvider.cs" />
+    <Compile Include="Interfaces\IChannelObject.cs" />
+    <Compile Include="Interfaces\IClientCalendarChannel.cs" />
+    <Compile Include="Interfaces\IClientChannel.cs" />
+    <Compile Include="Interfaces\IClientContactsChannel.cs" />
+    <Compile Include="Interfaces\IClientDocumentsChannel.cs" />
+    <Compile Include="Interfaces\IClientInputChannel.cs" />
+    <Compile Include="Interfaces\IClientOutputChannel.cs" />
+    <Compile Include="Entities\ChannelMessage.cs" />
+    <Compile Include="Interfaces\IChannelConnection.cs" />
+    <Compile Include="Entities\SourceAddress.cs" />
+    <Compile Include="Interfaces\IClientStatusUpdatesChannel.cs" />
+    <Compile Include="Interfaces\ILabelsChannel.cs" />
+    <Compile Include="Interfaces\IPagableChannel.cs" />
+    <Compile Include="Interfaces\IPoolableChannel.cs" />
+    <Compile Include="Interfaces\IProgressChannel.cs" />
+    <Compile Include="Interfaces\IPushChannel.cs" />
+    <Compile Include="Interfaces\IReadStateChannel.cs" />
+    <Compile Include="Interfaces\IWebRedirectBuilder.cs" />
+    <Compile Include="Interfaces\IReversePagableChannel.cs" />
+    <Compile Include="Parsing\ChannelMessageParser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceModel\OAuth\OAuthChannelFactory.cs" />
+    <Compile Include="ServiceModel\OAuth\OAuthInterceptorBindingElement.cs" />
+    <Compile Include="ServiceModel\OAuth\OAuthInterceptorChannel.cs" />
+    <Compile Include="ServiceModel\OAuth\OAuthRawMapper.cs" />
+    <Compile Include="ServiceModel\RawMapper.cs" />
+    <Compile Include="Text\Base64Helper.cs" />
+    <Compile Include="Text\Crc32.cs" />
+    <Compile Include="Text\Encoding\QuotedPrintableEncoding.cs" />
+    <Compile Include="Extensions\StreamExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Text\Hashing.cs" />
+    <Compile Include="Text\HenriFormatter.cs" />
+    <Compile Include="Text\Html\HtmlSanitizer.cs" />
+    <Compile Include="Text\NameValueParser.cs" />
+    <Compile Include="Text\PersonName.cs" />
+    <Compile Include="Text\SerializableDictionary.cs" />
+    <Compile Include="Web\WebContentStreamHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ThirdParty\Src\Lumisoft.Net\LumiSoft.Net.csproj">
+      <Project>{7AB36CCF-5FFD-4780-A54E-A102ECA028B5}</Project>
+      <Name>LumiSoft.Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Inbox2.Platform.Interfaces.csproj">
+      <Project>{B9CE1540-1D68-43B2-83DB-47EC21D158A6}</Project>
+      <Name>Inbox2.Platform.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logging\Inbox2.Platform.Logging.csproj">
+      <Project>{6AE2A2AF-9B61-45B0-A375-666C5225A5B4}</Project>
+      <Name>Inbox2.Platform.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

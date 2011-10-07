@@ -1,0 +1,551 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="SharedDictionary.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Default TextBoxBase Style -->
+    <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBoxBase}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="22"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>		
+		<Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border 
+                        Name="Border" 
+                        CornerRadius="4" 
+                        Padding="2" 
+                        Background="{StaticResource TextBoxGradient}" 
+                        BorderBrush="{StaticResource ShadowColor5}" 
+                        BorderThickness="0,1,0,0">
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <!--<Setter Property="BitmapEffect" Value="{StaticResource FocusedOuterGlow}" />-->
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource TextBoxFocusBackgroundBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource FocusedBorder}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+	<!-- Default TextBoxBase Style -->
+	<Style x:Key="WatermarkedTextBox" TargetType="{x:Type TextBox}">
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="OverridesDefaultStyle" Value="True"/>
+		<Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+		<Setter Property="MinWidth" Value="120"/>
+		<Setter Property="MinHeight" Value="22"/>
+		<Setter Property="Width" Value="120"/>
+		<Setter Property="Height" Value="Auto"/>
+		<Setter Property="AllowDrop" Value="true"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="Foreground" Value="Black"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type TextBox}">
+					<Grid>
+						<Border 
+	                        Name="Border" 
+	                        CornerRadius="4" 
+	                        Padding="2" 
+	                        Background="{StaticResource TextBoxGradient}" 
+	                        BorderBrush="{StaticResource ShadowColor5}" 
+	                        BorderThickness="0,1,0,0">
+							<ScrollViewer x:Name="PART_ContentHost" />
+						</Border>
+						
+						<Label x:Name="TextPrompt" Content="{TemplateBinding Tag}" Visibility="Collapsed" Focusable="False" Margin="2,2,0,0" OverridesDefaultStyle="True" Style="{StaticResource WaterMarkLabel}" FontSize="11" />
+					</Grid>					
+					
+					<ControlTemplate.Triggers>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsFocused" Value="False"></Condition>
+								<Condition Property="Text" Value=""></Condition>
+							</MultiTrigger.Conditions>
+							<MultiTrigger.Setters>
+								<Setter Property="Visibility" TargetName="TextPrompt" Value="Visible"></Setter>
+							</MultiTrigger.Setters>
+						</MultiTrigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+							<Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+							<Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+						</Trigger>
+						<Trigger Property="IsFocused" Value="True">
+							<!--<Setter Property="BitmapEffect" Value="{StaticResource FocusedOuterGlow}" />-->
+							<Setter TargetName="Border" Property="Background" Value="{StaticResource TextBoxFocusBackgroundBrush}" />
+							<Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource FocusedBorder}"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+    <!-- Default TextBoxBase Style -->
+    <Style x:Key="WatermarkedOnLightTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border Name="Bd"
+                                BorderBrush="{StaticResource ShadowColor5}"
+                                BorderThickness="0.75"
+                                CornerRadius="4" />
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      HorizontalAlignment="Stretch" 
+                                      VerticalAlignment="Stretch"
+                                      Width="Auto"
+                                      Height="Auto"
+                                      BorderBrush="Transparent"
+                                      Background="Transparent" />
+                        <Label x:Name="TextPrompt" 
+                               Content="{TemplateBinding Tag}" 
+                               Visibility="Collapsed" 
+                               Focusable="False" 
+                               Margin="2,2,0,0" 
+                               OverridesDefaultStyle="True" 
+                               Style="{StaticResource WaterMarkLabel}" 
+                               FontSize="11" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"></Condition>
+                                <Condition Property="Text" Value=""></Condition>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Visibility" TargetName="TextPrompt" Value="Visible"></Setter>
+                                <Setter Property="Opacity" TargetName="Bd" Value="0.75" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default TextBoxBase Style -->
+    <Style x:Key="MainSearchBox" TargetType="{x:Type TextBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="22"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+					<Grid>
+						<Border 
+	                        Name="Border" 
+	                        CornerRadius="4" 
+	                        Background="{StaticResource TextBoxGradient}" 
+	                        BorderBrush="{StaticResource ShadowColor5}" 
+	                        BorderThickness="0,1,0,0">
+							<Border CornerRadius="4" Padding="2" BorderBrush="{StaticResource HighlightColor3}" BorderThickness="0,0,0,1">
+								<ScrollViewer x:Name="PART_ContentHost" />
+							</Border>
+						</Border>
+
+						<Label x:Name="TextPrompt" Content="{TemplateBinding Tag}" Visibility="Collapsed" Focusable="False" Margin="5,5,0,0" OverridesDefaultStyle="True" Style="{StaticResource WaterMarkLabel}" FontSize="12"></Label>
+
+					</Grid>
+                    <ControlTemplate.Triggers>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsFocused" Value="False"></Condition>
+								<Condition Property="Text" Value=""></Condition>
+							</MultiTrigger.Conditions>
+							<MultiTrigger.Setters>
+								<Setter Property="Visibility" TargetName="TextPrompt" Value="Visible"></Setter>
+							</MultiTrigger.Setters>
+						</MultiTrigger>
+						<Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                         <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource TextBoxGradient}" />
+                            <Setter Property="Opacity" Value="1" TargetName="Border" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default Header Search TextBox Style -->
+    <Style x:Key="HeaderSearchBox" TargetType="{x:Type TextBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinHeight" Value="23"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource DefaultForegroundColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border Name="Border" 
+                                BorderBrush="{StaticResource ShadowColor6}" 
+                                Background="{StaticResource TextBoxOnDarkGradient}"
+                                BorderThickness="0,1,0,0" 
+                                CornerRadius="4" >                            
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="3,2,3,0" />
+                        </Border>
+
+                        <Label x:Name="TextPrompt" Content="{TemplateBinding Tag}" Visibility="Collapsed" Focusable="False" Margin="3,2,0,0" OverridesDefaultStyle="True" Style="{StaticResource WaterMarkLabelOnDark}" FontSize="11"></Label>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"></Condition>
+                                <Condition Property="Text" Value=""></Condition>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Visibility" TargetName="TextPrompt" Value="Visible"></Setter>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Opacity" Value="1" TargetName="Border" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default TextBoxBase Style -->
+    <Style x:Key="TokenBox" TargetType="{x:Type TextBoxBase}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="22"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border 
+                        Name="Border" 
+                        CornerRadius="4" 
+                        Background="White" 
+                        BorderBrush="{StaticResource ShadowColor5}" 
+                        BorderThickness="0,1,0,0">
+                        <Border CornerRadius="4" Padding="2,4,2,0" BorderBrush="{StaticResource HighlightColor3}" BorderThickness="0,0,0,1">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default TextBoxBase Style -->
+    <Style x:Key="SubjectBox" TargetType="{x:Type TextBoxBase}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="22"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border 
+                        Name="Border" 
+                        CornerRadius="4" 
+                        Background="White" 
+                        BorderBrush="{StaticResource ShadowColor5}" 
+                        BorderThickness="0,1,0,0">
+                        <Border CornerRadius="4" Padding="5,4" BorderBrush="{StaticResource HighlightColor3}" BorderThickness="0,0,0,1">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- QuickMessageTextBoxBase Style -->
+    <Style x:Key="QuickMessageTextBoxBase" TargetType="{x:Type TextBoxBase}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="22"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border 
+                        Name="Border" 
+                        CornerRadius="4" 
+                        Padding="2" 
+                        Background="{StaticResource TextBoxBaseBackgroundBrush}" 
+                        BorderBrush="#b8c7e0" 
+                        BorderThickness="1"
+                        >
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Border" Property="Background"  Value="{StaticResource TextBoxFocusBackgroundBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="#a8b9d3"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+	<!-- ThreadedViewTextBoxBase Style -->
+	<Style x:Key="ThreadedViewTextBoxBase" TargetType="{x:Type TextBox}">
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="OverridesDefaultStyle" Value="True"/>
+		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>		
+		<Setter Property="Width" Value="Auto"/>
+		<Setter Property="Height" Value="Auto"/>
+		<Setter Property="TextWrapping" Value="Wrap"/>
+		<Setter Property="Foreground" Value="Black"/>
+		<Setter Property="BorderBrush" Value="{x:Null}"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="IsReadOnly" Value="True"/>
+		<Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type TextBoxBase}">
+					<ScrollViewer x:Name="PART_ContentHost" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- QuickChannelSetupTextBoxBase Style -->
+    <Style x:Key="QuickChannelSetupTextBoxBase" TargetType="{x:Type TextBoxBase}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="122"/>
+        <Setter Property="MinHeight" Value="24"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border 
+                        Name="Border" 
+                        CornerRadius="4" 
+                        Padding="2" 
+                        Background="{StaticResource TextBoxBaseBackgroundBrush}" 
+                        BorderBrush="#FFE6E6E6" 
+                        BorderThickness="1"
+                        >
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BitmapEffect" Value="{StaticResource FocusedOuterGlow}" />
+                            <Setter TargetName="Border" Property="Background"  Value="{StaticResource TextBoxFocusBackgroundBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource FocusedBorder}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default PasswordBox Style -->
+    <Style x:Key="{x:Type PasswordBox}" TargetType="{x:Type PasswordBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="PasswordChar" Value="●"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="22"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border 
+                        Name="Border"
+                        CornerRadius="4" 
+                        Padding="2" 
+                        Background="{StaticResource TextBoxBaseBackgroundBrush}"
+                        BorderBrush="{StaticResource SolidBorderBrush}"
+                        BorderThickness="0"
+                        >
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BitmapEffect" Value="{StaticResource FocusedOuterGlow}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="#FF48B9FF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- QuickChannelSetupPasswordBox Style -->
+    <Style x:Key="QuickChannelSetupPasswordBox" TargetType="{x:Type PasswordBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="PasswordChar" Value="●"/>
+        <Setter Property="MinWidth" Value="122"/>
+        <Setter Property="MinHeight" Value="24"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="auto"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border 
+                        Name="Border"
+                        CornerRadius="4" 
+                        Padding="2" 
+                        Background="{StaticResource TextBoxBaseBackgroundBrush}"
+                        BorderBrush="#FFE6E6E6"
+                        BorderThickness="1">
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BitmapEffect" Value="{StaticResource FocusedOuterGlow}" />
+                            <Setter TargetName="Border" Property="Background"  Value="{StaticResource TextBoxFocusBackgroundBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource FocusedBorder}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default RichTextBox Style -->
+    <Style x:Key="{x:Type RichTextBox}" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type RichTextBox}">
+        <Style.Resources>
+            <Style x:Key="{x:Type FlowDocument}" TargetType="{x:Type FlowDocument}">
+                <Setter Property="OverridesDefaultStyle" Value="false"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+</ResourceDictionary>

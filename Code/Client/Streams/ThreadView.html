@@ -1,0 +1,35 @@
+﻿<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Inbox2</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+		body
+		{
+			font-family: Segoe UI,Tahoma,Geneva,Kalimati,sans-serif;
+			font-size: 13px;
+			margin-left: 15px;
+			margin-right: 15px;
+			margin-top: 10px;
+			color: #3f3f3f;
+			background: White;
+		}
+		a{color: #0095ea;}
+	</style>
+</head>
+<body>
+	<div id="body"></div>
+    <div class="clear"></div>
+	
+	<script type="text/javascript">
+		function refresh(c)
+		{
+			$('#body').replaceWith('<div id="body">' + c + '</div>');
+			
+			window.scroll(0,0);
+		}
+	</script>
+</body>
+</html>

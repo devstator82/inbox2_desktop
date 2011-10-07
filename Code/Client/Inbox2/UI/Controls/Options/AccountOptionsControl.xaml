@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.Options.AccountOptionsControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:configuration="clr-namespace:Inbox2.Platform.Channels.Configuration;assembly=Inbox2.Platform.Channels"        
+	xmlns:fluidkit="clr-namespace:FluidKit.Controls;assembly=FluidKit">
+	
+	<UserControl.Resources>
+		<fluidkit:FlipTransition x:Key="FlipTransition" />
+
+		<!-- ChannelConfiguration DataTemplate -->
+		<DataTemplate DataType="{x:Type configuration:ChannelConfiguration}" x:Key="ChannelConfigurationsTemplate">
+			<Grid DataContext="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="48" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="100" />
+				</Grid.ColumnDefinitions>
+
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+
+				<Button Name="ChannelIcon" 
+						Style="{StaticResource ChannelIconSmallButton}"
+						Grid.Column="0"
+						Tag="ChannelIconSmallerButton"
+						Width="21"
+						Height="21"
+						Grid.Row="0"
+						Click="ChannelIcon_Click" HorizontalAlignment="Right">
+					<Image Source="{Binding Converter={StaticResource ChannelIconConverter}, ConverterParameter=64}" 
+						   Width="17" 
+						   Stretch="Uniform" 
+						   HorizontalAlignment="Left" 
+						   VerticalAlignment="Center" />
+				</Button>
+
+				<StackPanel Grid.Column="1" 
+							Grid.Row="0"
+							VerticalAlignment="Stretch"
+							Orientation="Horizontal"
+							Margin="10,6">
+					<Label Name="ChannelSetupAddress" 
+						   Content="{Binding InputChannel.Authentication.Username}"
+						   HorizontalAlignment="Stretch" 
+						   VerticalAlignment="Center" FontWeight="Bold" />
+					<Button Name="ChannelDeleteButton" 
+							Style="{StaticResource GlobalDeleteButton}" 
+							HorizontalAlignment="Right" 
+							VerticalAlignment="Center"
+							Click="ChannelDeleteButton_Click"
+							Margin="10,0,0,0" />
+				</StackPanel>
+
+				<TextBlock Grid.Column="2" VerticalAlignment="Center" Visibility="{Binding IsConnected, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource NormalTextBlock}">Connected</TextBlock>
+				<TextBlock Grid.Column="2" VerticalAlignment="Center" Visibility="{Binding IsConnected, Converter={StaticResource NotBooleanToVisibilityConverter}}" Style="{StaticResource NormalTextBlock}">Stand-alone</TextBlock>
+
+				<Border Grid.ColumnSpan="3" Grid.Row="1" Style="{StaticResource SeperaterBorderStyle}" />
+			</Grid>
+		</DataTemplate>
+	</UserControl.Resources>
+
+	<fluidkit:TransitionPresenter x:Name="transitionContainer" 
+		RestDuration="0:0:8" 
+		FocusVisualStyle="{x:Null}"
+		Transition="{StaticResource FlipTransition}" 
+		HorizontalAlignment="Stretch"
+		VerticalAlignment="Stretch">
+		<StackPanel x:Name="AccountsPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<!-- Configured Channels -->
+			<TextBlock Style="{StaticResource TitleNameLarge}" 
+				TextWrapping="Wrap" 
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Top"
+				Margin="22,6"
+				Text="These accounts are currently configured:" />
+			
+			<Border HorizontalAlignment="Stretch" Style="{StaticResource SeperaterBorderStyle}" />
+			<ListView Name="ChannelConfigurationsListView"                                  
+				HorizontalAlignment="Stretch" 
+				VerticalAlignment="Top" 
+				Height="240"
+				Margin="0,0,0,12"
+				ScrollViewer.CanContentScroll="True"
+				MouseLeftButtonUp="ChannelConfigurationsListView_MouseLeftButtonUp"
+				MouseDoubleClick="ChannelConfigurationsListView_MouseDoubleClick"
+				ItemsSource="{Binding ChannelConfigurations}"
+				ItemContainerStyle="{StaticResource ConfiguredChannelsSelectedItemStyle}"
+				ItemTemplate="{StaticResource ChannelConfigurationsTemplate}" />
+
+			<!-- Channel Configurations -->
+			<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="22,0">
+				<TextBlock Style="{StaticResource TitleNameLarge}" 
+					TextWrapping="Wrap" 
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top" 
+					Margin="0"
+					Text="Add more accounts:" />
+				
+				<WrapPanel Name="ChannelAddWrapPannel" 
+					HorizontalAlignment="Left" 
+					VerticalAlignment="Top" 
+					Orientation="Horizontal"
+					Margin="0" 
+					Grid.Column="0" 
+					Grid.Row="1"
+					Button.Click="ChannelAddWrapPannel_Click" />
+			</StackPanel>
+		</StackPanel>
+		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<StackPanel x:Name="ChannelSetupControlPanel" Grid.Column="0" Grid.Row="0" Width="375" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		</Grid>
+	</fluidkit:TransitionPresenter>
+
+</UserControl>

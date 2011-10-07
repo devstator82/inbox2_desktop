@@ -1,0 +1,697 @@
+﻿<UserControl x:Class="Inbox2.UI.Controls.Setup.ChannelSetupControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             
+    xmlns:controls="clr-namespace:Inbox2.UI.Controls.Setup"
+    xmlns:py="clr-namespace:PyBinding;assembly=PyBinding" 
+    xmlns:ui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI" 
+    Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="RunLoaderStoryboard" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="LoaderEllipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Style x:Key="ChannelSetupTabControlHard" TargetType="{x:Type TabControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="#000000" Opacity="0.25" BorderThickness="0,0,0,1" Margin="0,0,0,1"/>
+                            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="#FFFFFF" Opacity="0.3" BorderThickness="0,0,0,1" Margin="0,0,0,0"/>
+                            <TabPanel Grid.Row="0" Grid.Column="1" IsItemsHost="true" />
+                            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" Margin="0,0,0,0" Padding="2">
+                                <ContentPresenter x:Name="PART_SelectedContentHost"
+            				    Content="{Binding Path=SelectedContent, RelativeSource={RelativeSource TemplatedParent}}"
+            				    ContentSource="SelectedContent"
+                                ContentTemplate="{Binding Path=ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+            				    SnapsToDevicePixels="{Binding Path=SnapsToDevicePixels, RelativeSource={RelativeSource TemplatedParent}}"
+            				    Margin="0"
+                                HorizontalAlignment="Stretch"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TabItem" x:Key="StatusTabItemHard" >
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border CornerRadius="3,3,0,0" x:Name="OuterBorder" BorderBrush="{StaticResource ShadowColor5}" BorderThickness="1,1,1,0" Margin="0,0,0,1">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#19FFFFFF" Offset="0"/>
+                                    <GradientStop Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border x:Name="InnerBorder" CornerRadius="3,3,0,0" Padding="10,0" BorderThickness="1,1,1,0">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="#FFFFFF" Opacity="0.1"/>
+                                </Border.BorderBrush>
+                                <ContentPresenter ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="OuterBorder">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#26FFFFFF" Offset="0"/>
+                                            <GradientStop Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="InnerBorder">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#FFFFFF" Opacity="0.15"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="5"/>
+                                <Setter Property="Margin" TargetName="OuterBorder" Value="0,0,0,0"/>
+                                <Setter Property="Background" TargetName="OuterBorder">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF707072" Offset="0"/>
+                                            <GradientStop Color="#FF4E4F51" Offset="0.991"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="InnerBorder">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#FFFFFF" Opacity="0.15"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="OuterBorder">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#000000" Opacity="0.25"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Background="#FF30333A" CornerRadius="8">
+        <Border Width="Auto" BorderThickness="1" CornerRadius="8">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FFFFFF" Opacity="0.15"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#26FFFFFF" Offset="0"/>
+                    <GradientStop Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>                    
+                    <RowDefinition /> <!-- Container for Header-->
+                    <RowDefinition /> <!-- Container for Form -->                    
+                </Grid.RowDefinitions>
+
+                <!-- Header-->
+                <Border Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="12,12,12,0" Background="Transparent" CornerRadius="5,5,0,0">
+                    <Grid HorizontalAlignment="Stretch" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding ChannelConfiguration, Converter={StaticResource ChannelIconConverter}}" 
+                               RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                               SnapsToDevicePixels="True" 
+                               Grid.Row="0" 
+                               Grid.Column="0"
+                               Width="11"
+                               Height="11"
+                               HorizontalAlignment="Left" />
+
+                        <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource NormalTextBlock}">
+                            <TextBlock Name="TitleTextBlock" Foreground="White"/>
+                            
+                            <TextBlock Name="NeedHelpTextBlock">
+                                <Hyperlink Name="NeedHelpHyperlink" Click="Help_Click">Need help?</Hyperlink>
+                            </TextBlock>
+                        </TextBlock>                                               
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right">                            
+                            <Button Content="Close" Style="{StaticResource GlobalCloseButton}" Click="CancelButton_Click" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Form -->
+                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="12,0,12,12">
+					
+                    <!-- Username Input Field -->
+                    <Grid x:Name="UsernameGrid" Visibility="Collapsed" Width="Auto" Margin="0,4,0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" 
+                                   Text="Username: " 
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource NormalTextBlock}" 
+                                   SnapsToDevicePixels="True" 
+                                   Foreground="White"/>
+
+                        <TextBox x:Name="UsernameTextBox" 
+                                 Grid.Column="1" 
+                                 Text="{Binding Username}" 
+                                 Width="200"
+                                 HorizontalAlignment="Stretch" 
+                                 VerticalAlignment="Center"             
+                                 Style="{StaticResource WatermarkedTextBox}"
+                                 LostFocus="UsernameTextBox_LostFocus"
+                                 KeyDown="CheckCredentials_KeyDown" />
+
+                    </Grid>
+
+                    <!-- Password Input Field -->
+                    <Grid x:Name="PasswordGrid" Visibility="Collapsed" Width="Auto" Margin="0,4,0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" 
+                                   Text="Password: " 
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource NormalTextBlock}" 
+                                   Foreground="White"/>
+
+                        <PasswordBox x:Name="PasswordTextBox" 
+                                     Grid.Column="1"
+                                     Width="200"
+                                     HorizontalAlignment="Stretch" 
+                                     VerticalAlignment="Center"                                     
+                                     PasswordChanged="PasswordTextBox_PasswordChanged"
+                                     KeyDown="CheckCredentials_KeyDown" />
+
+                    </Grid>
+
+                    <!-- Hostname Input Field -->
+                    <Grid x:Name="HostnameGrid" Visibility="Collapsed" Width="Auto" Margin="0,4,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+						
+                        <TextBlock Grid.Column="0" 
+                           Text="Hostname: " 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource NormalTextBlock}" 
+                           Foreground="White"/>
+
+                        <TextBox x:Name="HostnameTextBox" 
+                             Grid.Column="1" 
+                             Text="{Binding Hostname}" 
+                             Width="200"
+                             HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Center"        
+                             Style="{StaticResource WatermarkedTextBox}"
+                             KeyDown="CheckCredentials_KeyDown" />
+                    </Grid>
+
+                    <!-- Login button field -->
+                    <Grid x:Name="LoginButtonGrid" Visibility="Collapsed" Width="Auto" Margin="0,4,0,2">
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource NormalTextBlock}" Foreground="White">
+                            <Run>Click on login to add your </Run>
+                            <ui:BindableRun BoundText="{Binding ChannelConfiguration.DisplayName}" />
+                            <Run> account</Run>
+                        </TextBlock> 
+                    </Grid>
+
+                    <!-- FBConnect button field -->
+                    <Grid x:Name="FbConnectButtonGrid" Visibility="Collapsed" Width="Auto" Margin="0,4,0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Button Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource LooklessButton}" Click="CheckCredentialsButton_Click" >
+                            <Image Source="/Inbox2.UI.Resources;component/icons/fbconnect.png" Width="165" Height="22" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                        </Button>
+                    </Grid>
+
+                    <!-- Pin Input Field -->
+                    <Grid x:Name="PinGrid" Visibility="Collapsed" Width="Auto" Margin="0,4,0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" 
+                           Text="Enter Pincode: " 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource NormalTextBlock}" 
+                           Foreground="White"/>
+
+                        <TextBox x:Name="PincodeTextBox" 
+                             Grid.Column="1" 
+                             Text="{Binding Hostname}" 
+                             Width="200"
+                             HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Center"                             
+                             KeyDown="CheckCredentials_KeyDown" />
+                    </Grid>
+                    
+                    <!-- Invite my friends -->
+                    <Grid x:Name="InviteFriendGrid" Visibility="Collapsed" Width="Auto" Margin="0,4,0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Column="0" 
+                                   Text="" 
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource NormalTextBlock}" 
+                                   SnapsToDevicePixels="True" 
+                                   Foreground="White"/>
+
+                        <CheckBox Grid.Column="1" 
+                                  IsChecked="{Binding InviteFriends}"
+                                  Name="InviteFriendsCheckBox"
+                                  Width="200"
+                                  Content="Invite my friends"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Center" />
+                    </Grid>
+                    
+                    <!-- Toggle Manual Settings -->
+                    <Grid x:Name="ToggleManualSettingsGrid" Visibility="{py:PyBinding BooleanToVisibility($[.ChannelConfiguration.Charasteristics.CanCustomize] and not $[.IsManuallyCustomized])}" Width="Auto" Margin="0,4,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" 
+                                   Text=" " 
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource NormalTextBlock}" 
+                                   SnapsToDevicePixels="True" 
+                                   Foreground="White"/>
+
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="200">
+                            <Hyperlink Name="ToggleManualSettingsHyperlink" Click="ToggleManualSettingsHyperlink_Click">Show advanced settings</Hyperlink>
+                        </TextBlock>
+
+                    </Grid>
+                    
+                    <!-- Manually EntryChannel Form -->
+                    <Grid Name="ManualEntryForm" Visibility="Collapsed">
+
+                        <TabControl Style="{StaticResource ChannelSetupTabControlHard}">
+
+                            <TabItem Name="Incoming" Header="Incoming" Style="{StaticResource StatusTabItemHard}">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" Height="170">
+                                    
+                                    <!-- Username Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="Username: " 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <TextBox x:Name="ManualEntryIncomingUsernameTextBox" 
+                                                 Grid.Column="1"                                                  
+                                                 Width="190"                                                 
+                                                 Text="{Binding ManualEntryIncomingUsername}"
+                                                 HorizontalAlignment="Left" 
+                                                 VerticalAlignment="Center" 
+                                                 KeyDown="CheckCredentials_KeyDown" />
+
+                                    </Grid>
+
+                                    <!-- Password Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="Password: " 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   Foreground="White"/>
+
+                                        <PasswordBox x:Name="ManualEntryIncomingPasswordTextBox" 
+                                                     Grid.Column="1"
+                                                     Width="190"
+                                                     HorizontalAlignment="Left" 
+                                                     VerticalAlignment="Center"
+                                                     KeyDown="CheckCredentials_KeyDown" />
+
+                                    </Grid>
+                                    
+                                    <!-- Account Type Drop Down List -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="Account Type: " 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                                            <RadioButton x:Name="AccountTypeImapRadioButton" GroupName="AccountType" Content="IMAP" IsChecked="True" Margin="0,0,8,0" Click="AccountTypeRadioButton_Click" Foreground="White"/>
+                                            <RadioButton x:Name="AccountTypePop3RadioButton" GroupName="AccountType" Content="POP3" Margin="0" Click="AccountTypeRadioButton_Click" Foreground="White"/>
+                                        </StackPanel>
+
+                                    </Grid>
+
+                                    <!-- Incoming Server Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="Server:" 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <TextBox x:Name="ManualEntryIncomingServerTextBox" 
+                                                 Grid.Column="1" 
+                                                 Width="190"
+                                                 Tag="mail.yourserver.com"
+                                                 Style="{StaticResource WatermarkedTextBox}"
+                                                 Text="{Binding ManualEntryIncomingServer}"
+                                                 HorizontalAlignment="Left" 
+                                                 VerticalAlignment="Center"
+                                                 KeyDown="CheckCredentials_KeyDown" />
+
+                                    </Grid>
+
+                                    <!-- Incoming Port Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+										
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="Port:" 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <TextBox x:Name="ManualEntryIncomingPortTextBox" 
+                                                 Grid.Column="1"
+                                                 MinWidth="45"
+                                                 Width="45"
+                                                 Text="{Binding ManualEntryIncomingPort}"
+                                                 HorizontalAlignment="Left" 
+                                                 VerticalAlignment="Center"
+                                                 KeyDown="CheckCredentials_KeyDown" />
+
+                                    </Grid>
+
+                                    <!-- Incoming SSL Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="" 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <CheckBox Grid.Column="1" 
+                                                  Grid.Row="0" 
+                                                  IsChecked="{Binding ManualEntryIncomingSsl}"
+                                                  Name="ManualEntryIncomingSslCheckBox"
+                                                  Content="Use SSL Connection" 
+                                                  Foreground="White"/>
+
+                                    </Grid>
+
+                                </StackPanel>
+                            </TabItem>
+
+                            <TabItem Name="Outgoing" Header="Outgoing" Style="{StaticResource StatusTabItemHard}">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" Height="170">
+                                    
+                                    <!-- Username Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="Username: " 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <TextBox x:Name="ManualEntryOutgoingUsernameTextBox" 
+                                                 Grid.Column="1"                                                  
+                                                 Width="190"
+                                                 Text="{Binding ManualEntryOutgoingUsername}"
+                                                 HorizontalAlignment="Left" 
+                                                 VerticalAlignment="Center"
+                                                 KeyDown="CheckCredentials_KeyDown" />
+
+                                    </Grid>
+
+                                    <!-- Password Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                       Text="Password: " 
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Center"
+                                                       Style="{StaticResource NormalTextBlock}" 
+                                                       Foreground="White"/>
+
+                                        <PasswordBox x:Name="ManualEntryOutgoingPasswordTextBox" 
+                                                     Grid.Column="1"
+                                                     Width="190"
+                                                     HorizontalAlignment="Left" 
+                                                     VerticalAlignment="Center"
+                                                     KeyDown="CheckCredentials_KeyDown" />
+
+                                    </Grid>
+                                    
+                                    <!-- Outgoing Server Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="Server:" 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <TextBox x:Name="ManualEntryOutgoingServerTextBox" 
+                                                 Grid.Column="1" 
+                                                 Tag="smtp.yourserver.nl"
+                                                 Style="{StaticResource WatermarkedTextBox}"
+                                                 Text="{Binding ManualEntryOutgoingServer}"
+                                                 Width="190"
+                                                 HorizontalAlignment="Left" 
+                                                 VerticalAlignment="Center"
+                                                 KeyDown="CheckCredentials_KeyDown" />
+
+                                    </Grid>
+
+                                    <!-- Outgoing Port Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="Port:" 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <TextBox x:Name="ManualEntryOutgoingPortTextBox" 
+                                                 Grid.Column="1"
+                                                 MinWidth="45"
+                                                 Width="45"
+                                                 Text="{Binding ManualEntryOutgoingPort}"
+                                                 HorizontalAlignment="Left" 
+                                                 VerticalAlignment="Center"
+                                                 KeyDown="CheckCredentials_KeyDown" />
+
+                                    </Grid>
+
+                                    <!-- Outgoing SSL Input Field -->
+                                    <Grid Width="Auto" Margin="0,4,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="125" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" 
+                                                   Text="" 
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource NormalTextBlock}" 
+                                                   SnapsToDevicePixels="True" 
+                                                   Foreground="White"/>
+
+                                        <CheckBox Grid.Column="1" 
+                                                  Grid.Row="0" 
+                                                  IsChecked="{Binding ManualEntryOutgoingSsl}"
+                                                  Name="ManualEntryOutgoingSslCheckBox"
+                                                  Content="Use SSL Connection" />
+                                    </Grid>
+
+                                </StackPanel>
+                            </TabItem>
+
+                        </TabControl>
+
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top"  Visibility="{py:PyBinding BooleanToVisibility($[.ChannelConfiguration.Charasteristics.CanCustomize] and not $[.ChannelConfiguration.IsCustomized])}">
+                                <Hyperlink Click="ToggleManualSettingsHyperlink_Click">Go back to simple settings</Hyperlink>
+                        </TextBlock>
+
+                    </Grid>
+
+                    <!-- Form Buttons -->
+                    <StackPanel HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center" 
+                                Orientation="Horizontal" 
+                                Margin="0,4,0,0">
+
+                        <!-- Check Credentials Button -->
+                        <Button Name="CheckCredentialsButton"
+                                Content="Login" 
+                                HorizontalAlignment="Left" 
+                                Click="CheckCredentialsButton_Click" />
+                        
+                        <!-- CheckMark -->
+                        <Canvas Name="CheckCanvas" Margin="8,0,0,0" Width="15.139" Height="14.664" Visibility="{py:PyBinding BooleanToVisibility($[.IsValidated])}" HorizontalAlignment="Left">
+                            <Path RenderTransformOrigin="0,0" Width="15.139" Height="14.664" Fill="{StaticResource CheckMarkFillBrush}" Stroke="{StaticResource CheckMarkStrokeBrush}" Stretch="Fill" Data="M47.508516,29.136849 L47.508516,36.969898 29.25,55.336666 20.488553,46.579369 20.488553,38.74632 29.25,47.468461 z" StrokeThickness="0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Canvas>
+
+                        <!-- Loader -->
+                        <Canvas Name="LoaderCanvas" Grid.Column="0" Grid.Row="4" Margin="23,6,0,0" Visibility="Collapsed" HorizontalAlignment="Left">
+                            <Ellipse Fill="{x:Null}" StrokeThickness="2.5" Stroke="#D9D9D9" Width="18" Height="18"/>
+                            <Ellipse Width="18" Height="18" Fill="{x:Null}" StrokeThickness="2.5" x:Name="LoaderEllipse" RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Stroke>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#0077E7FF" Offset="0.674"/>
+                                        <GradientStop Color="#B7FFFFFF" Offset="0.991"/>
+                                        <GradientStop Color="#4B59E2FF" Offset="0.884"/>
+                                    </LinearGradientBrush>
+                                </Ellipse.Stroke>
+                            </Ellipse>
+                        </Canvas>
+                        
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Border>
+</UserControl>

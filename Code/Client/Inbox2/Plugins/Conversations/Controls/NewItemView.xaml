@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="Inbox2.Plugins.Conversations.Controls.NewItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sharedControls="clr-namespace:Inbox2.Framework.Plugins.SharedControls;assembly=Inbox2.Framework.Plugins" 
+	xmlns:fui="clr-namespace:Inbox2.Framework.UI;assembly=Inbox2.Framework.UI" 
+	KeyboardNavigation.ControlTabNavigation="Cycle">
+	
+	<UserControl.CommandBindings>
+		<CommandBinding Command="{x:Static fui:InputCommands.SaveDraft}" CanExecute="SaveDraft_CanExecute" Executed="SaveDraft_Executed" />
+	</UserControl.CommandBindings>
+    
+	<sharedControls:MessageEditControl x:Name="MessageEditControl" SubjectUpdated="MessageEditControl_OnSubjectUpdated"  MessageSent="MessageEditControl_MessageSent" />
+	
+</UserControl>
