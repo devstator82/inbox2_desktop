@@ -303,6 +303,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)*.*" "..\..\..\..\..\..\..\Client\Inbox2\$(OutDir)"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)*.*" "$(SolutionDir)\Client\Inbox2\$(OutDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
