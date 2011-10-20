@@ -6,10 +6,12 @@ Inbox2 desktop client
 This is the source-code for the Inbox2 desktop client. One day I will write a better readme file, but for now fork it, fix it and send pull requests.
 
 For an overview of the client (back when we did a public commercial launch, old stuff), check out these links:
+
 * http://lifehacker.com/5479009/inbox2-desktop-combines-and-task+ifies-your-email-and-social-networks
 * http://techcrunch.com/2010/02/23/inbox2-debuts-public-beta-of-message-management-desktop-client-for-windows/
 
 More is available on our press page: 
+
 * http://www.inbox2.com/press
 
 Whatever, I just want the download
